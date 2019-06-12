@@ -56,16 +56,12 @@
     </div>
     <div>
     <br>
-    Optional independent pension contributions:
-        <input id="units" step="any" type="number" /> &#8362
-    </div>
-    <div>
-    <br>
     <table>
       <tr>
         <th></th>
         <th>Number of tax credits (monthly)</th> 
         <!-- Add option to set one number for all months -->
+        <!-- Maybe convert to dropdown menu -->
       </tr>
       <tr>
         <td>Jan</td>
@@ -117,6 +113,36 @@
       </tr>
     </table>
     </div>
+    <div>
+    <br>
+    Optional independent pension contributions (135 or 268):
+        <input id="units" step="any" type="number" /> &#8362
+    </div>
+    <div>
+    <br>
+    Charitable Donations
+    <br>
+        <table>
+    <!-- Add feature: press a (+) button to add more employers -->
+      <tr>
+        <th>Institution</th>
+        <th>Amount (037)</th> 
+      </tr>
+      <tr>
+        <td><input type="text" name="charity1" /></td> 
+        <td><input type="number" name="donation1" /> &#8362</td>
+      </tr>
+	  <tr>
+        <td><input type="text" name="charity2" /></td> 
+        <td><input type="number" name="donation2" /> &#8362</td>
+      </tr>
+      <tr>
+        <td><input type="text" name="charity3" /></td> 
+        <td><input type="number" name="donation3" /> &#8362</td>
+      </tr>
+      </table>
+    </div>
+    
     <div>
     <input type="submit" value="Calculate tax" />
     </div>
