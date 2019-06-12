@@ -28,7 +28,7 @@
       </tr>
       <tr>
         <td><input type="text" name="employerName1" value="Employer 1"/></td> 
-        <td><input type="number" name="taxableIncome1" />&#8362</td> 
+        <td><input type="number" name="taxableIncome" />&#8362</td> 
         <td><input type="number" name="taxPaid1" />&#8362</td>
         <td><input type="number" name="employeePension1"/>&#8362</td>
         <td><input type="number" name="employerPension1" />&#8362</td>
@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td><input type="text" name="employerName2" value="Employer 2"/></td>
-        <td><input type="number" name="taxableIncome2" />&#8362</td>
+        <td><input type="number" name="taxableIncome" />&#8362</td>
         <td><input type="number" name="taxPaid2" />&#8362</td>
         <td><input type="number" name="employeePension2"/>&#8362</td>
         <td><input type="number" name="employerPension2" />&#8362</td>
@@ -140,16 +140,16 @@
     </form>
     <hr />
     <div style="font-size: 1.5em;">
-    Range: <span id="min">0.00</span> &#8362;
+    Range: <span id="out">0.00</span> &#8362;
     </div>
     <script type="text/javascript">
     document.querySelector('#annual-tax').onsubmit = (function(e){
-        e.preventDefault();
-        var kwh = JSON.parse(document.querySelector('#electric-appliances select').value);
-        var units = +document.querySelector('#units').value;
-        var rate = 54.04;
-        document.querySelector('#min').innerHTML = (/*kwh[0] + ' &times;' + units + ' &times; ' + rate + ' = ' +*/ (kwh[0]*units*(rate/100)).toFixed(2));
-        document.querySelector('#max').innerHTML = (/*kwh[1] + ' &times;' + units + ' &times; ' + rate + ' = ' +*/ (kwh[1]*units*(rate/100)).toFixed(2));
+      //  e.preventDefault();
+     //   var kwh = JSON.parse(document.querySelector('#electric-appliances select').value);
+    //    var gross = +document.querySelectorAll('#taxableIncome').value;
+        var charity1 = document.getElementsByName('#donation1').value;
+        var charity2 = document.getElementsByName('#donation2').value;
+        document.querySelector('#out').innerHTML = (/*charity1 + '+' + charity2  + ' = ' +*/ (charity1+charity2);
         return false;
     });
     </script>
