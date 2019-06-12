@@ -18,7 +18,6 @@
     <br>
     Income tax credits:
         <input id="taxCredits" step="any" type="number" value="2.25"/>
-    </br>
     <div>
     Pension employee contribution rate:
         <input id="units" step="any" type="number" value="7.00"/> % - minimum 6%, maximum 7%
@@ -40,13 +39,24 @@
         <input id="units" step="any" type="number" value="2.50"/> % - maximum 2.5%
     </div> 
     <div>
+    <br>
+    <table>
       <tr>
-        <td><input type="text" name="fname" /></td>
-        <td><input type="text" name="lname" />
-            <input type="hidden" name="cid" value="11" />
-            <input type="hidden" name="uid" value="12" />
-        </td>
+        <th>Employer name</th>
+        <th>Taxable income (158)</th> 
+    	<th>Income Tax Paid (042)</th>
       </tr>
+      <tr>
+        <td><input type="text" name="employerName1" value="Employer 1"/></td>
+        <td><input type="text" name="taxableIncome1" /></td>
+        <td><input type="text" name="taxPaid1" /></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="employerName2" value="Employer 2"/></td>
+        <td><input type="text" name="taxableIncome2" /></td>
+        <td><input type="text" name="taxPaid2" /></td>
+      </tr>
+    </table>
     </div>
     <div>
     <input type="submit" value="Calculate my cost!" />
