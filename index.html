@@ -45,21 +45,94 @@
         <th>Employer name</th>
         <th>Taxable income (158)</th> 
     	<th>Income Tax Paid (042)</th>
+        <th>Employee pension deposits (045)</th>
+        <th>Employer pension deposits + Pitsuyim (248)</th>
+        <th>Insured Income (244)</th>
       </tr>
       <tr>
         <td><input type="text" name="employerName1" value="Employer 1"/></td>
-        <td><input type="text" name="taxableIncome1" /></td>
-        <td><input type="text" name="taxPaid1" /></td>
+        <td><input type="number" name="taxableIncome1" /></td>
+        <td><input type="number" name="taxPaid1" /></td>
+        <td><input type="number" name="employeePension1"/></td>
+        <td><input type="number" name="employerPension1" /></td>
+        <td><input type="number" name="insuredIncome1" /></td>
       </tr>
       <tr>
         <td><input type="text" name="employerName2" value="Employer 2"/></td>
-        <td><input type="text" name="taxableIncome2" /></td>
-        <td><input type="text" name="taxPaid2" /></td>
+        <td><input type="number" name="taxableIncome2" /></td>
+        <td><input type="number" name="taxPaid2" /></td>
+        <td><input type="number" name="employeePension2"/></td>
+        <td><input type="number" name="employerPension2" /></td>
+        <td><input type="number" name="insuredIncome2" /></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="employerName3" value="Employer 3"/></td>
+        <td><input type="number" name="taxableIncome3" /></td>
+        <td><input type="number" name="taxPaid3" /></td>
+        <td><input type="number" name="employeePension3"/></td>
+        <td><input type="number" name="employerPension3" /></td>
+        <td><input type="number" name="insuredIncome3" /></td>
       </tr>
     </table>
     </div>
     <div>
-    <input type="submit" value="Calculate my cost!" />
+    <table>
+      <tr>
+        <th></th>
+        <th>Number of tax credits (monthly)</th> 
+      </tr>
+      <tr>
+        <td>Jan</td>
+        <td><input type="number" name="janCredits" /></td>
+      </tr>
+            <tr>
+        <td>Feb</td>
+        <td><input type="number" name="febCredits" /></td>
+      </tr>
+            <tr>
+        <td>Mar</td>
+        <td><input type="number" name="marCredits" /></td>
+      </tr>
+            <tr>
+        <td>Apr</td>
+        <td><input type="number" name="aprCredits" /></td>
+      </tr>
+            <tr>
+        <td>May</td>
+        <td><input type="number" name="mayCredits" /></td>
+      </tr>
+            <tr>
+        <td>Jun</td>
+        <td><input type="number" name="junCredits" /></td>
+      </tr>
+            <tr>
+        <td>Jul</td>
+        <td><input type="number" name="julCredits" /></td>
+      </tr>
+            <tr>
+        <td>Aug</td>
+        <td><input type="number" name="augCredits" /></td>
+      </tr>
+            <tr>
+        <td>Sep</td>
+        <td><input type="number" name="sepCredits" /></td>
+      </tr>
+            <tr>
+        <td>Oct</td>
+        <td><input type="number" name="octCredits" /></td>
+      </tr>
+            <tr>
+        <td>Nov</td>
+        <td><input type="number" name="novCredits" /></td>
+      </tr>
+            <tr>
+        <td>Dec</td>
+        <td><input type="number" name="decCredits" /></td>
+      </tr>
+    </table>
+    </div>
+    <div>
+    <input type="submit" value="Calculate tax" />
     </div>
     </form>
     <hr />
