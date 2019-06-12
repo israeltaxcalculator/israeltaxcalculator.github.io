@@ -145,11 +145,9 @@
     <script type="text/javascript">
     document.querySelector('#annual-tax').onsubmit = (function(e){
       //  e.preventDefault();
-     //   var kwh = JSON.parse(document.querySelector('#electric-appliances select').value);
-    //    var gross = +document.querySelectorAll('#taxableIncome').value;
-        var donation1 = document.querySelector('#donation1').value;
-        var donation2 = document.querySelector('#donation2').value;
-        document.querySelector('#out').innerHTML = /*donation1 + '+' + donation2  + ' = ' +*/ (donation1+donation2);
+        var donation1 = +document.getElementById('donation1').value;
+        var donation2 = +document.getElementById('donation2').value;
+        document.getElementById('out').innerHTML = donation1+donation2;
         return false;
     });
     </script>
