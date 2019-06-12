@@ -124,11 +124,11 @@
       </tr>
       <tr>
         <td><input type="text" name="charity1" /></td> 
-        <td><input type="number" name="donation1" /> &#8362</td>
+        <td><input type="number" id="donation1" /> &#8362</td>
       </tr>
 	  <tr>
         <td><input type="text" name="charity2" /></td> 
-        <td><input type="number" name="donation2" /> &#8362</td>
+        <td><input type="number" id="donation2" /> &#8362</td>
       </tr>
       </table>
     <br>
@@ -147,9 +147,9 @@
       //  e.preventDefault();
      //   var kwh = JSON.parse(document.querySelector('#electric-appliances select').value);
     //    var gross = +document.querySelectorAll('#taxableIncome').value;
-        var charity1 = document.getElementsByName('#donation1').value;
-        var charity2 = document.getElementsByName('#donation2').value;
-        document.querySelector('#out').innerHTML = (/*charity1 + '+' + charity2  + ' = ' +*/ (charity1+charity2);
+        var donation1 = document.querySelector('#donation1').value;
+        var donation2 = document.querySelector('#donation2').value;
+        document.querySelector('#out').innerHTML = /*donation1 + '+' + donation2  + ' = ' +*/ (donation1+donation2);
         return false;
     });
     </script>
