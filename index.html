@@ -6,24 +6,13 @@
     table-layout: fixed;
 }
   </style>
-    <title>Israel Tax Calculator (Monthly) 2019</title>
+    <title>Israel Tax Calculator (Annual) 2018</title>
   </head>
   <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
-    <form id="electric-appliances">
-    <hr>
-      <div>
-      Select an appliance:
-          <select>
-              <option value="[0.55,4.1]">Frost-free refrigerator (day)</option>
-              <option value="[0.8,2.73]">Frost-free freezer (day)</option>
-              <option value="[1,2.2]">Dishwasher (cycle)</option>
-          </select>
-      </div>
-    <br>
+    <h1>Israel Tax Calculator (Annual) 2018</h2>
+    <form id="annual-tax">
     <h2>Salary and pension overview</h2>
     <div>
-    <br>
     <table style="table-layout:fixed">
     <!-- Add feature: press a (+) button to add more employers -->
       <tr>
@@ -65,9 +54,9 @@
     Optional independent pension contributions (135 or 268):
         <input id="units" step="any" type="number" /> &#8362
     </div>
+    <br>
       <h2>Tax credits (<i>Nekudot Zikui</i>)</h2>
     <div>
-    <br>
     <table>
       <tr>
         <th></th>
@@ -127,8 +116,10 @@
     </div>
     <div>
     <br>
-    <strong>Charitable Donations</strong>
-    <br>
+    <h2>Charitable Donations</h2>
+       <div> Note: total charitable donations must be over 180&#8362; and under MAX_RATE_CHARITABLE of annual income. Only donations to a "<i>Mosad Tsiburi</i>" with receipts are eligible.
+       </div>
+      <br>
         <table>
     <!-- Add feature: press a (+) button to add more employers -->
       <tr>
@@ -149,7 +140,6 @@
       </tr>
       </table>
     <br>
-    Note: total charitable donations must be over 180&#8362; and under MAX_RATE_CHARITABLE of annual income. Only donations to a "Mosad Tsiburi" with receipts are eligible.
     </div>
     
     <div>
