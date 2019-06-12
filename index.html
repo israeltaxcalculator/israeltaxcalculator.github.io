@@ -16,31 +16,10 @@
           </select>
       </div>
     <br>
-    Income tax credits:
-        <input id="taxCredits" step="any" type="number" value="2.25"/>
-    <div>
-    Pension employee contribution rate:
-        <input id="units" step="any" type="number" value="7.00"/> % - minimum 6%, maximum 7%
-    </div>
-    <div>
-    Base salary:
-        <input id="units" step="any" type="number" value="2.50"/> % - maximum 2.5%
-    </div>
-    <div>
-    Keren Hishtalmut employee contribution rate (optional):
-        <input id="units" step="any" type="number" value="2.50"/> % - maximum 2.5%
-    </div>
-    <div>
-    Keren Hishtalmut employee contribution rate (optional):
-        <input id="units" step="any" type="number" value="2.50"/> % - maximum 2.5%
-    </div>
-    <div>
-    Keren Hishtalmut employee contribution rate (optional):
-        <input id="units" step="any" type="number" value="2.50"/> % - maximum 2.5%
-    </div> 
     <div>
     <br>
     <table>
+    <!-- Add feature: press a (+) button to add more employers -->
       <tr>
         <th>Employer name</th>
         <th>Taxable income (158)</th> 
@@ -50,8 +29,8 @@
         <th>Insured Income (244)</th>
       </tr>
       <tr>
-        <td><input type="text" name="employerName1" value="Employer 1"/></td>
-        <td><input type="number" name="taxableIncome1" /></td>
+        <td><input type="text" name="employerName1" value="Employer 1"/></td> 
+        <td><input type="number" name="taxableIncome1" /> &#8362</td> 
         <td><input type="number" name="taxPaid1" /></td>
         <td><input type="number" name="employeePension1"/></td>
         <td><input type="number" name="employerPension1" /></td>
@@ -59,7 +38,7 @@
       </tr>
       <tr>
         <td><input type="text" name="employerName2" value="Employer 2"/></td>
-        <td><input type="number" name="taxableIncome2" /></td>
+        <td><input type="number" name="taxableIncome2" />&#8362</td>
         <td><input type="number" name="taxPaid2" /></td>
         <td><input type="number" name="employeePension2"/></td>
         <td><input type="number" name="employerPension2" /></td>
@@ -67,7 +46,7 @@
       </tr>
       <tr>
         <td><input type="text" name="employerName3" value="Employer 3"/></td>
-        <td><input type="number" name="taxableIncome3" /></td>
+        <td><input type="number" name="taxableIncome3" />&#8362</td>
         <td><input type="number" name="taxPaid3" /></td>
         <td><input type="number" name="employeePension3"/></td>
         <td><input type="number" name="employerPension3" /></td>
@@ -76,18 +55,25 @@
     </table>
     </div>
     <div>
+    <br>
+    Optional independent pension contributions:
+        <input id="units" step="any" type="number" /> &#8362
+    </div>
+    <div>
+    <br>
     <table>
       <tr>
         <th></th>
         <th>Number of tax credits (monthly)</th> 
+        <!-- Add option to set one number for all months -->
       </tr>
       <tr>
         <td>Jan</td>
-        <td><input type="number" name="janCredits" /></td>
+        <td><input type="number" name="janCredits" size="50"></td>
       </tr>
             <tr>
         <td>Feb</td>
-        <td><input type="number" name="febCredits" /></td>
+        <td><input type="number" name="febCredits" ></td>
       </tr>
             <tr>
         <td>Mar</td>
