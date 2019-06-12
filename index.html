@@ -1,6 +1,11 @@
 <!doctype html>
 <html>
   <head>
+  <style>
+  table{
+    table-layout: fixed;
+}
+  </style>
     <title>Israel Tax Calculator (Monthly) 2019</title>
   </head>
   <body>
@@ -16,16 +21,17 @@
           </select>
       </div>
     <br>
+    <h2>Salary and pension overview</h2>
     <div>
     <br>
-    <table>
+    <table style="table-layout:fixed">
     <!-- Add feature: press a (+) button to add more employers -->
       <tr>
         <th>Employer name</th>
         <th>Taxable income (158)</th> 
     	<th>Income Tax Paid (042)</th>
         <th>Employee pension deposits (045)</th>
-        <th>Employer pension deposits + Pitsuyim (248)</th>
+        <th>Employer pension deposits + <i>Pitsuyim</i> (248)</th>
         <th>Insured Income (244)</th>
       </tr>
       <tr>
@@ -54,6 +60,12 @@
       </tr>
     </table>
     </div>
+    <div>
+    <br>
+    Optional independent pension contributions (135 or 268):
+        <input id="units" step="any" type="number" /> &#8362
+    </div>
+      <h2>Tax credits (<i>Nekudot Zikui</i>)</h2>
     <div>
     <br>
     <table>
@@ -115,12 +127,7 @@
     </div>
     <div>
     <br>
-    Optional independent pension contributions (135 or 268):
-        <input id="units" step="any" type="number" /> &#8362
-    </div>
-    <div>
-    <br>
-    Charitable Donations
+    <strong>Charitable Donations</strong>
     <br>
         <table>
     <!-- Add feature: press a (+) button to add more employers -->
@@ -141,6 +148,8 @@
         <td><input type="number" name="donation3" /> &#8362</td>
       </tr>
       </table>
+    <br>
+    Note: total charitable donations must be over 180&#8362; and under MAX_RATE_CHARITABLE of annual income. Only donations to a "Mosad Tsiburi" with receipts are eligible.
     </div>
     
     <div>
@@ -149,7 +158,7 @@
     </form>
     <hr />
     <div style="font-size: 1.5em;">
-    Range: <span id="min">0.00</span> &#8362; &mdash; <span id="max">0.00</span> &#8362; <small style="font-size:0.6em">(depends on your model)</small>
+    Range: <span id="min">0.00</span> &#8362;
     </div>
     <script type="text/javascript">
     document.querySelector('#electric-appliances').onsubmit = (function(e){
