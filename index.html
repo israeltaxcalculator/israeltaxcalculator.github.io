@@ -214,6 +214,9 @@
     <div style="font-size: 0.8em;">
     Charitable donations relief: <span id="charitableDonationsRelief">0.00</span> &#8362;
     </div>
+    <div style="font-size: 0.8em;">
+    Pension relief: <span id="pensionRelief">0.00</span> &#8362;
+    </div>
     <div style="font-size: 1.5em;">
     Tax due after reliefs: <span id="finalTaxDue">0.00</span> &#8362;
     </div>
@@ -221,6 +224,7 @@
     document.querySelector('#annual-tax').onsubmit = (function(e){
       //  e.preventDefault();
       
+      	// load numbers from the form and add up similar elements
       	var gross = sumElements(document.getElementsByClassName('gross'));
         var taxPaid = sumElements(document.getElementsByClassName('taxPaid'));
         var employeePension = sumElements(document.getElementsByClassName('employeePension'));
@@ -229,15 +233,24 @@
         var taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
         var donations = sumElements(document.getElementsByClassName('donation'));
               
+        // derived variables
         var taxCreditsRelief = taxCredits * taxCreditValue;
+        
+        
+        
+        var charitableDonationsRelief = ((donations >= minEligibleDonation) ?
+        charityReliefRate * Math.min(donations, maxCharityProportionOfGross*gross) : 0);
+        var maxEligibleContributions = maxPensionContributionsRate*Math.min(hachnasaMezaka, insuredIncome)
+        var pensionRelief = pensionReliefRate * Math.min(employeePension, maxEligibleContributions);
+        
 		document.getElementById('taxCreditsRelief').innerHTML = taxCreditsRelief.toFixed(2);
-		var charitableDonationsRelief = donations * charityReliefRate;
 		document.getElementById('charitableDonationsRelief').innerHTML = charitableDonationsRelief.toFixed(2);
+        document.getElementById('pensionRelief').innerHTML = pensionRelief.toFixed(2);
         
         try {
           		var taxOwed = calculateTaxBrackets(gross, taxBrackets);
                 document.getElementById('taxBrackets').innerHTML = taxOwed.toFixed(2);
-                var finalTaxDue = Math.max(taxOwed - taxCreditsRelief - charitableDonationsRelief, 0);
+                var finalTaxDue = Math.max(taxOwed - taxCreditsRelief - charitableDonationsRelief- pensionRelief, 0);
                 document.getElementById('finalTaxDue').innerHTML = finalTaxDue.toFixed(2);
             }
       	catch(err) {
