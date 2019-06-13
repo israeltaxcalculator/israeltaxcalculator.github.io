@@ -18,20 +18,17 @@
   <script type="text/javascript">
     // basic tax constants
     const taxBrackets = [[0, 0.1, 0],
-                  [75720.0, 0.14, 7572],
-                  [108600.0, 0.2, 12175.2],
-                  [174360.0, 0.31, 25327.2],
-                  [242400.0, 0.35, 46419.6],
-                  [504360.0, 0.47, 138105.6],
-                  [649560.0, 0.5, 206349.6]]; 
+                  [74880.0, 0.14, 7488],
+                  [107400.0, 0.2, 12040.8],
+                  [172320.0, 0.31, 25024.8],
+                  [239520.0, 0.35, 45856.8],
+                  [498360.0, 0.47, 136450.8],
+                  [641880.0, 0.5, 203905.2]]; 
                   // each bracket: [bottom of bracket NIS, tax rate, cumulative tax paid in lower brackets (floor) NIS]
     // tax credit constants
-    const taxCreditValue = 218; // NIS
+    const taxCreditValue = 216; // NIS
     // charitable donations constants
     // pension-related constants
-    const hachnasaMezaka = 105600 // NIS
-    const maxPensionContributionsRate = 0.07 // 7% of insured income
-    const pensionReliefRate = 0.35 // get income tax reduction of 35% of contributions
    
    	function sumElements(collection) {
           sum = 0;
@@ -244,7 +241,7 @@
         var donations = sumElements(document.getElementsByClassName('donation'));
               
       function calculatePensionRelief(contributions, insuredIncome) {
-          const hachnasaMezaka = 105600 // NIS
+          const hachnasaMezaka = 104400 // NIS
           const maxPensionContributionsRate = 0.07 // 7% of insured income
           const pensionReliefRate = 0.35 // get income tax reduction of 35% of contributions
           let maxEligibleContributions = maxPensionContributionsRate*Math.min(hachnasaMezaka, insuredIncome);
