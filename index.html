@@ -117,18 +117,12 @@
     Total tax credits: <span id="totalTaxCredits">0.00</span>
     </div>
     <script type="text/javascript">
-    document.getElementsByClassName('taxCredits').forEach(function(elem) {
-    	elem.addEventListener("input", function (e) {
-    document.getElementById('totalTaxCredits').innerHTML = "54"; // taxCredits.toFixed(2);
+    var taxCreditsCollection = document.getElementsByClassName('taxCredits');
+    for (let elem of taxCreditsCollection) {
+            elem.addEventListener("input", function (e) {
+            taxCredits = sumElements(taxCreditsCollection);
+    document.getElementById('totalTaxCredits').innerHTML = taxCredits; // taxCredits.toFixed(2);
     //const taxCreditValue = 218 // NIS
-
-  /*      function sumElements(collection) {
-          sum = 0;
-          for (let item of collection) {
-              sum += parseFloat(item.value);
-              }
-          return sum;
-		}
         
       	try {
                 taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
@@ -136,10 +130,10 @@
             }
       	catch(err) {
               document.getElementById("out").innerHTML = err.message;
-        			}				*/
+        			}
         return false;
       	});
-      });
+      };
       </script>
     <div>
     <br>
@@ -172,7 +166,7 @@
     </form>
     <hr />
     <div style="font-size: 1.5em;">
-    Range: <span id="out">0.00</span> &#8362;
+    Tax payable: <span id="out">0.00</span> &#8362;
     </div>
     <script type="text/javascript">
     document.querySelector('#annual-tax').onsubmit = (function(e){
@@ -200,8 +194,10 @@
         function sumElements(collection) {
           sum = 0;
           for (let item of collection) {
+          	if (!isNaN(item.value)) {
               sum += parseFloat(item.value);
               }
+          }
           return sum;
 		}
       
