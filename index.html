@@ -114,6 +114,35 @@
     </div>
     <div>
     <br>
+    Total tax credits: <span id="totalTaxCredits">0.00</span>
+    </div>
+    <script type="text/javascript">
+    document.getElementsByClassName('taxCredits').forEach(function(elem) {
+    	elem.addEventListener("input", function (e) {
+    document.getElementById('totalTaxCredits').innerHTML = "54"; // taxCredits.toFixed(2);
+    //const taxCreditValue = 218 // NIS
+
+  /*      function sumElements(collection) {
+          sum = 0;
+          for (let item of collection) {
+              sum += parseFloat(item.value);
+              }
+          return sum;
+		}
+        
+      	try {
+                taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
+                document.getElementById('totalTaxCredits').innerHTML = taxCredits.toFixed(2);
+            }
+      	catch(err) {
+              document.getElementById("out").innerHTML = err.message;
+        			}				*/
+        return false;
+      	});
+      });
+      </script>
+    <div>
+    <br>
     <h2>Charitable Donations</h2>
        <div> Note: total charitable donations must be over 180&#8362; and under MAX_RATE_CHARITABLE of annual income. Only donations to a "<i>Mosad Tsiburi</i>" with receipts are eligible.
        <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities (Hebrew)</a>
@@ -155,7 +184,7 @@
                   [242400.0, 0.35, 46419.6],
                   [504360.0, 0.47, 138105.6],
                   [649560.0, 0.5, 206349.6]]; 
-                  // each bracket: [bottom of bracket, tax rate, cumulative tax paid in lower brackets (floor)]
+                  // each bracket: [bottom of bracket NIS, tax rate, cumulative tax paid in lower brackets (floor) NIS]
       const taxCreditValue = 218 // NIS
       
       function calculateTaxBrackets(gross, taxBrackets) {
@@ -183,10 +212,17 @@
         var insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
         var taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
         var donations = sumElements(document.getElementsByClassName('donation'));
+        
+      	try {
+                var taxCreditsRelief = taxCredits * taxCreditValue;
+                document.getElementById('totalTaxCredits').innerHTML = taxCredits.toFixed(2);
+            }
+      	catch(err) {
+              document.getElementById("out").innerHTML = err.message;
+        			}			
+        
         try {
           		var taxOwed = calculateTaxBrackets(gross, taxBrackets);
-                var taxCreditsRelief
-                
                 document.getElementById('out').innerHTML = taxOwed.toFixed(2);
             }
       	catch(err) {
