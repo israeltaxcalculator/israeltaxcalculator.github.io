@@ -27,20 +27,20 @@
         <th>Insured Income (244)</th>
       </tr>
       <tr>
-        <td><input type="text" name="employerName1" value="Employer 1"/></td> 
-        <td><input type="number" name="taxableIncome" />&#8362</td> 
-        <td><input type="number" name="taxPaid1" />&#8362</td>
-        <td><input type="number" name="employeePension1"/>&#8362</td>
-        <td><input type="number" name="employerPension1" />&#8362</td>
-        <td><input type="number" name="insuredIncome1" />&#8362</td>
+        <td><input type="text" id="employerName1" value="Employer 1"/></td> 
+        <td><input type="number" id="taxableIncome" />&#8362</td> 
+        <td><input type="number" id="taxPaid1" />&#8362</td>
+        <td><input type="number" id="employeePension1"/>&#8362</td>
+        <td><input type="number" id="employerPension1" />&#8362</td>
+        <td><input type="number" id="insuredIncome1" />&#8362</td>
       </tr>
       <tr>
-        <td><input type="text" name="employerName2" value="Employer 2"/></td>
-        <td><input type="number" name="taxableIncome" />&#8362</td>
-        <td><input type="number" name="taxPaid2" />&#8362</td>
-        <td><input type="number" name="employeePension2"/>&#8362</td>
-        <td><input type="number" name="employerPension2" />&#8362</td>
-        <td><input type="number" name="insuredIncome2" />&#8362</td>
+        <td><input type="text" id="employerName2" value="Employer 2"/></td>
+        <td><input type="number" id="taxableIncome" />&#8362</td>
+        <td><input type="number" id="taxPaid2" />&#8362</td>
+        <td><input type="number" id="employeePension2"/>&#8362</td>
+        <td><input type="number" id="employerPension2" />&#8362</td>
+        <td><input type="number" id="insuredIncome2" />&#8362</td>
       </tr>
     </table>
     </div>
@@ -61,51 +61,51 @@
       </tr>
       <tr>
         <td>Jan</td>
-        <td><input type="number" name="janCredits" min="2.25" max="25" step="0.25"></td>
+        <td><input type="number" id="janCredits" min="2.25" max="25" step="0.25"></td>
       </tr>
             <tr>
         <td>Feb</td>
-        <td><input type="number" name="febCredits" min="0" max="25"></td>
+        <td><input type="number" id="febCredits" min="0" max="25"></td>
       </tr>
             <tr>
         <td>Mar</td>
-        <td><input type="number" name="marCredits" min="0" max="25"></td>
+        <td><input type="number" id="marCredits" min="0" max="25"></td>
       </tr>
             <tr>
         <td>Apr</td>
-        <td><input type="number" name="aprCredits" min="0" max="25"></td>
+        <td><input type="number" id="aprCredits" min="0" max="25"></td>
       </tr>
             <tr>
         <td>May</td>
-        <td><input type="number" name="mayCredits" min="0" max="25"></td>
+        <td><input type="number" id="mayCredits" min="0" max="25"></td>
       </tr>
             <tr>
         <td>Jun</td>
-        <td><input type="number" name="junCredits" min="0" max="25"></td>
+        <td><input type="number" id="junCredits" min="0" max="25"></td>
       </tr>
             <tr>
         <td>Jul</td>
-        <td><input type="number" name="julCredits" min="0" max="25"></td>
+        <td><input type="number" id="julCredits" min="0" max="25"></td>
       </tr>
             <tr>
         <td>Aug</td>
-        <td><input type="number" name="augCredits" min="0" max="25"></td>
+        <td><input type="number" id="augCredits" min="0" max="25"></td>
       </tr>
             <tr>
         <td>Sep</td>
-        <td><input type="number" name="sepCredits" min="0" max="25"></td>
+        <td><input type="number" id="sepCredits" min="0" max="25"></td>
       </tr>
             <tr>
         <td>Oct</td>
-        <td><input type="number" name="octCredits" min="0" max="25"></td>
+        <td><input type="number" id="octCredits" min="0" max="25"></td>
       </tr>
             <tr>
         <td>Nov</td>
-        <td><input type="number" name="novCredits" min="0" max="25"></td>
+        <td><input type="number" id="novCredits" min="0" max="25"></td>
       </tr>
             <tr>
         <td>Dec</td>
-        <td><input type="number" name="decCredits" min="0" max="25"></td>
+        <td><input type="number" id="decCredits" min="0" max="25"></td>
       </tr>
     </table>
     </div>
@@ -123,11 +123,11 @@
         <th>Amount (037)</th> 
       </tr>
       <tr>
-        <td><input type="text" name="charity1" /></td> 
+        <td><input type="text" id="charity1" /></td> 
         <td><input type="number" id="donation1" /> &#8362</td>
       </tr>
 	  <tr>
-        <td><input type="text" name="charity2" /></td> 
+        <td><input type="text" id="charity2" /></td> 
         <td><input type="number" id="donation2" /> &#8362</td>
       </tr>
       </table>
@@ -145,6 +145,24 @@
     <script type="text/javascript">
     document.querySelector('#annual-tax').onsubmit = (function(e){
       //  e.preventDefault();
+      brackets = [[0, 0.1, 0],
+                  [6310.0, 0.14, 631],
+                  [9050.0, 0.2, 1014.6],
+                  [14530.0, 0.31, 2110.6],
+                  [20200.0, 0.35, 3868.3],
+                  [42030.0, 0.47, 11508.8],
+                  [54130.0, 0.5, 17195.8]];
+      	function calculateTaxBrackets(gross, taxBrackets) {
+          i = 0;
+          while ((i < brackets.length) && (gross > brackets[i][0])) {
+                i++;
+              }
+          bracket = taxBrackets[i-1];
+          tax = bracket[2] + bracket[1]*(gross - bracket[0]);
+          return tax;
+		}
+      
+      	var taxableIncome = +document.getElementById('taxableIncome').value;
         var donation1 = +document.getElementById('donation1').value;
         var donation2 = +document.getElementById('donation2').value;
         document.getElementById('out').innerHTML = donation1+donation2;
