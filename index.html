@@ -161,11 +161,19 @@
           tax = bracket[2] + bracket[1]*(gross - bracket[0]);
           return tax;
 		}
+        
+        function sumElements(collection) {
+          sum = 0;
+          for (let item of collection) {
+              sum += parseFloat(item.value);
+              }
+          return sum;
+}
       
-      	var taxableIncome = document.getElementsByClassName('taxableIncome').value;
+      	var taxableIncome = sumElements(document.getElementsByClassName('taxableIncome'));
         var donation1 = +document.getElementById('donation1').value;
         var donation2 = +document.getElementById('donation2').value;
-        document.getElementById('out').innerHTML = donation1+donation2;
+        document.getElementById('out').innerHTML = taxableIncome;
         return false;
     });
     </script>
