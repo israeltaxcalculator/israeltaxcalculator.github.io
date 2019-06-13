@@ -28,9 +28,6 @@
     // tax credit constants
     const taxCreditValue = 218; // NIS
     // charitable donations constants
-    const maxCharityProportionOfGross = 0.3 // only charitable contributions under 30% of annual income are eligible
-    const charityReliefRate = 0.35 // get income tax reduction of 35% of contributions
-    const minEligibleDonation = 190 // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
     // pension-related constants
     const hachnasaMezaka = 105600 // NIS
     const maxPensionContributionsRate = 0.07 // 7% of insured income
@@ -44,7 +41,7 @@
               }
           }
           return sum;
-		}
+    }
     function calculateTaxBrackets(gross, taxBrackets) {
           i = 0;
           while ((i < taxBrackets.length) && (gross >= taxBrackets[i][0])) {
@@ -53,7 +50,20 @@
           bracket = taxBrackets[i-1];
           tax = bracket[2] + bracket[1]*(gross - bracket[0]);
           return tax;
-		}
+    }
+    
+   	function calculateCharitableDonationsRelief(donations, gross) {
+      	  const minEligibleDonation = 190; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
+      	  const maxCharityProportionOfGross = 0.3; // only charitable contributions under 30% of annual income are eligible
+          const charityReliefRate = 0.35; // get income tax reduction of 35% of contributions
+          if (donations >= minEligibleDonation) {
+          return charityReliefRate * Math.min(a, maxCharityProportionOfGross*gross);
+          } else {
+          return 0;
+          }
+    }
+    
+    
     </script>
     <h1>Israel Tax Calculator (Annual) 2018</h2>
     <form id="annual-tax" onsubmit="return false;">
@@ -233,15 +243,19 @@
         var taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
         var donations = sumElements(document.getElementsByClassName('donation'));
               
-        // derived variables
-        var taxCreditsRelief = taxCredits * taxCreditValue;
+      function calculatePensionRelief(contributions, insuredIncome) {
+          const hachnasaMezaka = 105600 // NIS
+          const maxPensionContributionsRate = 0.07 // 7% of insured income
+          const pensionReliefRate = 0.35 // get income tax reduction of 35% of contributions
+          let maxEligibleContributions = maxPensionContributionsRate*Math.min(hachnasaMezaka, insuredIncome);
+          return pensionReliefRate * Math.min(employeePension, maxEligibleContributions);
+    }
         
+      	// derived variables
+        var taxCreditsRelief = taxCredits * taxCreditValue;       
+        var charitableDonationsRelief = calculateCharitableDonationsRelief(donations, gross);
+        var pensionRelief = calculatePensionRelief(employeePension, insuredIncome);
         
-        
-        var charitableDonationsRelief = ((donations >= minEligibleDonation) ?
-        charityReliefRate * Math.min(donations, maxCharityProportionOfGross*gross) : 0);
-        var maxEligibleContributions = maxPensionContributionsRate*Math.min(hachnasaMezaka, insuredIncome)
-        var pensionRelief = pensionReliefRate * Math.min(employeePension, maxEligibleContributions);
         
 		document.getElementById('taxCreditsRelief').innerHTML = taxCreditsRelief.toFixed(2);
 		document.getElementById('charitableDonationsRelief').innerHTML = charitableDonationsRelief.toFixed(2);
