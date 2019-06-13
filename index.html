@@ -15,53 +15,6 @@
     <title>Israel Tax Calculator (Annual) 2018</title>
   </head>
   <body>
-  <script type="text/javascript">
-    // basic tax constants
-    const taxBrackets = [[0, 0.1, 0],
-                  [74880.0, 0.14, 7488],
-                  [107400.0, 0.2, 12040.8],
-                  [172320.0, 0.31, 25024.8],
-                  [239520.0, 0.35, 45856.8],
-                  [498360.0, 0.47, 136450.8],
-                  [641880.0, 0.5, 203905.2]]; 
-                  // each bracket: [bottom of bracket NIS, tax rate, cumulative tax paid in lower brackets (floor) NIS]
-    // tax credit constants
-    const taxCreditValue = 216; // NIS
-    // charitable donations constants
-    // pension-related constants
-   
-   	function sumElements(collection) {
-          sum = 0;
-          for (let item of collection) {
-          	if (!isNaN(parseFloat(item.value))) {
-              sum += parseFloat(item.value);
-              }
-          }
-          return sum;
-    }
-    function calculateTaxBrackets(gross, taxBrackets) {
-          i = 0;
-          while ((i < taxBrackets.length) && (gross >= taxBrackets[i][0])) {
-                i++;
-              }
-          bracket = taxBrackets[i-1];
-          tax = bracket[2] + bracket[1]*(gross - bracket[0]);
-          return tax;
-    }
-    
-   	function calculateCharitableDonationsRelief(donations, gross) {
-      	  const minEligibleDonation = 190; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
-      	  const maxCharityProportionOfGross = 0.3; // only charitable contributions under 30% of annual income are eligible
-          const charityReliefRate = 0.35; // get income tax reduction of 35% of contributions
-          if (donations >= minEligibleDonation) {
-          return charityReliefRate * Math.min(donations, maxCharityProportionOfGross * gross);
-          } else {
-          return 0;
-          }
-    }
-    
-    
-    </script>
     <h1>Israel Tax Calculator (Annual) 2018</h2>
     <form id="annual-tax" onsubmit="return false;">
     <h2>Salary and pension overview</h2>
@@ -168,8 +121,7 @@
     for (let elem of taxCreditsCollection) {
             elem.addEventListener("input", function (e) {
             taxCredits = sumElements(taxCreditsCollection);
-    document.getElementById('totalTaxCredits').innerHTML = taxCredits; // taxCredits.toFixed(2);
-    //const taxCreditValue = 218 // NIS
+    document.getElementById('totalTaxCredits').innerHTML = taxCredits;
         
       	try {
                 taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
@@ -227,7 +179,55 @@
     <div style="font-size: 1.5em;">
     Tax due after reliefs: <span id="finalTaxDue">0.00</span> &#8362;
     </div>
-    <script type="text/javascript">
+      <script type="text/javascript">
+    // basic tax constants
+    const taxBrackets = [[0, 0.1, 0],
+                  [74880.0, 0.14, 7488],
+                  [107400.0, 0.2, 12040.8],
+                  [172320.0, 0.31, 25024.8],
+                  [239520.0, 0.35, 45856.8],
+                  [498360.0, 0.47, 136450.8],
+                  [641880.0, 0.5, 203905.2]]; 
+                  // each bracket: [bottom of bracket NIS, tax rate, cumulative tax paid in lower brackets (floor) NIS]
+    // tax credit constants
+    const taxCreditValue = 216; // NIS
+    // charitable donations constants
+    // pension-related constants
+   
+   	function sumElements(collection) {
+          return [...collection].reduce((sum, item) => 
+                        sum + (parseFloat(item.value) || 0), 0);
+    }
+    function calculateTaxBrackets(gross, taxBrackets) {
+          i = 0;
+          while ((i < taxBrackets.length) && (gross >= taxBrackets[i][0])) {
+                i++;
+              }
+          bracket = taxBrackets[i-1];
+          tax = bracket[2] + bracket[1]*(gross - bracket[0]);
+          return tax;
+    }
+    
+   	function calculateCharitableDonationsRelief(donations, gross) {
+      	  const minEligibleDonation = 190; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
+      	  const maxCharityProportionOfGross = 0.3; // only charitable contributions under 30% of annual income are eligible
+          const charityReliefRate = 0.35; // get income tax reduction of 35% of contributions
+          if (donations >= minEligibleDonation) {
+          return charityReliefRate * Math.min(donations, maxCharityProportionOfGross * gross);
+          } else {
+          return 0;
+          }
+    }
+    
+    function calculatePensionRelief(contributions, insuredIncome) {
+          const hachnasaMezaka = 104400 // NIS
+          const maxPensionContributionsRate = 0.07 // 7% of insured income
+          const pensionReliefRate = 0.35 // get income tax reduction of 35% of contributions
+          const maxEligibleContributions = maxPensionContributionsRate*Math.min(hachnasaMezaka, insuredIncome);
+          return pensionReliefRate * Math.min(contributions, maxEligibleContributions);
+    }
+    </script>
+        <script type="text/javascript">
     document.querySelector('#annual-tax').onsubmit = (function(e){
       //  e.preventDefault();
       
@@ -240,13 +240,6 @@
         var taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
         var donations = sumElements(document.getElementsByClassName('donation'));
               
-      function calculatePensionRelief(contributions, insuredIncome) {
-          const hachnasaMezaka = 104400 // NIS
-          const maxPensionContributionsRate = 0.07 // 7% of insured income
-          const pensionReliefRate = 0.35 // get income tax reduction of 35% of contributions
-          let maxEligibleContributions = maxPensionContributionsRate*Math.min(hachnasaMezaka, insuredIncome);
-          return pensionReliefRate * Math.min(employeePension, maxEligibleContributions);
-    }
         
       	// derived variables
         var taxCreditsRelief = taxCredits * taxCreditValue;       
