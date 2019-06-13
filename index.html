@@ -28,7 +28,7 @@
       </tr>
       <tr>
         <td><input type="text" id="employerName1" value="Employer 1"/></td> 
-        <td><input type="number" class="taxableIncome" id="taxableIncome1" />&#8362</td> 
+        <td><input type="number" class="gross" id="gross1" />&#8362</td> 
         <td><input type="number" id="taxPaid1" />&#8362</td>
         <td><input type="number" id="employeePension1"/>&#8362</td>
         <td><input type="number" id="employerPension1" />&#8362</td>
@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td><input type="text" id="employerName2" value="Employer 2"/></td>
-        <td><input type="number" class="taxableIncome" id="taxableIncome2" />&#8362</td>
+        <td><input type="number" class="gross" id="gross2" />&#8362</td>
         <td><input type="number" id="taxPaid2" />&#8362</td>
         <td><input type="number" id="employeePension2"/>&#8362</td>
         <td><input type="number" id="employerPension2" />&#8362</td>
@@ -145,16 +145,16 @@
     <script type="text/javascript">
     document.querySelector('#annual-tax').onsubmit = (function(e){
       //  e.preventDefault();
-      brackets = [[0, 0.1, 0],
-                  [6310.0, 0.14, 631],
-                  [9050.0, 0.2, 1014.6],
-                  [14530.0, 0.31, 2110.6],
-                  [20200.0, 0.35, 3868.3],
-                  [42030.0, 0.47, 11508.8],
-                  [54130.0, 0.5, 17195.8]];
+      taxBrackets = [[0, 0.1, 0],
+                  [75720.0, 0.14, 7572],
+                  [108600.0, 0.2, 12175.2],
+                  [174360.0, 0.31, 25327.2],
+                  [242400.0, 0.35, 46419.6],
+                  [504360.0, 0.47, 138105.6],
+                  [649560.0, 0.5, 206349.6]];
       	function calculateTaxBrackets(gross, taxBrackets) {
           i = 0;
-          while ((i < brackets.length) && (gross > brackets[i][0])) {
+          while ((i < taxBrackets.length) && (gross > taxBrackets[i][0])) {
                 i++;
               }
           bracket = taxBrackets[i-1];
@@ -168,12 +168,13 @@
               sum += parseFloat(item.value);
               }
           return sum;
-}
+		}
       
-      	var taxableIncome = sumElements(document.getElementsByClassName('taxableIncome'));
+      	var gross = sumElements(document.getElementsByClassName('gross'));
         var donation1 = +document.getElementById('donation1').value;
         var donation2 = +document.getElementById('donation2').value;
-        document.getElementById('out').innerHTML = taxableIncome;
+        var taxOwed = calculateTaxBrackets(gross, taxBrackets);
+        document.getElementById('out').innerHTML = taxOwed.toFixed(2);
         return false;
     });
     </script>
