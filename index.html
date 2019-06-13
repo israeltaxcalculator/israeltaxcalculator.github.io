@@ -18,18 +18,18 @@
   <script type="text/javascript">
     // basic tax constants
     const taxBrackets = [[0, 0.1, 0],
-                  [75720.0, 0.14, 7572],
-                  [108600.0, 0.2, 12175.2],
-                  [174360.0, 0.31, 25327.2],
-                  [242400.0, 0.35, 46419.6],
-                  [504360.0, 0.47, 138105.6],
-                  [649560.0, 0.5, 206349.6]]; 
+                  [74880, 0.14, 7488],
+                  [107400, 0.2, 12040.8],
+                  [172320, 0.31, 25024.8],
+                  [239520, 0.35, 45856.8],
+                  [498360, 0.47, 136450.8],
+                  [641880, 0.5, 203905.2]]; 
                   // each bracket: [bottom of bracket NIS, tax rate, cumulative tax paid in lower brackets (floor) NIS]
     // tax credit constants
-    const taxCreditValue = 218; // NIS
+    const taxCreditValue = 216; // NIS
     // charitable donations constants
     // pension-related constants
-    const hachnasaMezaka = 105600 // NIS
+    const hachnasaMezaka = 104400 // NIS
     const maxPensionContributionsRate = 0.07 // 7% of insured income
     const pensionReliefRate = 0.35 // get income tax reduction of 35% of contributions
    
@@ -53,7 +53,7 @@
     }
     
    	function calculateCharitableDonationsRelief(donations, gross) {
-      	  const minEligibleDonation = 190; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
+      	  const minEligibleDonation = 180; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
       	  const maxCharityProportionOfGross = 0.3; // only charitable contributions under 30% of annual income are eligible
           const charityReliefRate = 0.35; // get income tax reduction of 35% of contributions
           if (donations >= minEligibleDonation) {
