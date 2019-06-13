@@ -199,7 +199,7 @@
                         sum + (parseFloat(item.value) || 0), 0);
     }
     function calculateTaxBrackets(gross, taxBrackets) {
-          i = 0;
+          let i = 0;
           while ((i < taxBrackets.length) && (gross >= taxBrackets[i][0])) {
                 i++;
               }
@@ -209,7 +209,7 @@
     }
     
    	function calculateCharitableDonationsRelief(donations, gross) {
-      	  const minEligibleDonation = 190; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
+      	  const minEligibleDonation = 180; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
       	  const maxCharityProportionOfGross = 0.3; // only charitable contributions under 30% of annual income are eligible
           const charityReliefRate = 0.35; // get income tax reduction of 35% of contributions
           if (donations >= minEligibleDonation) {
