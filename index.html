@@ -6,8 +6,11 @@
     table-layout:fixed;
 	}
   th{
-      word-wrap:break-word;
-  	}
+    word-wrap:break-word;
+    }
+  td{
+    white-space:nowrap;
+    }
   </style>
     <title>Israel Tax Calculator (Annual) 2018</title>
   </head>
@@ -28,25 +31,25 @@
       </tr>
       <tr>
         <td><input type="text" id="employerName1" value="Employer 1"/></td> 
-        <td><input type="number" class="gross" id="gross1" />&#8362</td> 
-        <td><input type="number" id="taxPaid1" />&#8362</td>
-        <td><input type="number" id="employeePension1"/>&#8362</td>
-        <td><input type="number" id="employerPension1" />&#8362</td>
-        <td><input type="number" id="insuredIncome1" />&#8362</td>
+        <td ><input type="number" class="gross" id="gross1" min="0" max="10000000" step="0.01"/>&#8362</td> 
+        <td><input type="number" class="taxPaid" id="taxPaid1" min= "0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="employeePension" id="employeePension1 "min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="employerPension" id="employerPension1" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="insuredIncome" id="insuredIncome1" min="0" max="10000000" step="0.01"/>&#8362</td>
       </tr>
       <tr>
         <td><input type="text" id="employerName2" value="Employer 2"/></td>
-        <td><input type="number" class="gross" id="gross2" />&#8362</td>
-        <td><input type="number" id="taxPaid2" />&#8362</td>
-        <td><input type="number" id="employeePension2"/>&#8362</td>
-        <td><input type="number" id="employerPension2" />&#8362</td>
-        <td><input type="number" id="insuredIncome2" />&#8362</td>
+        <td><input type="number" class="gross" id="gross2" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="taxPaid" id="taxPaid2" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="employeePension" id="employeePension2" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="employerPension" id="employerPension2" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="insuredIncome" id="insuredIncome2" min="0" max="10000000" step="0.01"/>&#8362</td>
       </tr>
     </table>
     </div>
     <div>
-    <br>
-    Optional independent pension contributions (135 or 268):
+    <br><br>
+    <b>Optional independent pension contributions (135 or 268):</b>
         <input id="units" step="any" type="number" /> &#8362
     </div>
     <br>
@@ -55,7 +58,7 @@
     <table>
       <tr>
         <th></th>
-        <th>Number of tax credits (monthly)</th> 
+        <th width=100px>Number of tax credits (monthly)</th> 
         <!-- Add option to set one number for all months -->
         <!-- Maybe convert to dropdown menu -->
       </tr>
@@ -65,47 +68,47 @@
       </tr>
             <tr>
         <td>Feb</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
             <tr>
         <td>Mar</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
             <tr>
         <td>Apr</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
             <tr>
         <td>May</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
             <tr>
         <td>Jun</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
             <tr>
         <td>Jul</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
             <tr>
         <td>Aug</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
             <tr>
         <td>Sep</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
             <tr>
         <td>Oct</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
             <tr>
         <td>Nov</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
             <tr>
         <td>Dec</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.5"></td>
+        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
       </tr>
     </table>
     </div>
@@ -124,11 +127,11 @@
       </tr>
       <tr>
         <td><input type="text" id="charity1" /></td> 
-        <td><input type="number" id="donation1" /> &#8362</td>
+        <td><input type="number" class="donation" /> &#8362</td>
       </tr>
 	  <tr>
         <td><input type="text" id="charity2" /></td> 
-        <td><input type="number" id="donation2" /> &#8362</td>
+        <td><input type="number" class="donation" /> &#8362</td>
       </tr>
       </table>
     <br>
@@ -145,14 +148,17 @@
     <script type="text/javascript">
     document.querySelector('#annual-tax').onsubmit = (function(e){
       //  e.preventDefault();
-      taxBrackets = [[0, 0.1, 0],
+      const taxBrackets = [[0, 0.1, 0],
                   [75720.0, 0.14, 7572],
                   [108600.0, 0.2, 12175.2],
                   [174360.0, 0.31, 25327.2],
                   [242400.0, 0.35, 46419.6],
                   [504360.0, 0.47, 138105.6],
-                  [649560.0, 0.5, 206349.6]];
-      	function calculateTaxBrackets(gross, taxBrackets) {
+                  [649560.0, 0.5, 206349.6]]; 
+                  // each bracket: [bottom of bracket, tax rate, cumulative tax paid in lower brackets (floor)]
+      const taxCreditValue = 218 // NIS
+      
+      function calculateTaxBrackets(gross, taxBrackets) {
           i = 0;
           while ((i < taxBrackets.length) && (gross > taxBrackets[i][0])) {
                 i++;
@@ -171,17 +177,21 @@
 		}
       
       	var gross = sumElements(document.getElementsByClassName('gross'));
+        var taxPaid = sumElements(document.getElementsByClassName('taxPaid'));
+        var employeePension = sumElements(document.getElementsByClassName('employeePension'));
+        var employerPension = sumElements(document.getElementsByClassName('employerPension'));
+        var insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
         var taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
-        var donation1 = +document.getElementById('donation1').value;
-        var donation2 = +document.getElementById('donation2').value;
+        var donations = sumElements(document.getElementsByClassName('donation'));
         try {
           		var taxOwed = calculateTaxBrackets(gross, taxBrackets);
+                var taxCreditsRelief
+                
+                document.getElementById('out').innerHTML = taxOwed.toFixed(2);
             }
       	catch(err) {
               document.getElementById("out").innerHTML = err.message;
         			}			
-        var taxOwed = calculateTaxBrackets(gross, taxBrackets);
-        document.getElementById('out').innerHTML = taxCredits.toFixed(2);
         return false;
     });
     </script>
