@@ -17,17 +17,17 @@
   <body>
     <h1>Israel Tax Calculator (Annual) 2018</h2>
     <form id="annual-tax" onsubmit="return false;">
-    <h2>Salary and pension overview</h2>
+    <h2>Salary and pension משכורת ופנסיה</h2>
     <div>
     <table>
     <!-- Add feature: press a (+) button to add more employers -->
       <tr>
         <th>Employer name</th>
-        <th>Taxable income (158)</th> 
-    	<th>Income Tax Paid (042)</th>
-        <th>Employee pension deposits (045)</th>
-        <th>Employer pension deposits + <i>Pitsuyim</i> (248)</th>
-        <th>Insured Income (244)</th>
+        <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
+    	<th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
+        <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
+        <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th>
+        <th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
       </tr>
       <tr>
         <td><input type="text" id="employerName1" value="Employer 1"/></td> 
@@ -53,62 +53,62 @@
         <input id="units" step="any" type="number" /> &#8362
     </div>
     <br>
-      <h2>Tax credits (<i>Nekudot Zikui</i>)</h2>
+      <h2>Tax credits נקודות זיכוי</h2>
     <div>
     <table>
       <tr>
         <th></th>
-        <th width=100px>Number of tax credits (monthly)</th> 
+        <th width=100px>Number of tax credits (monthly)<br>נקודות זיכוי חודשיות</th> 
         <!-- Add option to set one number for all months -->
         <!-- Maybe convert to dropdown menu -->
       </tr>
       <tr>
         <td>Jan</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Feb</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Mar</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Apr</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>May</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Jun</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Jul</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Aug</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Sep</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Oct</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Nov</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Dec</td>
-        <td><input type="number" class="taxCredits" min="0" max="19.75" step="0.25"></td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
       </tr>
     </table>
     </div>
@@ -118,7 +118,7 @@
     </div>
     <div>
     <br>
-    <h2>Charitable Donations</h2>
+    <h2>Charitable Donations תרומות למוסדות ציבוריים</h2>
        <div> Note: total charitable donations must be over 180&#8362; and under MAX_RATE_CHARITABLE of annual income. Only donations to a "<i>Mosad Tsiburi</i>" with receipts are eligible.
        <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities (Hebrew)</a>
        </div>
@@ -126,8 +126,8 @@
         <table>
     <!-- Add feature: press a (+) button to add more employers -->
       <tr>
-        <th>Institution</th>
-        <th>Amount (037)</th> 
+        <th>Institution<br>שם המוסד</th>
+        <th>Amount<br>סכום התרומה<br>(037)</th> 
       </tr>
       <tr>
         <td><input type="text" id="charity1" /></td> 
@@ -279,7 +279,7 @@
                 document.getElementById('totalTaxCredits').innerHTML = taxCredits.toFixed(2);
             }
       	catch(err) {
-              document.getElementById("out").innerHTML = err.message;
+              document.getElementById("totalTaxCredits").innerHTML = err.message;
         			}
         return false;
       	});
