@@ -19,7 +19,7 @@
     <form id="annual-tax" onsubmit="return false;">
     <h2>Salary and pension משכורת ופנסיה</h2>
     <div>
-    <table>
+    <table id='myTable'>
     <!-- Add feature: press a (+) button to add more employers -->
       <tr>
         <th>Employer name</th>
@@ -29,24 +29,25 @@
         <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th>
         <th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
       </tr>
-      <tr>
+      <tr class="unit-table">
         <td><input type="text" id="employerName1" value="Employer 1"/></td> 
-        <td ><input type="number" class="gross" id="gross1" min="0" max="10000000" step="0.01"/>&#8362</td> 
-        <td><input type="number" class="taxPaid" id="taxPaid1" min= "0" max="10000000" step="0.01"/>&#8362</td>
-        <td><input type="number" class="employeePension" id="employeePension1 "min="0" max="10000000" step="0.01"/>&#8362</td>
-        <td><input type="number" class="employerPension" id="employerPension1" min="0" max="10000000" step="0.01"/>&#8362</td>
-        <td><input type="number" class="insuredIncome" id="insuredIncome1" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td ><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td> 
+        <td><input type="number" class="taxPaid" min= "0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="employerPension" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="insuredIncome" min="0" max="10000000" step="0.01"/>&#8362</td>
       </tr>
-      <tr>
-        <td><input type="text" id="employerName2" value="Employer 2"/></td>
-        <td><input type="number" class="gross" id="gross2" min="0" max="10000000" step="0.01"/>&#8362</td>
-        <td><input type="number" class="taxPaid" id="taxPaid2" min="0" max="10000000" step="0.01"/>&#8362</td>
-        <td><input type="number" class="employeePension" id="employeePension2" min="0" max="10000000" step="0.01"/>&#8362</td>
-        <td><input type="number" class="employerPension" id="employerPension2" min="0" max="10000000" step="0.01"/>&#8362</td>
-        <td><input type="number" class="insuredIncome" id="insuredIncome2" min="0" max="10000000" step="0.01"/>&#8362</td>
+      <tr class="unit-table">
+        <td><input type="text" value="Employer 2"/></td>
+        <td><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="taxPaid" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="employerPension" min="0" max="10000000" step="0.01"/>&#8362</td>
+        <td><input type="number" class="insuredIncome" min="0" max="10000000" step="0.01"/>&#8362</td>
       </tr>
     </table>
     </div>
+    <button id="add_btn">Add new row</button>
     <div>
     <br><br>
     <b>Optional independent pension contributions (135 or 268):</b>
@@ -284,6 +285,12 @@
         return false;
       	});
       };
+      
+      
+      function addRow(){
+      document.getElementById("myTable").insertRow(-1).innerHTML = '<tr class="unit-table"><td><input type="text"/></td><td><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="taxPaid" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employerPension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="insuredIncome" min="0" max="10000000" step="0.01"/>&#8362</td></tr>';
+      }
+      document.getElementById('add_btn').onclick=addRow;
       </script>
   </body>
 </html>
