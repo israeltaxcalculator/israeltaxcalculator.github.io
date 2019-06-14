@@ -289,12 +289,21 @@
       
       
       function addRow(){
-document.getElementById("salary_pension").insertRow(-1).innerHTML = '<tr class="unit-table"><td><input type="text"/></td><td><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="taxPaid" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employerPension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="insuredIncome" min="0" max="10000000" step="0.01"/>&#8362</td></tr>';
+      let table = document.getElementById("salary_pension")
+      if (table.rows.length < 31) { 
+table.insertRow(-1).innerHTML = '<tr class="unit-table"><td><input type="text"/></td><td><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="taxPaid" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employerPension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="insuredIncome" min="0" max="10000000" step="0.01"/>&#8362</td></tr>';
+      }
       }
       function removeRow() {
- 		document.getElementById("salary_pension").deleteRow(-1);
+      let table = document.getElementById("salary_pension")
+      if (table.rows.length > 2) {
+ 		table.deleteRow(-1);
+        }
       }
-      document.getElementById('add_btn').onclick=addRow;
+      document.getElementById('add_btn').onclick=(function(e){
+      e.preventDefault();
+      addRow();
+      });
       document.getElementById('rmv_btn').onclick=removeRow;
       </script>
   </body>
