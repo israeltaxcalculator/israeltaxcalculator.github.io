@@ -146,27 +146,43 @@
     </div>
     </form>
     <hr />
-    <div style="font-size: 0.8em;">
-    Gross income tax before reliefs: <span id="taxBrackets">0.00</span> &#8362;
-    </div>
-    <div style="font-size: 0.8em;">
-    Total tax credit relief: <span id="taxCreditsRelief">0.00</span> &#8362;
-    </div>
-    <div style="font-size: 0.8em;">
-    Charitable donations relief: <span id="charitableDonationsRelief">0.00</span> &#8362;
-    </div>
-    <div style="font-size: 0.8em;">
-    Pension relief: <span id="pensionRelief">0.00</span> &#8362;
-    </div>
-    <div style="font-size: 1.5em;">
-    You paid: <span id="finalTaxPaid">0.00</span> &#8362; in income tax
-    </div>
-    <div style="font-size: 1.5em;">
-    You should have paid: <span id="finalTaxDue">0.00</span> &#8362; in income tax
-    </div>
-    <div style="font-size: 1.5em;">
-    Taxman owes you: <span id="refund">0.00</span> &#8362; at end of tax year.
-    </div>
+    <h3>Subtotals</h3>
+    <table style="font-size: 0.8em;">
+    <tr>
+    <td>Gross income tax before reliefs:</td>
+    <td><span id="taxBrackets">0.00</span> &#8362;</td>
+    </tr>
+    <tr>
+    <td>Total tax credit relief:</td>
+    <td><span id="taxCreditsRelief">0.00</span> &#8362;</td>
+    </tr>
+    <tr>
+    <td>Charitable donations relief:</td>
+    <td><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
+    </tr>
+	<tr>
+    <td>Pension relief:</td>
+    <td><span id="pensionRelief">0.00</span> &#8362;</td>
+    </tr>
+    </table>
+    <h2>Estimated tax refund</h2>
+    <table style="font-size: 1.5em;">
+    <tr>
+    <td>You paid:</td>
+    <td><span id="finalTaxPaid">0.00</span> &#8362;</td>
+    <td>in income tax</td>
+   	</tr>
+    <tr>
+    <td>You should have paid:</td>
+    <td><span id="finalTaxDue">0.00</span> &#8362;</td>
+    <td>in income tax</td>
+    </tr>
+    <tr>
+    <td>Taxman owes you:</td>
+    <td><span id="refund">0.00</span> &#8362;</td>
+    <td>at end of tax year.</td>
+    </tr>
+    </table>
       <script type="text/javascript">
     // basic tax constants
     const taxBrackets = [[0, 0.1, 0],
