@@ -116,24 +116,6 @@
     <br>
     Total tax credits: <span id="totalTaxCredits">0.00</span>
     </div>
-    <script type="text/javascript">
-    var taxCreditsCollection = document.getElementsByClassName('taxCredits');
-    for (let elem of taxCreditsCollection) {
-            elem.addEventListener("input", function (e) {
-            taxCredits = sumElements(taxCreditsCollection);
-    document.getElementById('totalTaxCredits').innerHTML = taxCredits;
-        
-      	try {
-                taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
-                document.getElementById('totalTaxCredits').innerHTML = taxCredits.toFixed(2);
-            }
-      	catch(err) {
-              document.getElementById("out").innerHTML = err.message;
-        			}
-        return false;
-      	});
-      };
-      </script>
     <div>
     <br>
     <h2>Charitable Donations</h2>
@@ -177,7 +159,13 @@
     Pension relief: <span id="pensionRelief">0.00</span> &#8362;
     </div>
     <div style="font-size: 1.5em;">
-    Tax due after reliefs: <span id="finalTaxDue">0.00</span> &#8362;
+    You paid: <span id="finalTaxPaid">0.00</span> &#8362; in income tax
+    </div>
+    <div style="font-size: 1.5em;">
+    You should have paid: <span id="finalTaxDue">0.00</span> &#8362; in income tax
+    </div>
+    <div style="font-size: 1.5em;">
+    Taxman owes you: <span id="refund">0.00</span> &#8362; at end of tax year.
     </div>
       <script type="text/javascript">
     // basic tax constants
@@ -199,7 +187,7 @@
                         sum + (parseFloat(item.value) || 0), 0);
     }
     function calculateTaxBrackets(gross, taxBrackets) {
-          let i = 0;
+          i = 0;
           while ((i < taxBrackets.length) && (gross >= taxBrackets[i][0])) {
                 i++;
               }
@@ -209,7 +197,7 @@
     }
     
    	function calculateCharitableDonationsRelief(donations, gross) {
-      	  const minEligibleDonation = 180; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
+      	  const minEligibleDonation = 190; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
       	  const maxCharityProportionOfGross = 0.3; // only charitable contributions under 30% of annual income are eligible
           const charityReliefRate = 0.35; // get income tax reduction of 35% of contributions
           if (donations >= minEligibleDonation) {
@@ -226,8 +214,7 @@
           const maxEligibleContributions = maxPensionContributionsRate*Math.min(hachnasaMezaka, insuredIncome);
           return pensionReliefRate * Math.min(contributions, maxEligibleContributions);
     }
-    </script>
-        <script type="text/javascript">
+    
     document.querySelector('#annual-tax').onsubmit = (function(e){
       //  e.preventDefault();
       
@@ -250,18 +237,37 @@
 		document.getElementById('taxCreditsRelief').innerHTML = taxCreditsRelief.toFixed(2);
 		document.getElementById('charitableDonationsRelief').innerHTML = charitableDonationsRelief.toFixed(2);
         document.getElementById('pensionRelief').innerHTML = pensionRelief.toFixed(2);
-        
+        document.getElementById('finalTaxPaid').innerHTML = taxPaid.toFixed(2);
         try {
           		var taxOwed = calculateTaxBrackets(gross, taxBrackets);
                 document.getElementById('taxBrackets').innerHTML = taxOwed.toFixed(2);
                 var finalTaxDue = Math.max(taxOwed - taxCreditsRelief - charitableDonationsRelief- pensionRelief, 0);
                 document.getElementById('finalTaxDue').innerHTML = finalTaxDue.toFixed(2);
+                var refund = taxPaid - taxOwed;
+                document.getElementById('refund').innerHTML = refund.toFixed(2);
             }
       	catch(err) {
               document.getElementById("taxBrackets").innerHTML = err.message;
         			}
         return false;
     });
-    </script>
+    
+    var taxCreditsCollection = document.getElementsByClassName('taxCredits');
+    for (let elem of taxCreditsCollection) {
+            elem.addEventListener("input", function (e) {
+            taxCredits = sumElements(taxCreditsCollection);
+    document.getElementById('totalTaxCredits').innerHTML = taxCredits;
+        
+      	try {
+                taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
+                document.getElementById('totalTaxCredits').innerHTML = taxCredits.toFixed(2);
+            }
+      	catch(err) {
+              document.getElementById("out").innerHTML = err.message;
+        			}
+        return false;
+      	});
+      };
+      </script>
   </body>
 </html>
