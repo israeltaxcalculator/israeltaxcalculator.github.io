@@ -29,7 +29,7 @@
         <th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
       </tr>
       <tr class="unit-table">
-        <td><input type="text" value="Employer 1"/></td> 
+        <td><input type="text"/></td> 
         <td ><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td> 
         <td><input type="number" class="taxPaid" min= "0" max="10000000" step="0.01"/>&#8362</td>
         <td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td>
@@ -37,7 +37,7 @@
         <td><input type="number" class="insuredIncome" min="0" max="10000000" step="0.01"/>&#8362</td>
       </tr>
       <tr class="unit-table">
-        <td><input type="text" value="Employer 2"/></td>
+        <td><input type="text"/></td>
         <td><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td>
         <td><input type="number" class="taxPaid" min="0" max="10000000" step="0.01"/>&#8362</td>
         <td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td>
@@ -124,7 +124,7 @@
        <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities (Hebrew)</a>
        </div>
       <br>
-        <table>
+        <table id="donations">
     <!-- Add feature: press a (+) button to add more employers -->
       <tr>
         <th>Institution<br>שם המוסד</th>
@@ -139,6 +139,10 @@
         <td><input type="number" class="donation" /> &#8362</td>
       </tr>
       </table>
+      <div>
+      <input id="add_institution" type="button" value="Add new institution">
+      <input id="rmv_institution" type="button" value="Remove last institution">
+      </div>
     <br>
     </div>
     
@@ -287,20 +291,23 @@
       };
       
       
-      function addEmployer(){
-      let table = document.getElementById("salary_pension")
-      if (table.rows.length < 11) {
-table.insertRow(-1).innerHTML = '<tr class="unit-table"><td><input type="text"/></td><td><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="taxPaid" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employerPension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="insuredIncome" min="0" max="10000000" step="0.01"/>&#8362</td></tr>';
+      function addRow(tableId, maxRows){
+      let table = document.getElementById(tableId)
+      if (table.rows.length < maxRows+1) {
+        table.insertRow(-1).innerHTML = table.rows[1].innerHTML
       }
       }
-      function removeEmployer() {
-      let table = document.getElementById("salary_pension")
+      function removeRow(tableId) {
+      let table = document.getElementById(tableId)
       if (table.rows.length > 2) {
  		table.deleteRow(-1);
         }
       }
-      document.getElementById('add_employer').onclick=addEmployer;
-      document.getElementById('rmv_employer').onclick=removeEmployer;
+      document.getElementById('add_employer').onclick=function(){addRow("salary_pension", 10)};
+      document.getElementById('rmv_employer').onclick=function(){removeRow("salary_pension")};
+      
+      document.getElementById('add_institution').onclick=function(){addRow("donations", 10)};
+      document.getElementById('rmv_institution').onclick=function(){removeRow("donations")};
       
    /*   document.getElementById('add_institution').onclick=addRow;
       document.getElementById('rmv_institution').onclick=removeRow;*/
