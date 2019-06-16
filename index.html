@@ -12,7 +12,7 @@
     white-space:nowrap;
     }
   </style>
-    <title>Israel Tax Calculator (Annual) 2018</title>
+    <title>Israel Tax Calculator - Annual</title>
   </head>
   <body>
     <h1>Israel Tax Calculator (Annual) 2018</h2>
@@ -30,7 +30,7 @@
         <th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
       </tr>
       <tr class="unit-table">
-        <td><input type="text" id="employerName1" value="Employer 1"/></td> 
+        <td><input type="text" value="Employer 1"/></td> 
         <td ><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td> 
         <td><input type="number" class="taxPaid" min= "0" max="10000000" step="0.01"/>&#8362</td>
         <td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td>
@@ -234,7 +234,7 @@
     }
     
     document.querySelector('#annual-tax').onsubmit = (function(e){
-      //  e.preventDefault();
+        e.preventDefault();
       
       	// load numbers from the form and add up similar elements
       	var gross = sumElements(document.getElementsByClassName('gross'));
@@ -290,7 +290,7 @@
       
       function addRow(){
       let table = document.getElementById("salary_pension")
-      if (table.rows.length < 31) { 
+      if (table.rows.length < 11) {
 table.insertRow(-1).innerHTML = '<tr class="unit-table"><td><input type="text"/></td><td><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="taxPaid" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employerPension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="insuredIncome" min="0" max="10000000" step="0.01"/>&#8362</td></tr>';
       }
       }
