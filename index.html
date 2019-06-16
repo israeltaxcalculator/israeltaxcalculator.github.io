@@ -20,7 +20,6 @@
     <h2>Salary and pension משכורת ופנסיה</h2>
     <div>
     <table id='salary_pension'>
-    <!-- Add feature: press a (+) button to add more employers -->
       <tr>
         <th>Employer name</th>
         <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
@@ -47,8 +46,8 @@
       </tr>
     </table>
     </div>
-    <button id="add_btn">Add new employer</button>
-    <button id="rmv_btn">Remove last employer</button>
+    <input id="add_employer" type="button" value="Add new employer">
+    <input id="rmv_employer" type="button" value="Remove last employer">
     <div>
     <br><br>
     <b>Optional independent pension contributions (135 or 268):</b>
@@ -288,23 +287,23 @@
       };
       
       
-      function addRow(){
+      function addEmployer(){
       let table = document.getElementById("salary_pension")
       if (table.rows.length < 11) {
 table.insertRow(-1).innerHTML = '<tr class="unit-table"><td><input type="text"/></td><td><input type="number" class="gross" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="taxPaid" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employeePension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="employerPension" min="0" max="10000000" step="0.01"/>&#8362</td><td><input type="number" class="insuredIncome" min="0" max="10000000" step="0.01"/>&#8362</td></tr>';
       }
       }
-      function removeRow() {
+      function removeEmployer() {
       let table = document.getElementById("salary_pension")
       if (table.rows.length > 2) {
  		table.deleteRow(-1);
         }
       }
-      document.getElementById('add_btn').onclick=(function(e){
-      e.preventDefault();
-      addRow();
-      });
-      document.getElementById('rmv_btn').onclick=removeRow;
+      document.getElementById('add_employer').onclick=addEmployer;
+      document.getElementById('rmv_employer').onclick=removeEmployer;
+      
+   /*   document.getElementById('add_institution').onclick=addRow;
+      document.getElementById('rmv_institution').onclick=removeRow;*/
       </script>
   </body>
 </html>
