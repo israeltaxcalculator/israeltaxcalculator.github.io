@@ -60,7 +60,20 @@
       <h2>Tax credits נקודות זיכוי</h2>
     <div>
     Input by month <input id="input_by_month" type='checkbox' onchange="showHideTable('input_by_month','tax_credits_table')">
-    <table id="tax_credits_table">
+    
+	<table id="tax_credits_table_single">
+      <tr>
+        <th></th>
+        <th width=100px>Number of tax credits (monthly)<br>נקודות זיכוי חודשיות</th> 
+        <!-- Add option to set one number for all months -->
+        <!-- Maybe convert to dropdown menu -->
+      </tr>
+      <tr>
+        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+      </tr>
+    
+    <table id="tax_credits_table" style=display:none>
       <tr>
         <th></th>
         <th width=100px>Number of tax credits (monthly)<br>נקודות זיכוי חודשיות</th> 
@@ -279,16 +292,15 @@
     });
     
 
-        document.getElementById('tax_credits_table').addEventListener('input', function (event) {
-		event.target.className;
+/*        document.getElementById('tax_credits_table').addEventListener('input', function (event) {
         if (event.target.className == 'taxCredits') {
 		document.getElementById('totalTaxCredits').innerHTML = sumElements(document.getElementsByClassName('taxCredits')).toFixed(2)
 	}
 
-}, false);
+}, false);*/
       
       function showHideTable(check, tableId) { 
-      if(document.getElementById(check).checked){
+      if(!document.getElementById(check).checked){
         table = document.getElementById(tableId)
         table.style.display ='none';
         for (let elem of table.getElementsByClassName('taxCredits')) {
