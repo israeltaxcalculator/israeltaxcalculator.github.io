@@ -282,15 +282,7 @@
     for (let elem of taxCreditsCollection) {
             elem.addEventListener("input", function (e) {
             taxCredits = sumElements(taxCreditsCollection);
-    document.getElementById('totalTaxCredits').innerHTML = taxCredits;
-        
-      	try {
-                taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
-                document.getElementById('totalTaxCredits').innerHTML = taxCredits.toFixed(2);
-            }
-      	catch(err) {
-              document.getElementById("totalTaxCredits").innerHTML = err.message;
-        			}
+    document.getElementById('totalTaxCredits').innerHTML = taxCredits.toFixed(2);
         return false;
       	});
       };
