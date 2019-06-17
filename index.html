@@ -288,7 +288,10 @@
       };*/
       
         document.addEventListener('input', function (event) {
-		console.log(event.target);
+		event.target.className;
+        if (event.target.className == 'taxCredits') {
+		document.getElementById('totalTaxCredits').innerHTML = sumElements(document.getElementsByClassName('taxCredits')).toFixed(2)
+	}
 
 }, false);
       
