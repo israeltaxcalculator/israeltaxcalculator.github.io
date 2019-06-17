@@ -193,14 +193,13 @@
     </table>
       <script type="text/javascript">
     // basic tax constants
-    const taxBrackets = [[0, 0.1, 0],
-                  [74880.0, 0.14, 7488],
-                  [107400.0, 0.2, 12040.8],
-                  [172320.0, 0.31, 25024.8],
-                  [239520.0, 0.35, 45856.8],
-                  [498360.0, 0.47, 136450.8],
-                  [641880.0, 0.5, 203905.2]]; 
-                  // each bracket: [bottom of bracket NIS, tax rate, cumulative tax paid in lower brackets (floor) NIS]
+    const taxBrackets = [{'threshold': 0, 'rate': 0.1},
+                         {'threshold': 74880.0, 'rate': 0.14},
+                         {'threshold': 107400.0, 'rate': 0.2},
+                         {'threshold': 172320.0, 'rate': 0.31},
+                         {'threshold': 239520.0, 'rate': 0.35},
+                         {'threshold': 498360.0, 'rate': 0.47},
+                         {'threshold': 641880.0, 'rate': 0.5}];
     // tax credit constants
     const taxCreditValue = 216; // NIS
     // charitable donations constants
@@ -211,12 +210,14 @@
                         sum + (parseFloat(item.value) || 0), 0);
     }
     function calculateTaxBrackets(gross, taxBrackets) {
-          i = 0;
-          while ((i < taxBrackets.length) && (gross >= taxBrackets[i][0])) {
+          let i = 1
+          let tax = 0;
+          while ((i < taxBrackets.length) && (gross >= taxBrackets[i].threshold)) {
+          		tax += taxBrackets[i-1].rate*(taxBrackets[i].threshold - taxBrackets[i-1].threshold);
                 i++;
               }
-          bracket = taxBrackets[i-1];
-          tax = bracket[2] + bracket[1]*(gross - bracket[0]);
+          //bracket = taxBrackets[i-1];
+          tax += taxBrackets[i-1].rate*(gross - taxBrackets[i-1].threshold)
           return tax;
     }
     
