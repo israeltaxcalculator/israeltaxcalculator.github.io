@@ -59,7 +59,7 @@
     <br>
       <h2>Tax credits נקודות זיכוי</h2>
     <div>
-    Input by month <input id="input_by_month" type='checkbox' onchange="ShowHideTable('input_by_month','tax_credits_table')">
+    Input by month <input id="input_by_month" type='checkbox' onchange="showHideTable('input_by_month','tax_credits_table')">
     <table id="tax_credits_table">
       <tr>
         <th></th>
@@ -295,12 +295,16 @@
       	});
       };
       
-      function ShowHideCell(check, tableId) { 
-
+      function showHideTable(check, tableId) { 
       if(document.getElementById(check).checked){
-        document.getElementById(tableId).style.display ='none';
+        table = document.getElementById(tableId)
+        table.style.display ='none';
+        for (let elem of table.getElementsByClassName('taxCredits')) {
+        	elem.value = "";
+            }
+       // document.getElementById(tableId).disabled = true;
         }else{
-      	document.getElementById(tableId).style.visibility='hidden';
+      	document.getElementById(tableId).style.display='';
       }
 
       }
