@@ -59,7 +59,8 @@
     <br>
       <h2>Tax credits נקודות זיכוי</h2>
     <div>
-    <table>
+    Input by month <input id="input_by_month" type='checkbox' onchange="ShowHideTable('input_by_month','tax_credits_table')">
+    <table id="tax_credits_table">
       <tr>
         <th></th>
         <th width=100px>Number of tax credits (monthly)<br>נקודות זיכוי חודשיות</th> 
@@ -210,14 +211,14 @@
                         sum + (parseFloat(item.value) || 0), 0);
     }
     function calculateTaxBrackets(gross, taxBrackets) {
-          let i = 1
+          let i = 1;
           let tax = 0;
           while ((i < taxBrackets.length) && (gross >= taxBrackets[i].threshold)) {
           		tax += taxBrackets[i-1].rate*(taxBrackets[i].threshold - taxBrackets[i-1].threshold);
                 i++;
               }
           //bracket = taxBrackets[i-1];
-          tax += taxBrackets[i-1].rate*(gross - taxBrackets[i-1].threshold)
+          tax += taxBrackets[i-1].rate*(gross - taxBrackets[i-1].threshold);
           return tax;
     }
     
@@ -293,6 +294,16 @@
         return false;
       	});
       };
+      
+      function ShowHideCell(check, tableId) { 
+
+      if(document.getElementById(check).checked){
+        document.getElementById(tableId).style.display ='none';
+        }else{
+      	document.getElementById(tableId).style.visibility='hidden';
+      }
+
+      }
       
       
       function addRow(tableId, maxRows){
