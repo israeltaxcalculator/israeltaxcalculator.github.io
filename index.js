@@ -1,11 +1,11 @@
 // basic tax constants
-const TAX_BRACKETS = [{'threshold': 74880, 'rate': 0.10},
-    {'threshold': 107400, 'rate': 0.14},
-    {'threshold': 172320, 'rate': 0.20},
-    {'threshold': 239520, 'rate': 0.31},
-    {'threshold': 498360, 'rate': 0.35},
-    {'threshold': 641880, 'rate': 0.47},
-    {'threshold': Number.MAX_SAFE_INTEGER, 'rate': 0.50}];
+const TAX_BRACKETS = [{'threshold': 0, 'rate': 0.10},
+    {'threshold':  74880, 'rate': 0.14},
+    {'threshold': 107400, 'rate': 0.20},
+    {'threshold': 172320, 'rate': 0.31},
+    {'threshold': 239520, 'rate': 0.35},
+    {'threshold': 498360, 'rate': 0.47},
+    {'threshold': 641880, 'rate': 0.50}];
 
 // tax credit constants
 const TAX_CREDIT_VALUE = 216; // NIS
