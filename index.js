@@ -45,16 +45,16 @@ const calculatePensionRelief = (contributions, insuredIncome) => {
     return PENSION_RELIEF_RATE * Math.min(contributions, maxEligibleContributions);
 }
 
-const showHideTable = (check, tableId) => {
-    if (document.getElementById(check).checked) {
+const monthlyAnnualToggle = () => {
+    if (document.getElementById('input_by_month').checked) {
         return document.getElementById(tableId).style.display = '';
     }
 
-    const table = document.getElementById(tableId);
+    const table = document.getElementById('tax_credits_table');
     table.style.display = 'none';
 
-    for (let elem of table.getElementsByClassName('taxCredits')) {
-        elem.value = "";
+    for (let elem of table.getElementsByClassName('taxCreditsMonthly')) {
+        elem.value = '';
     }
 };
 

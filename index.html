@@ -15,104 +15,104 @@
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
                 <th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
                 <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
-                <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th>
                 <th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
+                <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
             </tr>
             <tr class="unit-table">
                 <td><input type="text"/></td>
                 <td><input type="number" class="gross" min="0" max="1000000000" step="0.01"/>&#8362</td>
                 <td><input type="number" class="taxPaid" min="0" max="1000000000" step="0.01"/>&#8362</td>
                 <td><input type="number" class="employeePension" min="0" max="1000000000" step="0.01"/>&#8362</td>
-                <td><input type="number" class="employerPension" min="0" max="1000000000" step="0.01"/>&#8362</td>
                 <td><input type="number" class="insuredIncome" min="0" max="1000000000" step="0.01"/>&#8362</td>
+                <!-- <td><input type="number" class="employerPension" min="0" max="1000000000" step="0.01"/>&#8362</td> -->
             </tr>
         </table>
     </div>
     <input id="add_employer" type="button" value="Add new employer">
     <input id="rmv_employer" type="button" value="Remove last employer">
-    <div>
-        <br><br>
-        <b>Optional independent pension contributions (135 or 268):</b>
-        <input id="units" step="any" type="number"/> &#8362
-    </div>
-    <br>
+    <!-- <div>
+    <br><br>
+    <b>Optional independent pension contributions (135 or 268):</b>
+        <input id="units" step="any" type="number" /> &#8362
+    </div> -->
+    <br><br>
     <h2>Tax credits נקודות זיכוי</h2>
     <div>
-        Input by month
-        <input id="input_by_month" type='checkbox' onchange="showHideTable('input_by_month','tax_credits_table')"/>
+        Input by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
+
         <table id="tax_credits_table_single">
             <tr>
                 <th></th>
-                <th width=100px>Number of tax credits (monthly)<br>נקודות זיכוי חודשיות</th>
+                <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי חודשיות</th>
                 <!-- Add option to set one number for all months -->
                 <!-- Maybe convert to dropdown menu -->
             </tr>
             <tr>
                 <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsSingle" min="0" max="20" step="0.25"></td>
             </tr>
         </table>
         <table id="tax_credits_table" style=display:none>
             <tr>
                 <th></th>
-                <th width=100px>Number of tax credits (monthly)<br>נקודות זיכוי חודשיות</th>
+                <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי חודשיות</th>
                 <!-- Add option to set one number for all months -->
                 <!-- Maybe convert to dropdown menu -->
             </tr>
             <tr>
                 <td>Jan</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>Feb</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>Mar</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>Apr</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>May</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>Jun</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>Jul</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>Aug</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>Sep</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>Oct</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>Nov</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
             <tr>
                 <td>Dec</td>
-                <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
         </table>
     </div>
-    <div>
-        <br>
-        Total tax credits: <span id="totalTaxCredits">0.00</span>
-    </div>
+    <!-- <div>
+    <br>
+    Total tax credits: <span id="totalTaxCredits">0.00</span>
+    </div> -->
     <div>
         <br>
         <h2>Charitable Donations תרומות למוסדות ציבוריים</h2>
@@ -123,7 +123,6 @@
         </div>
         <br>
         <table id="donations">
-            <!-- Add feature: press a (+) button to add more employers -->
             <tr>
                 <th>Institution<br>שם המוסד</th>
                 <th>Amount<br>סכום התרומה<br>(037)</th>
