@@ -1,6 +1,6 @@
 // basic tax constants
 const TAX_BRACKETS = [{'threshold': 0, 'rate': 0.10},
-    {'threshold':  74880, 'rate': 0.14},
+    {'threshold': 74880, 'rate': 0.14},
     {'threshold': 107400, 'rate': 0.20},
     {'threshold': 172320, 'rate': 0.31},
     {'threshold': 239520, 'rate': 0.35},
@@ -23,19 +23,16 @@ const PENSION_RELIEF_RATE = 0.35 // get income tax reduction of 35% of contribut
 const sumElements = collection => [...collection].reduce((sum, item) => sum + (parseFloat(item.value) || 0), 0);
 
 const calculateTaxBrackets = gross => {
-    const bins = [];
-    let remainder = gross;
-    let currentBin = 0;
-    let isWithinBin = false;
-
-    while (!isWithinBin) {
-        const amountToAddToBin = remainder >= TAX_BRACKETS[currentBin].threshold ? TAX_BRACKETS[currentBin].threshold : isWithinBin = TAX_BRACKETS[currentBin].threshold - remainder;
-        bins.push({amount: amountToAddToBin, rate: TAX_BRACKETS[currentBin].rate});
-        remainder -= amountToAddToBin;
-        currentBin++;
+    let i = 1;
+    let tax = 0;
+    while ((i < TAX_BRACKETS.length) && (gross >= TAX_BRACKETS[i].threshold)) {
+        tax += TAX_BRACKETS[i - 1].rate * (TAX_BRACKETS[i].threshold - TAX_BRACKETS[i - 1].threshold);
+        i++;
     }
-
-    return bins.reduce((tax, bin) => tax + (bin.amount * bin.rate), 0);
+    
+    //bracket = taxBrackets[i-1];
+    tax += TAX_BRACKETS[i - 1].rate * (gross - TAX_BRACKETS[i - 1].threshold);
+    return tax;
 };
 
 const calculateCharitableDonationsRelief = (donations, gross) => donations >= MIN_ELIGIBLE_DONATION ? CHARITY_RELIEF_RATE * Math.min(donations, MAX_CHARITY_PROPORTION_OF_GROSS * gross) : 0;
@@ -94,7 +91,7 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     document.getElementById('pensionRelief').innerHTML = pensionRelief.toFixed(2);
     document.getElementById('finalTaxPaid').innerHTML = taxPaid.toFixed(2);
 
-    const taxOwed = calculateTaxBrackets(gross, TAX_BRACKETS);
+    const taxOwed = calculateTaxBrackets(gross);
     document.getElementById('taxBrackets').innerHTML = taxOwed.toFixed(2);
     const finalTaxDue = Math.max(taxOwed - taxCreditsRelief - charitableDonationsRelief - pensionRelief, 0);
     document.getElementById('finalTaxDue').innerHTML = finalTaxDue.toFixed(2);
