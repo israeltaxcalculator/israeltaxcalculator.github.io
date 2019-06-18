@@ -1,45 +1,32 @@
 <!doctype html>
 <html>
-  <head>
-  <style>
-  table{
-    table-layout:fixed;
-	}
-  th{
-    word-wrap:break-word;
-    }
-  td{
-    white-space:nowrap;
-    }
- input.calculate {
-    width: 30em;  height: 4em;
-	}
-  </style>
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css">
     <title>Israel Tax Calculator - Annual</title>
-  </head>
-  <body>
-    <h1>Israel Tax Calculator (Annual) 2018</h2>
-    <form id="annual-tax" onsubmit="return false;">
+</head>
+<body>
+<h1>Israel Tax Calculator (Annual) 2018</h1>
+<form id="annual-tax" onsubmit="return false;">
     <h2>Salary and pension משכורת ופנסיה</h2>
     <div>
-    <table id='salary_pension'>
-      <tr>
-        <th>Employer name</th>
-        <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
-    	<th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
-        <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
-     	<th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
-        <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
-      </tr>
-      <tr class="unit-table">
-        <td><input type="text"/></td> 
-        <td ><input type="number" class="gross" min="0" max="1000000000" step="0.01"/>&#8362</td> 
-        <td><input type="number" class="taxPaid" min= "0" max="1000000000" step="0.01"/>&#8362</td>
-        <td><input type="number" class="employeePension" min="0" max="1000000000" step="0.01"/>&#8362</td>
-        <td><input type="number" class="insuredIncome" min="0" max="1000000000" step="0.01"/>&#8362</td>
-        <!-- <td><input type="number" class="employerPension" min="0" max="1000000000" step="0.01"/>&#8362</td> -->
-      </tr>
-    </table>
+        <table id='salary_pension'>
+            <tr>
+                <th>Employer name</th>
+                <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
+                <th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
+                <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
+                <th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
+                <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
+            </tr>
+            <tr class="unit-table">
+                <td><input type="text"/></td>
+                <td><input type="number" class="gross" min="0" max="1000000000" step="0.01"/>&#8362</td>
+                <td><input type="number" class="taxPaid" min="0" max="1000000000" step="0.01"/>&#8362</td>
+                <td><input type="number" class="employeePension" min="0" max="1000000000" step="0.01"/>&#8362</td>
+                <td><input type="number" class="insuredIncome" min="0" max="1000000000" step="0.01"/>&#8362</td>
+                <!-- <td><input type="number" class="employerPension" min="0" max="1000000000" step="0.01"/>&#8362</td> -->
+            </tr>
+        </table>
     </div>
     <input id="add_employer" type="button" value="Add new employer">
     <input id="rmv_employer" type="button" value="Remove last employer">
@@ -49,270 +36,151 @@
         <input id="units" step="any" type="number" /> &#8362
     </div> -->
     <br><br>
-      <h2>Tax credits נקודות זיכוי</h2>
+    <h2>Tax credits נקודות זיכוי</h2>
     <div>
-    Input by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
-    
-	<table id="tax_credits_table_single">
-      <tr>
-        <th></th>
-        <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי חודשיות</th> 
-        <!-- Add option to set one number for all months -->
-        <!-- Maybe convert to dropdown menu -->
-      </tr>
-      <tr>
-        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-        <td><input type="number" class="taxCreditsSingle" min="0" max="20" step="0.25"></td>
-      </tr>
-    
-    <table id="tax_credits_table" style=display:none>
-      <tr>
-        <th></th>
-        <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי חודשיות</th> 
-        <!-- Add option to set one number for all months -->
-        <!-- Maybe convert to dropdown menu -->
-      </tr>
-      <tr>
-        <td>Jan</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+        Input by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
+
+        <table id="tax_credits_table_single">
             <tr>
-        <td>Feb</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+                <th></th>
+                <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי חודשיות</th>
+                <!-- Add option to set one number for all months -->
+                <!-- Maybe convert to dropdown menu -->
+            </tr>
             <tr>
-        <td>Mar</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+                <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                <td><input type="number" class="taxCreditsSingle" min="0" max="20" step="0.25"></td>
+            </tr>
+        </table>
+        <table id="tax_credits_table" style=display:none>
             <tr>
-        <td>Apr</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+                <th></th>
+                <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי חודשיות</th>
+                <!-- Add option to set one number for all months -->
+                <!-- Maybe convert to dropdown menu -->
+            </tr>
             <tr>
-        <td>May</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+                <td>Jan</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
             <tr>
-        <td>Jun</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+                <td>Feb</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
             <tr>
-        <td>Jul</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+                <td>Mar</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
             <tr>
-        <td>Aug</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+                <td>Apr</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
             <tr>
-        <td>Sep</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+                <td>May</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
             <tr>
-        <td>Oct</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+                <td>Jun</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
             <tr>
-        <td>Nov</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
+                <td>Jul</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
             <tr>
-        <td>Dec</td>
-        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-      </tr>
-    </table>
+                <td>Aug</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
+            <tr>
+                <td>Sep</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
+            <tr>
+                <td>Oct</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
+            <tr>
+                <td>Nov</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
+            <tr>
+                <td>Dec</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
+            </tr>
+        </table>
     </div>
     <!-- <div>
     <br>
     Total tax credits: <span id="totalTaxCredits">0.00</span>
     </div> -->
     <div>
-    <br>
-    <h2>Charitable Donations תרומות למוסדות ציבוריים</h2>
-       <div> Note: total charitable donations must be over 180&#8362; and under MAX_RATE_CHARITABLE of annual income. Only donations to a "<i>Mosad Tsiburi</i>" with receipts are eligible.
-       <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities (Hebrew)</a>
-       </div>
-      <br>
+        <br>
+        <h2>Charitable Donations תרומות למוסדות ציבוריים</h2>
+        <div> Note: total charitable donations must be over 180&#8362; and under MAX_RATE_CHARITABLE of annual
+            income. Only donations to a "<i>Mosad Tsiburi</i>" with receipts are eligible.
+            <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities
+                (Hebrew)</a>
+        </div>
+        <br>
         <table id="donations">
-      <tr>
-        <th>Institution<br>שם המוסד</th>
-        <th>Amount<br>סכום התרומה<br>(037)</th> 
-      </tr>
-      <tr>
-        <td><input type="text" /></td> 
-        <td><input type="number" class="donation" /> &#8362</td>
-      </tr>
-      </table>
-      <div>
-      <input id="add_institution" type="button" value="Add new institution">
-      <input id="rmv_institution" type="button" value="Remove last institution">
-      </div>
-    <br>
+            <tr>
+                <th>Institution<br>שם המוסד</th>
+                <th>Amount<br>סכום התרומה<br>(037)</th>
+            </tr>
+            <tr>
+                <td><input type="text"/></td>
+                <td><input type="number" class="donation"/> &#8362</td>
+            </tr>
+        </table>
+        <div>
+            <input id="add_institution" type="button" value="Add new institution">
+            <input id="rmv_institution" type="button" value="Remove last institution">
+        </div>
+        <br>
     </div>
-    
+
     <div>
-    <input type="submit" value="Calculate tax" class="calculate"/>
+        <input type="submit" value="Calculate tax" class="calculate"/>
     </div>
-    </form>
-    <hr />
-    <h3>Subtotals</h3>
-    <table style="font-size: 0.8em;">
+</form>
+<hr/>
+<h3>Subtotals</h3>
+<table style="font-size: 0.8em;">
     <tr>
-    <td>Gross income tax before reliefs:</td>
-    <td><span id="taxBrackets">0.00</span> &#8362;</td>
+        <td>Gross income tax before reliefs:</td>
+        <td><span id="taxBrackets">0.00</span> &#8362;</td>
     </tr>
     <tr>
-    <td>Total tax credit relief:</td>
-    <td><span id="taxCreditsRelief">0.00</span> &#8362;</td>
+        <td>Total tax credit relief:</td>
+        <td><span id="taxCreditsRelief">0.00</span> &#8362;</td>
     </tr>
     <tr>
-    <td>Charitable donations relief:</td>
-    <td><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
-    </tr>
-	<tr>
-    <td>Pension relief:</td>
-    <td><span id="pensionRelief">0.00</span> &#8362;</td>
-    </tr>
-    </table>
-    <h2>Estimated tax refund</h2>
-    <table style="font-size: 1.5em;">
-    <tr>
-    <td>You paid:</td>
-    <td><span id="finalTaxPaid">0.00</span> &#8362;</td>
-    <td>in income tax</td>
-   	</tr>
-    <tr>
-    <td>You should have paid:</td>
-    <td><span id="finalTaxDue">0.00</span> &#8362;</td>
-    <td>in income tax</td>
+        <td>Charitable donations relief:</td>
+        <td><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
     </tr>
     <tr>
-    <td>Taxman owes you:</td>
-    <td><span id="refund">0.00</span> &#8362;</td>
-    <td>at end of tax year.</td>
+        <td>Pension relief:</td>
+        <td><span id="pensionRelief">0.00</span> &#8362;</td>
     </tr>
-    </table>
-      <script type="text/javascript">
-    // basic tax constants
-    const taxBrackets = [{'threshold': 	    0, 'rate': 0.10},
-                         {'threshold':  74880, 'rate': 0.14},
-                         {'threshold': 107400, 'rate': 0.20},
-                         {'threshold': 172320, 'rate': 0.31},
-                         {'threshold': 239520, 'rate': 0.35},
-                         {'threshold': 498360, 'rate': 0.47},
-                         {'threshold': 641880, 'rate': 0.50}];
-    // tax credit constants
-    const taxCreditValue = 216; // NIS
-    // charitable donations constants
-    // pension-related constants
-   
-   	function sumElements(collection) {
-          return [...collection].reduce((sum, item) => 
-                        sum + (parseFloat(item.value) || 0), 0);
-    }
-    function calculateTaxBrackets(gross, taxBrackets) {
-          let i = 1;
-          let tax = 0;
-          while ((i < taxBrackets.length) && (gross >= taxBrackets[i].threshold)) {
-          		tax += taxBrackets[i-1].rate * (taxBrackets[i].threshold - taxBrackets[i-1].threshold);
-                i++;
-              }
-          tax += taxBrackets[i-1].rate * (gross - taxBrackets[i-1].threshold);
-          return tax;
-    }
-    
-   	function calculateCharitableDonationsRelief(donations, gross) {
-      	  const minEligibleDonation = 190; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
-      	  const maxCharityProportionOfGross = 0.3; // only charitable contributions under 30% of annual income are eligible
-          const charityReliefRate = 0.35; // get income tax reduction of 35% of contributions
-          if (donations >= minEligibleDonation) {
-          return charityReliefRate * Math.min(donations, maxCharityProportionOfGross * gross);
-          } else {
-          return 0;
-          }
-    }
-    
-    function calculatePensionRelief(contributions, insuredIncome) {
-          const hachnasaMezaka = 104400 // NIS
-          const maxPensionContributionsRate = 0.07 // 7% of insured income
-          const pensionReliefRate = 0.35 // get income tax reduction of 35% of contributions
-          const maxEligibleContributions = maxPensionContributionsRate*Math.min(hachnasaMezaka, insuredIncome);
-          return pensionReliefRate * Math.min(contributions, maxEligibleContributions);
-    }
-    
-    document.querySelector('#annual-tax').onsubmit = (function(e){
-        e.preventDefault();
-      
-      	// load numbers from the form and add up similar elements
-      	var gross = sumElements(document.getElementsByClassName('gross'));
-        var taxPaid = sumElements(document.getElementsByClassName('taxPaid'));
-        var employeePension = sumElements(document.getElementsByClassName('employeePension'));
-        var employerPension = sumElements(document.getElementsByClassName('employerPension'));
-        var insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
-        var taxCredits = sumElements(document.getElementsByClassName('taxCreditsMonthly'));
-        var donations = sumElements(document.getElementsByClassName('donation'));
-              
-        
-      	// derived variables
-        var taxCreditsRelief = taxCredits * taxCreditValue;       
-        var charitableDonationsRelief = calculateCharitableDonationsRelief(donations, gross);
-        var pensionRelief = calculatePensionRelief(employeePension, insuredIncome);
-        
-        
-		document.getElementById('taxCreditsRelief').innerHTML = taxCreditsRelief.toFixed(2);
-		document.getElementById('charitableDonationsRelief').innerHTML = charitableDonationsRelief.toFixed(2);
-        document.getElementById('pensionRelief').innerHTML = pensionRelief.toFixed(2);
-        document.getElementById('finalTaxPaid').innerHTML = taxPaid.toFixed(2);
-        try {
-          		var taxOwed = calculateTaxBrackets(gross, taxBrackets);
-                document.getElementById('taxBrackets').innerHTML = taxOwed.toFixed(2);
-                var finalTaxDue = Math.max(taxOwed - taxCreditsRelief - charitableDonationsRelief- pensionRelief, 0);
-                document.getElementById('finalTaxDue').innerHTML = finalTaxDue.toFixed(2);
-                var refund = taxPaid - taxOwed;
-                document.getElementById('refund').innerHTML = refund.toFixed(2);
-            }
-      	catch(err) {
-              document.getElementById("taxBrackets").innerHTML = err.message;
-        			}
-        return false;
-    });
-    
-/*        document.getElementById('tax_credits_table').addEventListener('input', function (event) {
-        if (event.target.className == 'taxCreditsMonthly') {
-		document.getElementById('totalTaxCredits').innerHTML = sumElements(document.getElementsByClassName('taxCreditsMonthly')).toFixed(2)
-	}
-}, false);*/
-      
-      function monthlyAnnualToggle() {
-      let table = document.getElementById('tax_credits_table');
-      if(!document.getElementById('input_by_month').checked){
-        table.style.display ='none';
-        for (let elem of table.getElementsByClassName('taxCreditsMonthly')) {
-        	elem.value = "";
-            }
-        }else{
-      	table.style.display='';
-      }
-      }
-      
-      
-      function addRow(tableId, maxRows){
-      let table = document.getElementById(tableId)
-      if (table.rows.length < maxRows+1) {
-        table.insertRow(-1).innerHTML = table.rows[1].innerHTML
-      }
-      }
-      function removeRow(tableId) {
-      let table = document.getElementById(tableId)
-      if (table.rows.length > 2) {
- 		table.deleteRow(-1);
-        }
-      }
-      document.getElementById('add_employer').onclick=function(){addRow("salary_pension", 10)};
-      document.getElementById('rmv_employer').onclick=function(){removeRow("salary_pension")};
-      
-      document.getElementById('add_institution').onclick=function(){addRow("donations", 10)};
-      document.getElementById('rmv_institution').onclick=function(){removeRow("donations")};
-      </script>
-  </body>
+</table>
+<h2>Estimated tax refund</h2>
+<table style="font-size: 1.5em;">
+    <tr>
+        <td>You paid:</td>
+        <td><span id="finalTaxPaid">0.00</span> &#8362;</td>
+        <td>in income tax</td>
+    </tr>
+    <tr>
+        <td>You should have paid:</td>
+        <td><span id="finalTaxDue">0.00</span> &#8362;</td>
+        <td>in income tax</td>
+    </tr>
+    <tr>
+        <td>Taxman owes you:</td>
+        <td><span id="refund">0.00</span> &#8362;</td>
+        <td>at end of tax year.</td>
+    </tr>
+</table>
+<script type="text/javascript" src="index.js"></script>
+</body>
 </html>
