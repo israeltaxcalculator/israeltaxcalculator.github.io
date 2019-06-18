@@ -95,7 +95,7 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     document.getElementById('taxBrackets').innerHTML = taxOwed.toFixed(2);
     const finalTaxDue = Math.max(taxOwed - taxCreditsRelief - charitableDonationsRelief - pensionRelief, 0);
     document.getElementById('finalTaxDue').innerHTML = finalTaxDue.toFixed(2);
-    const refund = taxPaid - taxOwed;
+    const refund = taxPaid - finalTaxDue;
     document.getElementById('refund').innerHTML = refund.toFixed(2);
 
     return false;
