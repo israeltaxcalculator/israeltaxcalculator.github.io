@@ -46,13 +46,13 @@ const calculatePensionRelief = (contributions, insuredIncome) => {
 }
 
 const monthlyAnnualToggle = () => {
+    const table = document.getElementById('tax_credits_table');
+
     if (document.getElementById('input_by_month').checked) {
-        return document.getElementById(tableId).style.display = '';
+        return table.style.display = '';
     }
 
-    const table = document.getElementById('tax_credits_table');
     table.style.display = 'none';
-
     for (let elem of table.getElementsByClassName('taxCreditsMonthly')) {
         elem.value = '';
     }
