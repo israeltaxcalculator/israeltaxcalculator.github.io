@@ -28,104 +28,104 @@
         <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
     	<th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
         <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
-        <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th>
-        <th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
+     	<th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
+        <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
       </tr>
       <tr class="unit-table">
         <td><input type="text"/></td> 
         <td ><input type="number" class="gross" min="0" max="1000000000" step="0.01"/>&#8362</td> 
         <td><input type="number" class="taxPaid" min= "0" max="1000000000" step="0.01"/>&#8362</td>
         <td><input type="number" class="employeePension" min="0" max="1000000000" step="0.01"/>&#8362</td>
-        <td><input type="number" class="employerPension" min="0" max="1000000000" step="0.01"/>&#8362</td>
         <td><input type="number" class="insuredIncome" min="0" max="1000000000" step="0.01"/>&#8362</td>
+        <!-- <td><input type="number" class="employerPension" min="0" max="1000000000" step="0.01"/>&#8362</td> -->
       </tr>
     </table>
     </div>
     <input id="add_employer" type="button" value="Add new employer">
     <input id="rmv_employer" type="button" value="Remove last employer">
-    <div>
+    <!-- <div>
     <br><br>
     <b>Optional independent pension contributions (135 or 268):</b>
         <input id="units" step="any" type="number" /> &#8362
-    </div>
-    <br>
+    </div> -->
+    <br><br>
       <h2>Tax credits נקודות זיכוי</h2>
     <div>
-    Input by month <input id="input_by_month" type='checkbox' onchange="showHideTable('input_by_month','tax_credits_table')">
+    Input by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
     
 	<table id="tax_credits_table_single">
       <tr>
         <th></th>
-        <th width=100px>Number of tax credits (monthly)<br>נקודות זיכוי חודשיות</th> 
+        <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי חודשיות</th> 
         <!-- Add option to set one number for all months -->
         <!-- Maybe convert to dropdown menu -->
       </tr>
       <tr>
         <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsSingle" min="0" max="20" step="0.25"></td>
       </tr>
     
     <table id="tax_credits_table" style=display:none>
       <tr>
         <th></th>
-        <th width=100px>Number of tax credits (monthly)<br>נקודות זיכוי חודשיות</th> 
+        <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי חודשיות</th> 
         <!-- Add option to set one number for all months -->
         <!-- Maybe convert to dropdown menu -->
       </tr>
       <tr>
         <td>Jan</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Feb</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Mar</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Apr</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>May</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Jun</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Jul</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Aug</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Sep</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Oct</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Nov</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
             <tr>
         <td>Dec</td>
-        <td><input type="number" class="taxCredits" min="0" max="20" step="0.25"></td>
+        <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
       </tr>
     </table>
     </div>
-    <div>
+    <!-- <div>
     <br>
     Total tax credits: <span id="totalTaxCredits">0.00</span>
-    </div>
+    </div> -->
     <div>
     <br>
     <h2>Charitable Donations תרומות למוסדות ציבוריים</h2>
@@ -134,7 +134,6 @@
        </div>
       <br>
         <table id="donations">
-    <!-- Add feature: press a (+) button to add more employers -->
       <tr>
         <th>Institution<br>שם המוסד</th>
         <th>Amount<br>סכום התרומה<br>(037)</th> 
@@ -215,11 +214,10 @@
           let i = 1;
           let tax = 0;
           while ((i < taxBrackets.length) && (gross >= taxBrackets[i].threshold)) {
-          		tax += taxBrackets[i-1].rate*(taxBrackets[i].threshold - taxBrackets[i-1].threshold);
+          		tax += taxBrackets[i-1].rate * (taxBrackets[i].threshold - taxBrackets[i-1].threshold);
                 i++;
               }
-          //bracket = taxBrackets[i-1];
-          tax += taxBrackets[i-1].rate*(gross - taxBrackets[i-1].threshold);
+          tax += taxBrackets[i-1].rate * (gross - taxBrackets[i-1].threshold);
           return tax;
     }
     
@@ -251,7 +249,7 @@
         var employeePension = sumElements(document.getElementsByClassName('employeePension'));
         var employerPension = sumElements(document.getElementsByClassName('employerPension'));
         var insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
-        var taxCredits = sumElements(document.getElementsByClassName('taxCredits'));
+        var taxCredits = sumElements(document.getElementsByClassName('taxCreditsMonthly'));
         var donations = sumElements(document.getElementsByClassName('donation'));
               
         
@@ -279,26 +277,22 @@
         return false;
     });
     
-
 /*        document.getElementById('tax_credits_table').addEventListener('input', function (event) {
-        if (event.target.className == 'taxCredits') {
-		document.getElementById('totalTaxCredits').innerHTML = sumElements(document.getElementsByClassName('taxCredits')).toFixed(2)
+        if (event.target.className == 'taxCreditsMonthly') {
+		document.getElementById('totalTaxCredits').innerHTML = sumElements(document.getElementsByClassName('taxCreditsMonthly')).toFixed(2)
 	}
-
 }, false);*/
       
-      function showHideTable(check, tableId) { 
-      if(!document.getElementById(check).checked){
-        table = document.getElementById(tableId)
+      function monthlyAnnualToggle() {
+      let table = document.getElementById('tax_credits_table');
+      if(!document.getElementById('input_by_month').checked){
         table.style.display ='none';
-        for (let elem of table.getElementsByClassName('taxCredits')) {
+        for (let elem of table.getElementsByClassName('taxCreditsMonthly')) {
         	elem.value = "";
             }
-       // document.getElementById(tableId).disabled = true;
         }else{
-      	document.getElementById(tableId).style.display='';
+      	table.style.display='';
       }
-
       }
       
       
