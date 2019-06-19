@@ -13,7 +13,7 @@ const TAX_CREDIT_VALUE = 216; // NIS
 const MONTHS_IN_YEAR = 12;
 
 // charitable donations constants
-const MIN_ELIGIBLE_DONATION = 190; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
+const MIN_ELIGIBLE_DONATION = 180; // NIS. Total charitable donations must exceed 180NIS to be eligible for relief
 const MAX_CHARITY_PROPORTION_OF_GROSS = 0.3; // only charitable contributions under 30% of annual income are eligible
 const CHARITY_RELIEF_RATE = 0.35;
 
@@ -72,6 +72,8 @@ const removeRow = tableId => {
     }
 };
 
+document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION;
+document.getElementById("maxCharityProportionOfGross").innerHTML = 100*MAX_CHARITY_PROPORTION_OF_GROSS;
 
 document.querySelector('#annual-tax').onsubmit = (event) => {
     event.preventDefault();

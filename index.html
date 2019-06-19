@@ -9,7 +9,7 @@
 <form id="annual-tax" onsubmit="return false;">
     <h2>Salary and pension משכורת ופנסיה</h2>
     <div>
-        <table id='salary_pension'>
+        <table id='salary_pension' style="font-size: 1em;">
             <tr>
                 <th>Employer name</th>
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
@@ -38,11 +38,11 @@
     <br><br>
     <h2>Tax credits נקודות זיכוי</h2>
     <div>
-        Input by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
-        <table id="tax_credits_table">
+        Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
+        <table id="tax_credits_table" style="font-size: 1em;">
             <tr>
                 <th></th>
-                <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי</th>
+                <th width=100px>Number of tax credits<br>מספר נקודות זיכוי</th>
                 <!-- Add option to set one number for all months -->
                 <!-- Maybe convert to dropdown menu -->
             </tr>
@@ -107,13 +107,13 @@
     <div>
         <br>
         <h2>Charitable Donations תרומות למוסדות ציבוריים</h2>
-        <div> Note: total charitable donations must be over 180&#8362; and under MAX_RATE_CHARITABLE of annual
+        <div style="font-size: 1em;"> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under <span id="maxCharityProportionOfGross"></span>% of annual
             income. Only donations to a "<i>Mosad Tsiburi</i>" with receipts are eligible.
             <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities
                 (Hebrew)</a>
         </div>
         <br>
-        <table id="donations">
+        <table id="donations" style="font-size: 1em;">
             <tr>
                 <th>Institution<br>שם המוסד</th>
                 <th>Amount<br>סכום התרומה<br>(037)</th>
@@ -156,14 +156,14 @@
 </table>
 <h2>Estimated tax refund</h2>
 <table style="font-size: 1.5em;">
-    <tr>
-        <td>You paid:</td>
-        <td><span id="finalTaxPaid">0.00</span> &#8362;</td>
+	<tr>
+        <td>You should have paid:</td>
+        <td><span id="finalTaxDue">0.00</span> &#8362;</td>
         <td>in income tax</td>
     </tr>
     <tr>
-        <td>You should have paid:</td>
-        <td><span id="finalTaxDue">0.00</span> &#8362;</td>
+        <td>You paid:</td>
+        <td><span id="finalTaxPaid">0.00</span> &#8362;</td>
         <td>in income tax</td>
     </tr>
     <tr>
