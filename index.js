@@ -9,6 +9,7 @@ const TAX_BRACKETS = [{'threshold': 0, 'rate': 0.10},
 
 // tax credit constants
 const TAX_CREDIT_VALUE = 216; // NIS
+const MONTHS_IN_YEAR = 12;
 
 // charitable donations constants
 const MIN_ELIGIBLE_DONATION = 190; // NIS. Total charitable donations must exceed 190NIS to be eligible for relief
@@ -44,13 +45,14 @@ const calculatePensionRelief = (contributions, insuredIncome) => {
 
 const monthlyAnnualToggle = () => {
     const table = document.getElementById('tax_credits_table');
+	const inputByMonth = document.getElementById('input_by_month').checked
 
-    if (document.getElementById('input_by_month').checked) {
-        return table.style.display = '';
+	for (let elem of table.getElementsByClassName('monthly')) {
+        elem.style.display = inputByMonth ? '' : 'none';
     }
-
-    table.style.display = 'none';
-    for (let elem of table.getElementsByClassName('taxCreditsMonthly')) {
+	table.rows.annual.style.display = inputByMonth ? 'none' : '';
+	
+    for (let elem of table.getElementsByTagName('input')) {
         elem.value = '';
     }
 };
@@ -78,7 +80,8 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     const taxPaid = sumElements(document.getElementsByClassName('taxPaid'));
     const employeePension = sumElements(document.getElementsByClassName('employeePension'));
     const insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
-    const taxCredits = sumElements(document.getElementsByClassName('taxCreditsMonthly'));
+    const taxCredits = sumElements(document.getElementsByClassName('taxCreditsMonthly')) + 
+								MONTHS_IN_YEAR*parseFloat(document.getElementById('taxCreditsSingle').value);
     const donations = sumElements(document.getElementsByClassName('donation'));
 
     // derived variables

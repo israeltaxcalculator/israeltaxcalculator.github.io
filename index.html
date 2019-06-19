@@ -39,71 +39,62 @@
     <h2>Tax credits נקודות זיכוי</h2>
     <div>
         Input by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
-
-        <table id="tax_credits_table_single">
+        <table id="tax_credits_table">
             <tr>
                 <th></th>
-                <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי חודשיות</th>
+                <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי</th>
                 <!-- Add option to set one number for all months -->
                 <!-- Maybe convert to dropdown menu -->
             </tr>
-            <tr>
+			<tr id="annual">
                 <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                <td><input type="number" class="taxCreditsSingle" min="0" max="20" step="0.25"></td>
+                <td><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.25"></td>
             </tr>
-        </table>
-        <table id="tax_credits_table" style=display:none>
-            <tr>
-                <th></th>
-                <th width=100px>Number of tax credits (per month)<br>נקודות זיכוי חודשיות</th>
-                <!-- Add option to set one number for all months -->
-                <!-- Maybe convert to dropdown menu -->
-            </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Jan</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Feb</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Mar</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Apr</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>May</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Jun</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Jul</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Aug</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Sep</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Oct</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Nov</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
-            <tr>
+            <tr class="monthly" style=display:none>
                 <td>Dec</td>
                 <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
             </tr>
