@@ -6,6 +6,7 @@ const TAX_BRACKETS = [{'threshold': 0, 'rate': 0.10},
     {'threshold': 239520, 'rate': 0.35},
     {'threshold': 498360, 'rate': 0.47},
     {'threshold': 641880, 'rate': 0.50}];
+	// single element: from income of 'threshold' and above (until next threshold), tax is charged at 'rate'.
 
 // tax credit constants
 const TAX_CREDIT_VALUE = 216; // NIS
