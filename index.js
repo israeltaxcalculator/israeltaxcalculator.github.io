@@ -82,7 +82,7 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     const employeePension = sumElements(document.getElementsByClassName('employeePension'));
     const insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
     const taxCredits = sumElements(document.getElementsByClassName('taxCreditsMonthly')) + 
-								MONTHS_IN_YEAR*parseFloat(document.getElementById('taxCreditsSingle').value);
+								MONTHS_IN_YEAR*(parseFloat(document.getElementById('taxCreditsSingle').value) || 0);
     const donations = sumElements(document.getElementsByClassName('donation'));
 
     // derived variables
