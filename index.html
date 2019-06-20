@@ -47,8 +47,8 @@ layout: default
 <p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can
     reclaim or should have paid.</p>
 <form id="annual-tax" onsubmit="return false;">
-
     Select tax year: <select id="year">
+	<br>
     <option value="2019">2019</option>
     <option value="2018" selected>2018</option>
     <option value="2017">2017</option>
@@ -68,9 +68,9 @@ layout: default
             <tr class="unit-table">
                 <td><input type="text" style="width:6em"></td>
                 <td><input type="number" class="gross" min="0" step="0.01" style="width:6em" required>&#8362</td>
-                <td><input type="number" class="taxPaid" min="0" step="0.01" required>&#8362</td>
-                <td><input type="number" class="employeePension" min="0" step="0.01">&#8362</td>
-                <td><input type="number" class="insuredIncome" min="0" step="0.01" required>&#8362</td>
+                <td><input type="number" class="taxPaid" min="0" step="0.01" style="width:6em" required>&#8362</td>
+                <td><input type="number" class="employeePension" min="0" step="0.01" style="width:6em">&#8362</td>
+                <td><input type="number" class="insuredIncome" min="0" step="0.01" style="width:6em" required>&#8362</td>
                 <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
             </tr>
         </table>
