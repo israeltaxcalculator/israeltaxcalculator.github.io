@@ -139,7 +139,10 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     const finalTaxDue = Math.max(taxOwed - taxCreditsRelief - charitableDonationsRelief - pensionRelief, 0);
     document.getElementById('finalTaxDue').innerHTML = finalTaxDue.toFixed(2);
     const refund = taxPaid - finalTaxDue;
-    document.getElementById('refund').innerHTML = refund.toFixed(2);
+    document.getElementById('refund').innerHTML = Math.abs(refund.toFixed(2));
+	
+	document.getElementById("XowesY").innerHTML = (refund < 0) ? "You owe taxman:" : "Taxman owes you:"
+	document.getElementById("refundCell").style.backgroundColor = (refund < 0) ? "#ff8080" : "#80ff80"
 
     return false;
 };
