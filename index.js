@@ -72,6 +72,10 @@ const removeRow = tableId => {
     }
 };
 
+var year;
+
+document.getElementById("year").addEventListener("change", function(e) {year = this.value}, false)
+
 document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION;
 document.getElementById("maxCharityProportionOfGross").innerHTML = 100*MAX_CHARITY_PROPORTION_OF_GROSS;
 

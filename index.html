@@ -5,11 +5,20 @@
     <title>Israel Tax Calculator - Annual</title>
 </head>
 <body>
-<h1>Israel Tax Calculator (Annual) 2018</h1>
+<h1>Israel Tax Calculator (Annual)</h1>
 <form id="annual-tax" onsubmit="return false;">
+
+	Select a year: <select id="year">
+	<option value="2019">2019</option>
+	<option value="2018">2018</option>
+	<option value="2017">2017</option>
+	</select>
+	
+	<br>year selected: <span id="yearout"></span>
+	
     <h2>Salary and pension משכורת ופנסיה</h2>
     <div>
-        <table id='salary_pension' style="font-size: 1em;">
+        <table id='salary_pension'>
             <tr>
                 <th>Employer name</th>
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
@@ -39,7 +48,7 @@
     <h2>Tax credits נקודות זיכוי</h2>
     <div>
         Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
-        <table id="tax_credits_table" style="font-size: 1em;">
+        <table id="tax_credits_table">
             <tr>
                 <th></th>
                 <th width=100px>Number of tax credits<br>מספר נקודות זיכוי</th>
@@ -107,13 +116,13 @@
     <div>
         <br>
         <h2>Charitable Donations תרומות למוסדות ציבוריים</h2>
-        <div style="font-size: 1em;"> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under <span id="maxCharityProportionOfGross"></span>% of annual
+        <div> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under <span id="maxCharityProportionOfGross"></span>% of annual
             income. Only donations to a "<i>Mosad Tsiburi</i>" with receipts are eligible.
             <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities
                 (Hebrew)</a>
         </div>
         <br>
-        <table id="donations" style="font-size: 1em;">
+        <table id="donations">
             <tr>
                 <th>Institution<br>שם המוסד</th>
                 <th>Amount<br>סכום התרומה<br>(037)</th>
@@ -136,7 +145,7 @@
 </form>
 <hr/>
 <h3>Subtotals</h3>
-<table style="font-size: 0.8em;">
+<table>
     <tr>
         <td>Gross income tax before reliefs:</td>
         <td><span id="taxBrackets">0.00</span> &#8362;</td>
@@ -155,7 +164,7 @@
     </tr>
 </table>
 <h2>Estimated tax refund</h2>
-<table style="font-size: 1.5em;">
+<table>
 	<tr>
         <td>You should have paid:</td>
         <td><span id="finalTaxDue">0.00</span> &#8362;</td>
