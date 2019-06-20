@@ -1,46 +1,79 @@
 // basic tax constants
-const TAX_BRACKETS = [{'threshold': 0, 'rate': 0.10},
-    {'threshold': 74880, 'rate': 0.14},
-    {'threshold': 107400, 'rate': 0.20},
-    {'threshold': 172320, 'rate': 0.31},
-    {'threshold': 239520, 'rate': 0.35},
-    {'threshold': 498360, 'rate': 0.47},
-    {'threshold': 641880, 'rate': 0.50}];
+const TAX_BRACKETS = {
+	2016:[{'threshold':    0, 'rate': 0.10},
+		{'threshold':  62640, 'rate': 0.14},
+		{'threshold': 107040, 'rate': 0.21},
+		{'threshold': 166320, 'rate': 0.31},
+		{'threshold': 237600, 'rate': 0.34},
+		{'threshold': 496920, 'rate': 0.48},
+		{'threshold': 803520, 'rate': 0.50}],
+	2017:[{'threshold':    0, 'rate': 0.10},
+		{'threshold':  74640, 'rate': 0.14},
+		{'threshold': 107040, 'rate': 0.20},
+		{'threshold': 171840, 'rate': 0.31},
+		{'threshold': 238800, 'rate': 0.35},
+		{'threshold': 496920, 'rate': 0.47},
+		{'threshold': 640000, 'rate': 0.50}],
+	2018:[{'threshold':    0, 'rate': 0.10},
+		{'threshold':  74880, 'rate': 0.14},
+		{'threshold': 107400, 'rate': 0.20},
+		{'threshold': 172320, 'rate': 0.31},
+		{'threshold': 239520, 'rate': 0.35},
+		{'threshold': 498360, 'rate': 0.47},
+		{'threshold': 641880, 'rate': 0.50}],
+	2019:[{'threshold':    0, 'rate': 0.10},
+		{'threshold':  75720, 'rate': 0.14},
+		{'threshold': 108600, 'rate': 0.20},
+		{'threshold': 174360, 'rate': 0.31},
+		{'threshold': 242400, 'rate': 0.35},
+		{'threshold': 504360, 'rate': 0.47},
+		{'threshold': 649560, 'rate': 0.50}]};
 	// single element: from income of 'threshold' and above (until next threshold), tax is charged at 'rate'.
 
 // tax credit constants
-const TAX_CREDIT_VALUE = 216; // NIS
+const TAX_CREDIT_VALUE = {
+	2016:216,
+	2017:215, 
+	2018:216, 
+	2019:218}; // NIS
 const MONTHS_IN_YEAR = 12;
 
 // charitable donations constants
-const MIN_ELIGIBLE_DONATION = 180; // NIS. Total charitable donations must exceed 180NIS to be eligible for relief
+const MIN_ELIGIBLE_DONATION = {
+	2016:180,
+	2017:180,
+	2018:180,
+	2019:190}; // NIS. Total charitable donations must exceed 180NIS to be eligible for relief
 const MAX_CHARITY_PROPORTION_OF_GROSS = 0.3; // only charitable contributions under 30% of annual income are eligible
 const CHARITY_RELIEF_RATE = 0.35;
 
 // pension-related constants
-const HACHNASA_MEZAKA = 104400 // NIS
+const HACHNASA_MEZAKA = {
+	2016:104400,
+	2017:103200,
+	2018:104400,
+	2019:105600};// NIS
 const MAX_PENSION_CONTRIBUTIONS_RATE = 0.07 // 7% of insured income
 const PENSION_RELIEF_RATE = 0.35 // get income tax reduction of 35% of contributions
 
 const sumElements = collection => [...collection].reduce((sum, item) => sum + (parseFloat(item.value) || 0), 0);
 
 const calculateTaxBrackets = gross => {
-    let i = 1;
+    let BRACKETS = TAX_BRACKETS[year];
+	let i = 1;
     let tax = 0;
-    while ((i < TAX_BRACKETS.length) && (gross >= TAX_BRACKETS[i].threshold)) {
-        tax += TAX_BRACKETS[i - 1].rate * (TAX_BRACKETS[i].threshold - TAX_BRACKETS[i - 1].threshold);
+	while ((i < BRACKETS.length) && (gross >= BRACKETS[i].threshold)) {
+        tax += BRACKETS[i - 1].rate * (BRACKETS[i].threshold - BRACKETS[i - 1].threshold);
         i++;
     }
-    
-    //bracket = taxBrackets[i-1];
-    tax += TAX_BRACKETS[i - 1].rate * (gross - TAX_BRACKETS[i - 1].threshold);
+    tax += BRACKETS[i - 1].rate * (gross - BRACKETS[i - 1].threshold);
     return tax;
 };
 
-const calculateCharitableDonationsRelief = (donations, gross) => donations >= MIN_ELIGIBLE_DONATION ? CHARITY_RELIEF_RATE * Math.min(donations, MAX_CHARITY_PROPORTION_OF_GROSS * gross) : 0;
+const calculateCharitableDonationsRelief = (donations, gross) => donations >= MIN_ELIGIBLE_DONATION[year] ? CHARITY_RELIEF_RATE * Math.min(donations, MAX_CHARITY_PROPORTION_OF_GROSS * gross) : 0;
 
 const calculatePensionRelief = (contributions, insuredIncome) => {
-    const maxEligibleContributions = MAX_PENSION_CONTRIBUTIONS_RATE * Math.min(HACHNASA_MEZAKA, insuredIncome);
+    const maxEligibleContributions = MAX_PENSION_CONTRIBUTIONS_RATE * Math.min(HACHNASA_MEZAKA[year], insuredIncome);
     return PENSION_RELIEF_RATE * Math.min(contributions, maxEligibleContributions);
 }
 
@@ -72,11 +105,11 @@ const removeRow = tableId => {
     }
 };
 
-var year;
 
-document.getElementById("year").addEventListener("change", function(e) {year = this.value}, false)
+var year = parseInt(document.getElementById("year").value)
+document.getElementById("year").addEventListener("change", function(e) {year = parseInt(this.value)}, false)
 
-document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION;
+document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION[year];
 document.getElementById("maxCharityProportionOfGross").innerHTML = 100*MAX_CHARITY_PROPORTION_OF_GROSS;
 
 document.querySelector('#annual-tax').onsubmit = (event) => {
@@ -92,7 +125,7 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     const donations = sumElements(document.getElementsByClassName('donation'));
 
     // derived variables
-    const taxCreditsRelief = taxCredits * TAX_CREDIT_VALUE;
+    const taxCreditsRelief = taxCredits * TAX_CREDIT_VALUE[year];
     const charitableDonationsRelief = calculateCharitableDonationsRelief(donations, gross);
     const pensionRelief = calculatePensionRelief(employeePension, insuredIncome);
 
