@@ -34,7 +34,7 @@
 <li>Tax exemptions for disability / blindness</li>
 <li>And many more...</li>
 </ul>
-
+<hr>
 <h2>The calculator</h2>
 <p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can reclaim or should have paid.</p>
 <form id="annual-tax" onsubmit="return false;">
@@ -58,10 +58,10 @@
             </tr>
             <tr class="unit-table">
                 <td><input type="text"/></td>
-                <td><input type="number" class="gross" min="0" max="1000000000" step="0.01"/>&#8362</td>
-                <td><input type="number" class="taxPaid" min="0" max="1000000000" step="0.01"/>&#8362</td>
-                <td><input type="number" class="employeePension" min="0" max="1000000000" step="0.01"/>&#8362</td>
-                <td><input type="number" class="insuredIncome" min="0" max="1000000000" step="0.01"/>&#8362</td>
+                <td><input type="number" class="gross" min="0" max="1000000000" step="0.01" required>&#8362</td>
+                <td><input type="number" class="taxPaid" min="0" max="1000000000" step="0.01" required>&#8362</td>
+                <td><input type="number" class="employeePension" min="0" max="1000000000" step="0.01">&#8362</td>
+                <td><input type="number" class="insuredIncome" min="0" max="1000000000" step="0.01" required>&#8362</td>
                 <!-- <td><input type="number" class="employerPension" min="0" max="1000000000" step="0.01"/>&#8362</td> -->
             </tr>
         </table>
@@ -86,7 +86,7 @@
             </tr>
 			<tr id="annual">
                 <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                <td><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.25"></td>
+                <td><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.25" value="2.25"></td>
             </tr>
             <tr class="monthly" style=display:none>
                 <td>Jan</td>
@@ -138,10 +138,7 @@
             </tr>
         </table>
     </div>
-    <!-- <div>
-    <br>
-    Total tax credits: <span id="totalTaxCredits">0.00</span>
-    </div> -->
+	<br>Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents.
     <div>
         <br>
         <h3>Charitable Donations תרומות למוסדות ציבוריים</h3>
@@ -210,6 +207,30 @@
         <td>at end of tax year.</td>
     </tr>
 </table>
+<hr>
+<h2>Next steps</h2>
+<p>If the calculator indicates that you owe money to the taxman, first check that you've put in all the relevant figures correctly, as it's quite rare for this to occur. If the calculation is correct, technically you'll need to pay the difference to the Tax Authority, or they might send you a bill with interest.</p>
+<p>If the calculator shows that you are owed money by the taxman, there is more good news: the money is returned at 4% annual interest starting from the day after the end of the tax year (January 1st), and is also inflation-linked! As an added bonus, the inflation linkage and interest are not considered taxable income. You have a full 6 years to reclaim the tax.</p>
+<h3>How to reclaim the money</h3>
+<p>You will need to go to a Tax Authority office, but it's unlikely you'll need to get an appointment with an official - the helpdesk should be able to do everything for you. Ask the helpdesk for a Tofes 135 and tell them which tax year it's for (you fill out a separate form per tax year). Most likely, you will only need to fill out the personal details, and the Tax Authority will fill out the financial sections. You will need to bring with you the following documentation:
+<ul>
+<li>Te'udat Zehut</li>
+<li>Te'udat Zehut annex (the sheet of paper showing details of your address and children)</li>
+<li>Tofes 106 for each employer you had during the tax year (these are sent to you by the 31st of March after the end the tax year)</li>
+<li>A photocopy of a cheque (to demonstrate ownership of the bank account to which they'll refund the money)</li> 
+<li>Tax certificates from Bituah Leumi if any payments received from them</li>
+<li>For charitable donations, Se'if 46 receipts</li>
+<li>If you had income from interest or capital markets: tax certificates (Tofes 867) from banks showing income and tax deducted at source</li>
+<li>Any further supporting documents to prove eligibility for tax credits, e.g. 
+	<ul>
+	<li>Te'udat Oleh / Toshav Hozer</li>
+	<li>Confirmation of army service completion</li>
+	<li>Confirmation of degree completion</li>
+	</ul>
+</li>
+</ul></p>
+<p>The tax refund will usually come within 90 days of submitting the request. You'll also receive by post a calculation of the tax assessment and a certificate of the refund.</p>
+<p>Sometimes they can get the calculation wrong, in which case it's possible to <a href="https://taxes.gov.il/Pages/InfoTaxesGovIl/MAPAL.aspx">write to them online</a> requesting that they correct the assessment.
 <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
