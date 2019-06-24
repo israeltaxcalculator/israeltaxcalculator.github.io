@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>israel-tax-calculator</title>
+<title>Israel Tax Calculator (Annual)</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="israel-tax-calculator" />
+<meta property="og:title" content="Israel Tax Calculator (Annual)" />
 <meta property="og:locale" content="en_US" />
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
-<meta property="og:site_name" content="israel-tax-calculator" />
+<meta property="og:site_name" content="Israel Tax Calculator (Annual)" />
 <script type="application/ld+json">
-{"name":"israel-tax-calculator","@type":"WebSite","url":"http://localhost:4000/","headline":"israel-tax-calculator","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/","headline":"Israel Tax Calculator (Annual)","name":"Israel Tax Calculator (Annual)","@type":"WebSite","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=f52c537b16639b67b0797222f2db7751dd799e39">
+    <link rel="stylesheet" href="/assets/css/style.css?v=245133c1ae3641be89358a7303ef3493fcd5a0d5">
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
@@ -25,7 +25,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1><a href="http://localhost:4000/">israel-tax-calculator</a></h1>
+        <h1><a href="http://localhost:4000/">Israel Tax Calculator (Annual)</a></h1>
         
         
 
@@ -42,7 +42,6 @@
       <section>
 
       <body>
-<h1>Israel Tax Calculator (Annual)</h1>
 <h2>Why tax gets overpaid</h2>
 <p>Every year, the Tax Authority collects <a href="https://www.facebook.com/kanbeharaza/videos/1871237179762466/">hundreds
     of millions of shekels</a> in overpaid tax, and people don’t bother to apply for a refund, either because they
@@ -87,16 +86,16 @@
 <p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can
     reclaim or should have paid.</p>
 <form id="annual-tax" onsubmit="return false;">
-
     Select tax year: <select id="year">
-    <option value="2019">2019</option>
+	<option value="2019">2019</option>
     <option value="2018" selected>2018</option>
     <option value="2017">2017</option>
     <option value="2016">2016</option>
 </select>
+	<br>
     <h3>Salary and pension משכורת ופנסיה</h3>
     <div>
-        <table id='salary_pension'>
+        <table id='salary_pension' style="table-layout:fixed;width:100%">
             <tr>
                 <th>Employer name</th>
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
@@ -106,12 +105,12 @@
                 <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
             </tr>
             <tr class="unit-table">
-                <td><input type="text"/></td>
-                <td><input type="number" class="gross" min="0" max="1000000000" step="0.01" required>&#8362</td>
-                <td><input type="number" class="taxPaid" min="0" max="1000000000" step="0.01" required>&#8362</td>
-                <td><input type="number" class="employeePension" min="0" max="1000000000" step="0.01">&#8362</td>
-                <td><input type="number" class="insuredIncome" min="0" max="1000000000" step="0.01" required>&#8362</td>
-                <!-- <td><input type="number" class="employerPension" min="0" max="1000000000" step="0.01"/>&#8362</td> -->
+                <td><input type="text" style="width:75%"></td>
+                <td><input type="number" class="gross" min="0" step="0.01" style="max-width:75%" required>&#8362</td>
+                <td><input type="number" class="taxPaid" min="0" step="0.01" style="width:75%" required>&#8362</td>
+                <td><input type="number" class="employeePension" min="0" step="0.01" style="width:75%">&#8362</td>
+                <td><input type="number" class="insuredIncome" min="0" step="0.01" style="width:75%" required>&#8362</td>
+                <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
             </tr>
         </table>
     </div>
@@ -129,7 +128,7 @@
         <table id="tax_credits_table">
             <tr>
                 <th></th>
-                <th width=100px>Number of tax credits<br>מספר נקודות זיכוי</th>
+                <th>Number of tax credits<br>מספר נקודות זיכוי</th>
                 <!-- Add option to set one number for all months -->
                 <!-- Maybe convert to dropdown menu -->
             </tr>
