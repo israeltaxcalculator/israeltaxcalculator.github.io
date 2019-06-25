@@ -1,4 +1,5 @@
 title: Israel Tax Calculator
 theme: jekyll-theme-minimal
+description: 
 plugins: 
  - jekyll-seo-tag
