@@ -4,26 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Begin Jekyll SEO tag v2.5.0 -->
+	<!-- Begin Jekyll SEO tag v2.5.0 -->
 <title>Israel Tax Calculator (Annual) | Israel Tax Calculator</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Israel Tax Calculator (Annual)" />
 <meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Israel Tax Calculator" />
 <script type="application/ld+json">
-{"url":"/","headline":"Israel Tax Calculator (Annual)","name":"Israel Tax Calculator","@type":"WebSite","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/","headline":"Israel Tax Calculator (Annual)","name":"Israel Tax Calculator","@type":"WebSite","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=7b30b763c5ce1df11cc9f865f8b884fd7f500554">
-    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="/assets/css/style.css?v=d11c25d1f2504a65e21bfd66018c61c17e8f2fb3">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
   </head>
   <body>
     <div class="wrapper">
       <header>
-        <h1><a href="/">Israel Tax Calculator</a></h1>
+        <h1><a href="http://localhost:4000/">Israel Tax Calculator</a></h1>
         
         
 
@@ -40,6 +42,181 @@
       <section>
 
       <body>
+<h2>The calculator</h2>
+<p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can
+    reclaim or should have paid.</p>
+<form id="annual-tax" onsubmit="return false;">
+    Select tax year: <select id="year">
+	<option value="2019">2019</option>
+    <option value="2018" selected>2018</option>
+    <option value="2017">2017</option>
+    <option value="2016">2016</option>
+</select>
+	<br><br><hr>
+    <h3>Salary and pension משכורת ופנסיה</h3>
+    <div>
+        <table id='salary_pension' style="table-layout:fixed;width:100%">
+            <tr>
+                <th>Employer name</th>
+                <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
+                <th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
+                <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
+                <th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
+                <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
+            </tr>
+            <tr class="unit-table">
+                <td><input type="text" style="width:100%"></td>
+                <td><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td><input type="number" class="employeePension" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
+            </tr>
+        </table>
+    </div>
+    <input id="add_employer" type="button" value="Add new employer">
+    <input id="rmv_employer" type="button" value="Remove last employer">
+    <!-- <div>
+    <br><br>
+    <b>Optional independent pension contributions (135 or 268):</b>
+        <input id="units" step="any" type="number" /> &#8362
+    </div> -->
+    <br><br>
+    <h3>Tax credits נקודות זיכוי</h3>
+    <div>
+        Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
+        <table id="tax_credits_table">
+            <tr>
+                <th></th>
+                <th>Number of tax credits<br>מספר נקודות זיכוי</th>
+                <!-- Add option to set one number for all months -->
+                <!-- Maybe convert to dropdown menu -->
+            </tr>
+            <tr id="annual">
+                <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                <td><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.01" value="2.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Jan</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Feb</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Mar</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Apr</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>May</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Jun</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Jul</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Aug</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Sep</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Oct</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Nov</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+            <tr class="monthly" style=display:none>
+                <td>Dec</td>
+                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            </tr>
+        </table>
+    </div>
+    Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents.
+    <div>
+        <br>
+        <h3>Charitable Donations תרומות למוסדות ציבוריים</h3>
+        <div> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under
+            <span id="maxCharityProportionOfGross"></span>% of annual
+            income. Only donations to a "<i>Mosad Tsiburi</i>" with receipts are eligible.
+            <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities
+                (Hebrew)</a>
+        </div>
+        <br>
+        <table id="donations">
+            <tr>
+                <th>Institution<br>שם המוסד</th>
+                <th>Amount<br>סכום התרומה<br>(037)</th>
+            </tr>
+            <tr>
+                <td><input type="text"/></td>
+                <td><input type="number" class="donation" style="width:8em"/> &#8362</td>
+            </tr>
+        </table>
+        <div>
+            <input id="add_institution" type="button" value="Add new institution">
+            <input id="rmv_institution" type="button" value="Remove last institution">
+        </div>
+        <br>
+    </div>
+
+    <div>
+        <input type="submit" value="Calculate tax" class="calculate" style="height:4em;width:100%"/>
+    </div>
+</form>
+<br><hr>
+<h3>Subtotals</h3>
+<table>
+    <tr>
+        <td>Gross income tax before reliefs:</td>
+        <td><span id="taxBrackets">0.00</span> &#8362;</td>
+    </tr>
+    <tr>
+        <td>Total tax credit relief:</td>
+        <td><span id="taxCreditsRelief">0.00</span> &#8362;</td>
+    </tr>
+    <tr>
+        <td>Charitable donations relief:</td>
+        <td><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
+    </tr>
+    <tr>
+        <td>Pension relief:</td>
+        <td><span id="pensionRelief">0.00</span> &#8362;</td>
+    </tr>
+</table>
+<h2>Estimated tax refund</h2>
+<table>
+    <tr>
+        <td>You should have paid:</td>
+        <td><span id="finalTaxDue">0.00</span> &#8362;</td>
+        <td>in income tax</td>
+    </tr>
+    <tr>
+        <td>You paid:</td>
+        <td><span id="finalTaxPaid">0.00</span> &#8362;</td>
+        <td>in income tax</td>
+    </tr>
+    <tr>
+        <td id="XowesY">Taxman owes you:</td>
+        <td style="background-color:transparent" id="refundCell"><span id="refund">0.00</span> &#8362;</td>
+        <td>at end of tax year.</td>
+    </tr>
+</table>
+<hr>
 <h2>Why tax gets overpaid</h2>
 <p>Every year, the Tax Authority collects <a href="https://www.facebook.com/kanbeharaza/videos/1871237179762466/">hundreds
     of millions of shekels</a> in overpaid tax, and people don’t bother to apply for a refund, either because they
@@ -79,181 +256,6 @@
     <li>Tax exemptions for disability / blindness</li>
     <li>And many more...</li>
 </ul>
-<hr>
-<h2>The calculator</h2>
-<p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can
-    reclaim or should have paid.</p>
-<form id="annual-tax" onsubmit="return false;">
-    Select tax year: <select id="year">
-	<option value="2019">2019</option>
-    <option value="2018" selected>2018</option>
-    <option value="2017">2017</option>
-    <option value="2016">2016</option>
-</select>
-	<br>
-    <h3>Salary and pension משכורת ופנסיה</h3>
-    <div>
-        <table id='salary_pension' style="table-layout:fixed;width:100%">
-            <tr>
-                <th>Employer name</th>
-                <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
-                <th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
-                <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
-                <th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
-                <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
-            </tr>
-            <tr class="unit-table">
-                <td><input type="text" style="width:75%"></td>
-                <td><input type="number" class="gross" min="0" step="0.01" style="max-width:75%" required>&#8362</td>
-                <td><input type="number" class="taxPaid" min="0" step="0.01" style="width:75%" required>&#8362</td>
-                <td><input type="number" class="employeePension" min="0" step="0.01" style="width:75%">&#8362</td>
-                <td><input type="number" class="insuredIncome" min="0" step="0.01" style="width:75%" required>&#8362</td>
-                <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
-            </tr>
-        </table>
-    </div>
-    <input id="add_employer" type="button" value="Add new employer">
-    <input id="rmv_employer" type="button" value="Remove last employer">
-    <!-- <div>
-    <br><br>
-    <b>Optional independent pension contributions (135 or 268):</b>
-        <input id="units" step="any" type="number" /> &#8362
-    </div> -->
-    <br><br>
-    <h3>Tax credits נקודות זיכוי</h3>
-    <div>
-        Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
-        <table id="tax_credits_table">
-            <tr>
-                <th></th>
-                <th>Number of tax credits<br>מספר נקודות זיכוי</th>
-                <!-- Add option to set one number for all months -->
-                <!-- Maybe convert to dropdown menu -->
-            </tr>
-            <tr id="annual">
-                <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                <td><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.25" value="2.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Jan</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Feb</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Mar</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Apr</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>May</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Jun</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Jul</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Aug</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Sep</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Oct</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Nov</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Dec</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25"></td>
-            </tr>
-        </table>
-    </div>
-    <br>Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents.
-    <div>
-        <br>
-        <h3>Charitable Donations תרומות למוסדות ציבוריים</h3>
-        <div> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under
-            <span id="maxCharityProportionOfGross"></span>% of annual
-            income. Only donations to a "<i>Mosad Tsiburi</i>" with receipts are eligible.
-            <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities
-                (Hebrew)</a>
-        </div>
-        <br>
-        <table id="donations">
-            <tr>
-                <th>Institution<br>שם המוסד</th>
-                <th>Amount<br>סכום התרומה<br>(037)</th>
-            </tr>
-            <tr>
-                <td><input type="text"/></td>
-                <td><input type="number" class="donation"/> &#8362</td>
-            </tr>
-        </table>
-        <div>
-            <input id="add_institution" type="button" value="Add new institution">
-            <input id="rmv_institution" type="button" value="Remove last institution">
-        </div>
-        <br>
-    </div>
-
-    <div>
-        <input type="submit" value="Calculate tax" class="calculate"/>
-    </div>
-</form>
-<hr/>
-<h3>Subtotals</h3>
-<table>
-    <tr>
-        <td>Gross income tax before reliefs:</td>
-        <td><span id="taxBrackets">0.00</span> &#8362;</td>
-    </tr>
-    <tr>
-        <td>Total tax credit relief:</td>
-        <td><span id="taxCreditsRelief">0.00</span> &#8362;</td>
-    </tr>
-    <tr>
-        <td>Charitable donations relief:</td>
-        <td><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
-    </tr>
-    <tr>
-        <td>Pension relief:</td>
-        <td><span id="pensionRelief">0.00</span> &#8362;</td>
-    </tr>
-</table>
-<h2>Estimated tax refund</h2>
-<table>
-    <tr>
-        <td>You should have paid:</td>
-        <td><span id="finalTaxDue">0.00</span> &#8362;</td>
-        <td>in income tax</td>
-    </tr>
-    <tr>
-        <td>You paid:</td>
-        <td><span id="finalTaxPaid">0.00</span> &#8362;</td>
-        <td>in income tax</td>
-    </tr>
-    <tr>
-        <td id="XowesY">Taxman owes you:</td>
-        <td style="background-color:transparent" id="refundCell"><span id="refund">0.00</span> &#8362;</td>
-        <td>at end of tax year.</td>
-    </tr>
-</table>
 <hr>
 <h2>Next steps</h2>
 <p>If the calculator indicates that you owe money to the taxman, first check that you've put in all the relevant figures
