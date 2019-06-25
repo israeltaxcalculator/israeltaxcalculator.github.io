@@ -1,4 +1,7 @@
 title: Israel Tax Calculator
 theme: jekyll-theme-minimal
+author: Reuven Shirazi
+blog-link: https://rememberthefish.wordpress.com
+blog-name: Remember The Fish
 plugins: 
  - jekyll-seo-tag

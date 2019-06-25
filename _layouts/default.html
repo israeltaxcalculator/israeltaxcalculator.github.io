@@ -46,9 +46,18 @@
       </section>
       <footer>
         {% if site.github.is_project_page %}
-        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
+        <p>
+		{% if site.author %}
+		This project was built by 
+		{{ site.author }}
+		{% endif %}
+		<br>and is maintained at <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>
+		<br>
+		{% if site.blog-link %}
+		Blog: <a href="{{ site.blog-link }}"> {{ site.blog-name }}</a>
+		{% endif %}
+		</p>
         {% endif %}
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
