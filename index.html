@@ -17,9 +17,9 @@ type: website
     <option value="2016">2016</option>
 </select>
 	<br><br><hr>
-    <h3>Salary and pension משכורת ופנסיה</h3>
+    <h3>1. Salary and pension משכורת ופנסיה</h3>
     <div>
-        <table id='salary_pension' style="table-layout:fixed;width:100%">
+        <table id='salary_pension' style="table-layout:fixed;width:100%;text-align:center">
             <tr>
                 <th>Employer name</th>
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
@@ -30,7 +30,7 @@ type: website
             </tr>
             <tr class="unit-table">
                 <td><input type="text" style="width:100%"></td>
-                <td><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td><!-- style="width:80%"-->
                 <td><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td><input type="number" class="employeePension" min="0" step="0.01" style="width:80%">&#8362</td>
                 <td><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
@@ -46,10 +46,10 @@ type: website
         <input id="units" step="any" type="number" /> &#8362
     </div> -->
     <br><br>
-    <h3>Tax credits נקודות זיכוי</h3>
+    <h3>2. Tax credits נקודות זיכוי</h3>
     <div>
         Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
-        <table id="tax_credits_table">
+        <table id="tax_credits_table" style="text-align:center">
             <tr>
                 <th></th>
                 <th>Number of tax credits<br>מספר נקודות זיכוי</th>
@@ -113,15 +113,15 @@ type: website
     Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents.
     <div>
         <br>
-        <h3>Charitable Donations תרומות למוסדות ציבוריים</h3>
+        <h3>3. Charitable Donations תרומות למוסדות ציבוריים</h3>
         <div> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under
             <span id="maxCharityProportionOfGross"></span>% of annual
-            income. Only donations to a "<i>Mosad Tsiburi</i>" with receipts are eligible.
+            income. Only donations to a <i>Mosad Tsiburi</i> with receipts are eligible.
             <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities
                 (Hebrew)</a>
         </div>
         <br>
-        <table id="donations">
+        <table id="donations" style="text-align:center">
             <tr>
                 <th>Institution<br>שם המוסד</th>
                 <th>Amount<br>סכום התרומה<br>(037)</th>

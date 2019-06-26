@@ -3,5 +3,6 @@ theme: jekyll-theme-cayman
 author: Reuven Shirazi
 blog-link: https://rememberthefish.wordpress.com
 blog-name: Remember The Fish
+credits: Hannah Waxman
 plugins: 
  - jekyll-seo-tag
