@@ -3,3 +3,15 @@
 
 @import "{{ site.theme }}";
 td {white-space: nowrap;}
+html {
+  scroll-behavior: smooth;
+}
+#scroll_button {text-decoration: none;
+				color:#567482;
+				font-size: 120%;
+				border: solid 1px #dce6f0;
+				border-radius: 0.3rem;
+				display: inline-block;
+				background-color:#f8f8f8;
+				overflow: hidden;
+				padding: 8px 16px;}
