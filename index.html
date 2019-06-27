@@ -71,10 +71,10 @@ type: website
             </tr>
             <tr class="unit-table">
                 <td><input type="text" style="width:100%"></td>
-                <td><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <td><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <td><input type="number" class="employeePension" min="0" step="0.01" style="width:80%">&#8362</td>
-                <td><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
             </tr>
         </table>
@@ -169,7 +169,7 @@ type: website
             </tr>
             <tr>
                 <td><input type="text" style="width:90%"/></td>
-                <td><input type="number" class="donation" style="width:90%"/> &#8362</td>
+                <td class="shekel"><input type="number" class="donation" style="width:80%"/> &#8362</td>
             </tr>
         </table>
         <div>
@@ -188,36 +188,36 @@ type: website
 <table>
     <tr>
         <td>Gross income tax before reliefs:</td>
-        <td><span id="taxBrackets">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="taxBrackets">0.00</span> &#8362;</td>
     </tr>
     <tr>
         <td>Total tax credit relief:</td>
-        <td><span id="taxCreditsRelief">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="taxCreditsRelief">0.00</span> &#8362;</td>
     </tr>
     <tr>
         <td>Charitable donations relief:</td>
-        <td><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
     </tr>
     <tr>
         <td>Pension relief:</td>
-        <td><span id="pensionRelief">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="pensionRelief">0.00</span> &#8362;</td>
     </tr>
 </table>
 <h2>Estimated tax refund</h2>
 <table id="refund_table" style="table-layout:fixed">
     <tr>
         <td>You should have paid:</td>
-        <td><span id="finalTaxDue">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="finalTaxDue">0.00</span> &#8362;</td>
         <td>in income tax</td>
     </tr>
     <tr>
         <td>You paid:</td>
-        <td><span id="finalTaxPaid">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="finalTaxPaid">0.00</span> &#8362;</td>
         <td>in income tax</td>
     </tr>
     <tr>
         <td id="XowesY">Taxman owes you:</td>
-        <td style="background-color:transparent" id="refundCell"><span id="refund">0.00</span> &#8362;</td>
+        <td  class="shekel" style="background-color:transparent" id="refundCell"><span id="refund">0.00</span> &#8362;</td>
         <td>at end of tax year.</td>
     </tr>
 </table>

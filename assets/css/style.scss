@@ -6,8 +6,10 @@
 html {
   scroll-behavior: smooth;
 }
-#salary_pension {th, td{padding:0.5rem 0.5rem}; td {white-space: nowrap;}}
+#salary_pension {th, td{padding:0.5rem 0.5rem}}
 #refund_table {th, td{padding:0.5rem 0.5rem}}
+
+.shekel {white-space: nowrap;}
 
 table {margin-bottom:8px;}
 

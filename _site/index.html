@@ -11,16 +11,18 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="See if you’re eligible for an income tax refund in Israel." />
 <meta property="og:description" content="See if you’re eligible for an income tax refund in Israel." />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Israel Tax Calculator" />
-<meta property="og:image" content="/images/icon.png" />
+<meta property="og:image" content="http://localhost:4000/images/icon.png" />
 <script type="application/ld+json">
-{"url":"/","image":"/images/icon.png","headline":"Israel Tax Calculator (Annual)","author":{"@type":"Person","name":"Reuven Shirazi"},"description":"See if you’re eligible for an income tax refund in Israel.","name":"Israel Tax Calculator","@type":"WebSite","@context":"http://schema.org"}</script>
+{"url":"http://localhost:4000/","image":"http://localhost:4000/images/icon.png","headline":"Israel Tax Calculator (Annual)","author":{"@type":"Person","name":"Reuven Shirazi"},"description":"See if you’re eligible for an income tax refund in Israel.","name":"Israel Tax Calculator","@type":"WebSite","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
 	<meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/assets/css/style.css?v=bfceb32ea5f783da5ba040634048543931cd568f">
+    <link rel="stylesheet" href="/assets/css/style.css?v=35ddf26d19d2ab0619129007bdd9f40d9e401dfb">
 	<link rel="icon" type="image/x-icon" href="favicon.ico?v1">
   </head>
   <body>
@@ -107,10 +109,10 @@
             </tr>
             <tr class="unit-table">
                 <td><input type="text" style="width:100%"></td>
-                <td><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <td><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <td><input type="number" class="employeePension" min="0" step="0.01" style="width:80%">&#8362</td>
-                <td><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
             </tr>
         </table>
@@ -205,7 +207,7 @@
             </tr>
             <tr>
                 <td><input type="text" style="width:90%"/></td>
-                <td><input type="number" class="donation" style="width:90%"/> &#8362</td>
+                <td class="shekel"><input type="number" class="donation" style="width:80%"/> &#8362</td>
             </tr>
         </table>
         <div>
@@ -224,36 +226,36 @@
 <table>
     <tr>
         <td>Gross income tax before reliefs:</td>
-        <td><span id="taxBrackets">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="taxBrackets">0.00</span> &#8362;</td>
     </tr>
     <tr>
         <td>Total tax credit relief:</td>
-        <td><span id="taxCreditsRelief">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="taxCreditsRelief">0.00</span> &#8362;</td>
     </tr>
     <tr>
         <td>Charitable donations relief:</td>
-        <td><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
     </tr>
     <tr>
         <td>Pension relief:</td>
-        <td><span id="pensionRelief">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="pensionRelief">0.00</span> &#8362;</td>
     </tr>
 </table>
 <h2>Estimated tax refund</h2>
 <table id="refund_table" style="table-layout:fixed">
     <tr>
         <td>You should have paid:</td>
-        <td><span id="finalTaxDue">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="finalTaxDue">0.00</span> &#8362;</td>
         <td>in income tax</td>
     </tr>
     <tr>
         <td>You paid:</td>
-        <td><span id="finalTaxPaid">0.00</span> &#8362;</td>
+        <td class="shekel"><span id="finalTaxPaid">0.00</span> &#8362;</td>
         <td>in income tax</td>
     </tr>
     <tr>
         <td id="XowesY">Taxman owes you:</td>
-        <td style="background-color:transparent" id="refundCell"><span id="refund">0.00</span> &#8362;</td>
+        <td  class="shekel" style="background-color:transparent" id="refundCell"><span id="refund">0.00</span> &#8362;</td>
         <td>at end of tax year.</td>
     </tr>
 </table>
