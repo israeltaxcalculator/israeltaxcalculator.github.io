@@ -318,12 +318,14 @@ a:hover { text-decoration: underline; }
 
 .site-footer-credits { color: #819198; }
 
-td { white-space: nowrap; }
-
 html { scroll-behavior: smooth; }
 
+#salary_pension th, #salary_pension td { padding: 0.5rem 0.5rem; }
+#salary_pension td { white-space: nowrap; }
+
+#refund_table th, #refund_table td { padding: 0.5rem 0.5rem; }
+
 table { margin-bottom: 8px; }
-table th, table td { padding: 0.5rem 0.5rem; }
 
 .pretty_button_large { font-size: 120%; padding: 8px 16px; }
 

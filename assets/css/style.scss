@@ -2,14 +2,14 @@
 ---
 
 @import "{{ site.theme }}";
-td {white-space: nowrap;}
+
 html {
   scroll-behavior: smooth;
 }
+#salary_pension {th, td{padding:0.5rem 0.5rem}; td {white-space: nowrap;}}
+#refund_table {th, td{padding:0.5rem 0.5rem}}
 
-
-table {margin-bottom:8px;
-		th, td{padding:0.5rem 0.5rem}}
+table {margin-bottom:8px;}
 
 .pretty_button_large {font-size: 120%;
 				padding: 8px 16px;}
