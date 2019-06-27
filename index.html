@@ -6,7 +6,7 @@ image: images/icon.png
 type: website
 ---
 <body>
-<a href="#calculator" class="pretty_button_large">Skip to the calculator</a>
+<a href="#calculator" class="pretty_button pretty_button_large">Skip to the calculator</a>
 <h2>Why tax gets overpaid</h2>
 <p>Every year, the Tax Authority collects <a href="https://www.facebook.com/kanbeharaza/videos/1871237179762466/">hundreds
     of millions of shekels</a> in overpaid tax, and people don’t bother to apply for a refund, either because they
@@ -51,7 +51,7 @@ type: website
 <p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can
     reclaim or should have paid.</p>
 <form id="annual-tax" onsubmit="return false;">
-    Select tax year: <select id="year">
+    Select tax year: <select id="year" class="pretty_button pretty_button_regular">
 	<option value="2019">2019</option>
     <option value="2018" selected>2018</option>
     <option value="2017">2017</option>
@@ -79,8 +79,8 @@ type: website
             </tr>
         </table>
     </div>
-    <input id="add_employer" type="button" value="Add new employer" class="pretty_button_regular">
-    <input id="rmv_employer" type="button" value="Remove last employer" class="pretty_button_regular">
+    <input id="add_employer" type="button" value="Add new employer" class="pretty_button pretty_button_regular">
+    <input id="rmv_employer" type="button" value="Remove last employer" class="pretty_button pretty_button_regular">
     <!-- <div>
     <br><br>
     <b>Optional independent pension contributions (135 or 268):</b>
@@ -162,7 +162,7 @@ type: website
                 (Hebrew)</a>
         </div>
         <br>
-        <table id="donations" style="text-align:center">
+        <table id="donations" style="text-align:center;max-width:100%">
             <tr>
                 <th>Institution<br>שם המוסד</th>
                 <th>Amount<br>סכום התרומה<br>(037)</th>
@@ -173,14 +173,14 @@ type: website
             </tr>
         </table>
         <div>
-            <input id="add_institution" type="button" value="Add new institution" class="pretty_button_regular">
-            <input id="rmv_institution" type="button" value="Remove last institution" class="pretty_button_regular">
+            <input id="add_institution" type="button" value="Add new institution" class="pretty_button pretty_button_regular">
+            <input id="rmv_institution" type="button" value="Remove last institution" class="pretty_button pretty_button_regular">
         </div>
         <br>
     </div>
 
     <div>
-        <input type="submit" value="Calculate tax" style="height:4em;width:100%" class="pretty_button_large"/>
+        <input type="submit" value="Calculate tax" style="height:4em;width:100%" class="pretty_button pretty_button_large"/>
     </div>
 </form>
 <br><hr>

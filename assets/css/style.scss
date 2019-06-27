@@ -10,23 +10,19 @@ html {
 
 table {margin-bottom:8px;}
 
-.pretty_button_large {text-decoration: none;
-				color:#567482;
-				font-size: 120%;
-				border: solid 1px #dce6f0;
-				border-radius: 0.3rem;
-				display: inline-block;
-				background-color:#f8f8f8;
-				overflow: hidden;
+.pretty_button_large {font-size: 120%;
 				padding: 8px 16px;}
-				
-a:hover {text-decoration: none}
-				
-.pretty_button_regular {text-decoration: none;
+
+.pretty_button_regular {padding: 8px 8px;}				
+
+.pretty_button {text-decoration: none;
 				color:#567482;
 				border: solid 1px #dce6f0;
 				border-radius: 0.3rem;
 				display: inline-block;
 				background-color:#f8f8f8;
-				overflow: hidden;
-				padding: 8px 8px;}
+				overflow: hidden;}
+				
+.pretty_button:hover {background-color:#fdfdfd}
+
+a:hover {text-decoration: none}
