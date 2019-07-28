@@ -1,12 +1,17 @@
 ---
-title: Israel Tax Calculator (Annual)
+title: Simple Israel Tax Calculator (Annual)
 layout: default
-description: See if you're eligible for an income tax refund in Israel.
+description: Get back the money you're owed by the government.
 image: images/icon.png
 type: website
 ---
 <body>
 <a href="#calculator" class="pretty_button pretty_button_large">Skip to the calculator</a>
+<h2>What's the purpose of this calculator?</h2>
+<p>This page is aimed at employees in Israel (שכירים) to help them calculate if they've overpaid tax. After the calculator, the page will explain how you can reclaim the overpaid tax. You can reclaim tax for any of the last 6 tax years.</p>
+<h2>How to use the calculator</h2>
+<p>The calculator will be most useful to you after a tax year is complete. By the end of March following the end of a tax year, you should receive a Tofes 106 from each employer. This is a summary of all your income and tax deducted through that employer for the year just gone by, as well as some other information. The employer is legally obliged to give you one - if you haven't received it, contact them and request that they send you one.</p>
+<p>The information on the form has field codes (e.g. 042 for income tax paid) - these correspond directly to the field codes in brackets in this calculator. You can use these to fill in most parts of the calculator. For the tax credits section, if you don't know how many you had in the year in question, use one of the links to figure this out.</p>
 <h2>Why tax gets overpaid</h2>
 <p>Every year, the Tax Authority collects <a href="https://www.facebook.com/kanbeharaza/videos/1871237179762466/">hundreds
     of millions of shekels</a> in overpaid tax, and people don’t bother to apply for a refund, either because they
@@ -59,21 +64,23 @@ type: website
 </select>
 	<br><br><hr>
     <h3>1. Salary and pension משכורת ופנסיה</h3>
-    <div>
+	<div>
         <table id='salary_pension' style="table-layout:fixed;width:100%;text-align:center">
             <tr>
                 <th>Employer name</th>
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
                 <th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
                 <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
-                <th>Insured Income<br>הכנסה מבוטחת<br>(244)</th>
+                <th>
+				Insured Income
+				<br>הכנסה מבוטחת<br>(244)</th>
                 <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
             </tr>
             <tr class="unit-table">
                 <td><input type="text" style="width:100%"></td>
                 <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
             </tr>
@@ -81,12 +88,13 @@ type: website
     </div>
     <input id="add_employer" type="button" value="Add new employer" class="pretty_button pretty_button_regular">
     <input id="rmv_employer" type="button" value="Remove last employer" class="pretty_button pretty_button_regular">
+	<br><p>N.B. The figures in brackets e.g. (042) refer to the corresponding field code on the Tofes 106.</p>
     <!-- <div>
     <br><br>
     <b>Optional independent pension contributions (135 or 268):</b>
         <input id="units" step="any" type="number" /> &#8362
     </div> -->
-    <br><br>
+    <br>
     <h3>2. Tax credits נקודות זיכוי</h3>
     <div>
         Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
@@ -151,7 +159,9 @@ type: website
             </tr>
         </table>
     </div>
-    Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents.
+    Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents. You can calculate how many tax credits you are eligible for in a given tax year at one of these links (make sure to select the correct tax year):
+	<br><a href="http://www.payway.co.il/calculator/en/nik3_form.asp">SYNEL (English)</a>
+	<br><a href="https://www.hilan.co.il/%D7%9E%D7%A8%D7%9B%D7%96-%D7%99%D7%93%D7%A2/%D7%90%D7%A9%D7%A4%D7%99-%D7%97%D7%99%D7%A9%D7%95%D7%91/%D7%90%D7%A9%D7%A3-%D7%9E%D7%A1-%D7%94%D7%9B%D7%A0%D7%A1%D7%94/">Hilan (Hebrew)</a>
     <div>
         <br>
         <h3>3. Charitable Donations תרומות למוסדות ציבוריים</h3>
