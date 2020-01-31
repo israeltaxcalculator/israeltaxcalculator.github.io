@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
 	<meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/assets/css/style.css?v=56e7c7b5b754a6e4426dffe0077aa833c23f515a">
+    <link rel="stylesheet" href="/assets/css/style.css?v=5180f0477d6a234f1b2216387b32461edfb39ae9">
 	<link rel="icon" type="image/x-icon" href="favicon.ico?v1">
   </head>
   <body>
@@ -49,7 +49,7 @@
 <p>The calculator will be most useful to you after a tax year is complete. By the end of March following the end of a tax year, you should receive a <i>Tofes 106</i> from each employer. This is a summary of all your income and tax deducted through that employer for the year just gone by, as well as some other information. The employer is legally obliged to give you one - if you haven't received it, contact them and request that they send you one.</p>
 <p>The information on the form has field codes (e.g. 042 for income tax paid) - these correspond directly to the field codes in brackets in this calculator. You can use these to fill in most parts of the calculator. For the tax credits section, if you don't know how many you had in the year in question, use one of the links to figure this out.</p>
 <h2>Why tax gets overpaid</h2>
-<p>Every year, the Tax Authority collects <a href="https://www.facebook.com/kanbeharaza/videos/1871237179762466/">hundreds
+<p>Every year, the Tax Authority collects <a href="https://www.facebook.com/kanbeharaza/videos/1871237179762466/" target="_blank">hundreds
     of millions of shekels</a> in overpaid tax, and people don’t bother to apply for a refund, either because they
     aren’t aware that they’ve overpaid or because it’s too much effort.</p>
 <p>The principal reason for overpayment results from the way in which tax is deducted for salaried employees. Though the
@@ -76,14 +76,14 @@
 <h2>What situations are beyond the scope of the calculator (for now)?</h2>
 <ul>
     <li>Rental income, gambling income, stock market income (different rates apply)</li>
-    <li>Optional independent contributions to pension (not via the employer)</li>
-    <li>Tax overcharged on employer contributions to <i>Keren Hishtalmut</i> or pension (fill out <i>Tofes 134</i> for this)</li>
+    <li>Optional independent contributions to pension (not via the employer) - coming soon!</li>
+    <li>Claiming back overcharged tax on employer contributions to <i>Keren Hishtalmut</i> or pension (fill out <i>Tofes 134</i> for this)</li>
     <li>Withdrawals from <i>Pitsuyim</i> / pension before retirement</li>
     <li><i>Ma'anak Avoda</i></li>
-    <li>Tax discounts for living in cetain periphery towns (סעיף 11)</li>
     <li>Other types of income e.g. שכר סופרים, מרצים, אומנים, דירקטורים</li>
     <li><i>Zikui</i> for shift work in industry (משמרות בתעשייה)</li>
     <li>Tax exemptions for disability / blindness</li>
+	<li>Tax discounts for living in cetain periphery towns (סעיף 11)</li>
     <li>And many more...</li>
 </ul>
 <hr>
@@ -93,8 +93,8 @@
     reclaim or should have paid.</p>
 <form id="annual-tax" onsubmit="return false;">
     Select tax year: <select id="year" class="pretty_button pretty_button_regular">
-	<option value="2019">2019</option>
-    <option value="2018" selected>2018</option>
+	<option value="2019" selected>2019</option>
+    <option value="2018">2018</option>
     <option value="2017">2017</option>
     <option value="2016">2016</option>
 </select>
@@ -196,15 +196,15 @@
         </table>
     </div>
     Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents. You can calculate how many tax credits you are eligible for in a given tax year at one of these links (make sure to select the correct tax year):
-	<br><a href="http://www.payway.co.il/calculator/en/nik3_form.asp">SYNEL (English)</a>
-	<br><a href="https://www.hilan.co.il/%D7%9E%D7%A8%D7%9B%D7%96-%D7%99%D7%93%D7%A2/%D7%90%D7%A9%D7%A4%D7%99-%D7%97%D7%99%D7%A9%D7%95%D7%91/%D7%90%D7%A9%D7%A3-%D7%9E%D7%A1-%D7%94%D7%9B%D7%A0%D7%A1%D7%94/">Hilan (Hebrew)</a>
+	<br><a href="http://www.payway.co.il/calculator/en/nik3_form.asp" target="_blank">SYNEL (English)</a>
+	<br><a href="https://www.hilan.co.il/%D7%9E%D7%A8%D7%9B%D7%96-%D7%99%D7%93%D7%A2/%D7%90%D7%A9%D7%A4%D7%99-%D7%97%D7%99%D7%A9%D7%95%D7%91/%D7%90%D7%A9%D7%A3-%D7%9E%D7%A1-%D7%94%D7%9B%D7%A0%D7%A1%D7%94/" target="_blank">Hilan (Hebrew)</a>
     <div>
         <br>
         <h3>3. Charitable Donations תרומות למוסדות ציבוריים</h3>
         <div> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under
             <span id="maxCharityProportionOfGross"></span>% of annual
             income. Only donations to a <i>Mosad Tsiburi</i> with receipts are eligible.
-            <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx">Search for eligible charities
+            <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx" target="_blank">Search for eligible charities
                 (Hebrew)</a>
         </div>
         <br>
@@ -272,19 +272,13 @@
 </div>
 <hr>
 <h2>Next steps</h2>
-<p>If the calculator indicates that you owe money to the taxman, first check that you've put in all the relevant figures
-    correctly, as it's quite rare for this to occur. If the calculation is correct, technically you'll need to pay the
-    difference to the Tax Authority, or they might send you a bill with interest.</p>
-<p>If the calculator shows that you are owed money by the taxman, there is more good news: the money is returned at 4%
-    annual interest starting from the day after the end of the tax year (January 1st), and is also inflation-linked! As
-    an added bonus, the inflation linkage and interest are not considered taxable income. You have a full 6 years to
-    reclaim the tax.</p>
+<h3>If you owe money to the taxman</h3>
+<p>If the calculator indicates that you owe money to the taxman, first check that you've put in all the relevant figures correctly, as it's quite rare for this to occur. If the calculation is correct, technically you'll need to pay the difference to the Tax Authority, or they might send you a bill with interest.
+</p>
+<h3>If the taxman owes you money</h3>
+<p>If the calculator shows that you are owed money by the taxman, there is more good news: the money is returned at <b>4% annual simple interest</b> starting from the day after the end of the tax year (January 1st), and is also <b>inflation-linked</b>! As an added bonus, the inflation linkage and interest are not considered taxable income. You have a full 6 years to reclaim the tax.</p>
 <h3>How to reclaim the money</h3>
-<p>You will need to go to a Tax Authority office, but it's unlikely you'll need to get an appointment with an official -
-    the helpdesk should be able to do everything for you. Ask the helpdesk for a <i>Tofes 135</i> and tell them which tax year
-    it's for (you fill out a separate form per tax year). Most likely, you will only need to fill out the personal
-    details, and the Tax Authority will fill out the financial sections. You will need to bring with you the following
-    documentation:
+<p>You will need to go to a Tax Authority office, but it's unlikely you'll need to get an appointment with an official - the helpdesk should be able to do everything for you. Ask the helpdesk for a <i>Tofes 135</i> and tell them which tax year it's for (you fill out a separate form per tax year). Most likely, you will only need to fill out the personal details, and the Tax Authority will fill out the financial sections. You will need to bring with you the following documentation:
 <ul>
     <li><i>Te'udat Zehut</i></li>
     <li><i>Te'udat Zehut</i> annex (the sheet of paper showing details of your address and children)</li>
@@ -306,11 +300,16 @@
     </li>
 </ul>
 </p>
-<p>The tax refund will usually come within 90 days of submitting the request. You'll also receive by post a calculation
-    of the tax assessment and a certificate of the refund.</p>
-<p>Sometimes they can get the calculation wrong, in which case it's possible to <a
-        href="https://taxes.gov.il/Pages/InfoTaxesGovIl/MAPAL.aspx">write to them online</a> requesting that they
-    correct the assessment.
+<h3>Receiving the money</h3>
+<p>The tax refund will usually be deposited into your bank account within 90 days of submitting the request. You'll also receive, by post, two letters:
+<ol>
+	<li>A receipt of payment slip, showing how much tax you owed or were owed, and the calculated interest and inflation on that sum.</li>
+	<li>A letter of several pages showing the full tax assessment calculation done by the clerk.</li>
+</ol>
+    For some reason, they send these separately, and they may arrive several days apart. Because of the slowness of the postal service, they usually arrive after the bank deposit.</p>
+<h3>What to do if the Tax Authority's calculation is wrong</h3>
+<p>The clerks aren't perfect and can sometimes get the calculation wrong. If this happens (and you're certian of it), simply <a
+        href="https://taxes.gov.il/Pages/InfoTaxesGovIl/MAPAL.aspx" target="_blank">write to them online</a> requesting that they correct the assessment.
     <script type="text/javascript" src="index.js"></script>
 </body>
 
