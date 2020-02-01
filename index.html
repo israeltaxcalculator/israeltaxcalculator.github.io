@@ -7,14 +7,17 @@ type: website
 ---
 <body>
 <a href="#calculator" class="pretty_button pretty_button_large">Skip to the calculator</a>
-<h2>What's the purpose of this calculator?</h2>
-<p>This page is aimed at employees in Israel (שכירים) to help them calculate if they've overpaid tax. After the calculator, the page will explain how you can reclaim the overpaid tax. You can reclaim tax for any of the last 6 tax years.</p>
+<h2>What's the purpose of this simple calculator?</h2>
+<p>This page is aimed at employees in Israel (שכירים) to help them easily calculate if they've <b>overpaid tax</b>. Between the calculator and accompanying explanations, the page will empower you to easily reclaim the overpaid tax <b>yourself</b>, with <b>no middle man</b> taking exorbitant fees!</p>
+<p>You can reclaim tax for any of the last 6 tax years (i.e. 
+<script>currentYear = new Date().getFullYear()
+document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusive).</p>
 <h2>How to use the calculator</h2>
-<p>The calculator will be most useful to you after a tax year is complete. By the end of March following the end of a tax year, you should receive a <i>Tofes 106</i> from each employer. This is a summary of all your income and tax deducted through that employer for the year just gone by, as well as some other information. The employer is legally obliged to give you one - if you haven't received it, contact them and request that they send you one.</p>
+<p>The calculator will be most useful to you after a tax year is complete (N.B. the tax year is the same as a calendar year). By the end of March, you should receive a <i>Tofes 106</i> from each employer for the previous tax year. This is a summary of all your income and tax deducted through that employer for the year gone by, as well as some other information. The employer is legally obliged to give you one - if you haven't received it, contact them and request that they send you one.</p>
 <p>The information on the form has field codes (e.g. 042 for income tax paid) - these correspond directly to the field codes in brackets in this calculator. You can use these to fill in most parts of the calculator. For the tax credits section, if you don't know how many you had in the year in question, use one of the links to figure this out.</p>
+<p>The calculator below is applicable to the income of an individual person. Note that married people must file the tax refund request together, reporting income of both spouses on the form. However, the Tax Authority largely separates the calculation in a joint filing to two individual calculations, so the calculator below should still be effective in most normal cases.</p>
 <h2>Why tax gets overpaid</h2>
-<p>Every year, the Tax Authority collects <a href="https://www.facebook.com/kanbeharaza/videos/1871237179762466/" target="_blank">hundreds
-    of millions of shekels</a> in overpaid tax, and people don’t bother to apply for a refund, either because they
+<p>Every year, the Tax Authority collects hundreds of millions of shekels in overpaid tax, and people don’t bother to apply for a refund, either because they
     aren’t aware that they’ve overpaid or because it’s too much effort.</p>
 <p>The principal reason for overpayment results from the way in which tax is deducted for salaried employees. Though the
     amount of tax you’re supposed to pay is based on your <i>annual</i> income, employers deduct it on a <i>monthly</i>
@@ -23,8 +26,7 @@ type: website
     calculators are even sophisticated enough to account for pay rises, bonuses etc. and still deduct the right amount
     of annual tax. But if you are unemployed for part of the year, or switched employer, or any number of other
     situations, the pay-as-you-earn monthly calculation often becomes incorrect.
-<p>Because of this, it’s worth doing a calculation at the end of the year, considering all your income, tax credits,
-    pension contributions and so on, to see how much tax you ought to have paid.</p>
+<p>Because of this, it’s worth doing a calculation at the end of the year, considering all your income, tax credits, pension contributions and so on, to see how much tax you ought to have paid.</p>
 <h2>What are common reasons for overpayment of tax?</h2>
 <ul>
     <li>Working for more than one employer</li>
@@ -53,10 +55,10 @@ type: website
 <hr>
 <div id="calculator">
 <h2>The calculator</h2>
-<p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can
-    reclaim or should have paid.</p>
+<p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can reclaim or should have paid.</p>
 <form id="annual-tax" onsubmit="return false;">
     Select tax year: <select id="year" class="pretty_button pretty_button_regular">
+	<option value="2020">2020</option>
 	<option value="2019" selected>2019</option>
     <option value="2018">2018</option>
     <option value="2017">2017</option>
@@ -94,7 +96,6 @@ type: website
     <b>Optional independent pension contributions (135 or 268):</b>
         <input id="units" step="any" type="number" /> &#8362
     </div> -->
-    <br>
     <h3>2. Tax credits נקודות זיכוי</h3>
     <div>
         Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
@@ -159,15 +160,14 @@ type: website
             </tr>
         </table>
     </div>
-    Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents. You can calculate how many tax credits you are eligible for in a given tax year at one of these links (make sure to select the correct tax year):
+    <p>Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents. You can calculate how many tax credits you are eligible for in a given tax year at one of these links (make sure to select the correct tax year):
 	<br><a href="http://www.payway.co.il/calculator/en/nik3_form.asp" target="_blank">SYNEL (English)</a>
-	<br><a href="https://www.hilan.co.il/%D7%9E%D7%A8%D7%9B%D7%96-%D7%99%D7%93%D7%A2/%D7%90%D7%A9%D7%A4%D7%99-%D7%97%D7%99%D7%A9%D7%95%D7%91/%D7%90%D7%A9%D7%A3-%D7%9E%D7%A1-%D7%94%D7%9B%D7%A0%D7%A1%D7%94/" target="_blank">Hilan (Hebrew)</a>
+	<br><a href="https://www.hilan.co.il/%D7%9E%D7%A8%D7%9B%D7%96-%D7%99%D7%93%D7%A2/%D7%90%D7%A9%D7%A4%D7%99-%D7%97%D7%99%D7%A9%D7%95%D7%91/%D7%90%D7%A9%D7%A3-%D7%9E%D7%A1-%D7%94%D7%9B%D7%A0%D7%A1%D7%94/" target="_blank">Hilan (Hebrew)</a></p><br>
     <div>
-        <br>
         <h3>3. Charitable Donations תרומות למוסדות ציבוריים</h3>
         <div> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under
             <span id="maxCharityProportionOfGross"></span>% of annual
-            income. Only donations to a <i>Mosad Tsiburi</i> with receipts are eligible.
+            income. Only donations to a <i>Mosad Tsiburi</i> with <i>Se'if 46</i> receipts are eligible for a tax refund.
             <br><a href="https://www.misim.gov.il/gmtrumot/startPage1.aspx" target="_blank">Search for eligible charities
                 (Hebrew)</a>
         </div>
@@ -187,7 +187,7 @@ type: website
             <input id="rmv_institution" type="button" value="Remove last institution" class="pretty_button pretty_button_regular">
         </div>
         <br>
-		*Donations don't need to appear on your <i>Tofes 106</i> to be eligible, but if they do appear there (as the employer knows about the donation), they'll have this code.
+		*Donations don't need to appear on your <i>Tofes 106</i> to be eligible, but this is the code they'll have if they do.
 		<br><br>
     </div>
 
@@ -237,20 +237,22 @@ type: website
 <hr>
 <h2>Next steps</h2>
 <h3>If you owe money to the taxman</h3>
-<p>If the calculator indicates that you owe money to the taxman, first check that you've put in all the relevant figures correctly, as it's quite rare for this to occur. If the calculation is correct, technically you'll need to pay the difference to the Tax Authority, or they might send you a bill with interest.
+<p>If the calculator indicates that you owe money to the taxman, first check that you've put in all the relevant figures correctly, as it's quite rare for this to occur. If the calculation is correct, technically you'll need to pay the difference to the Tax Authority, or they might send you a bill and even charge you interest.
 </p>
 <h3>If the taxman owes you money</h3>
-<p>If the calculator shows that you are owed money by the taxman, there is more good news: the money is returned at <b>4% annual simple interest</b> starting from the day after the end of the tax year (January 1st), and is also <b>inflation-linked</b>! As an added bonus, the inflation linkage and interest are not considered taxable income. You have a full 6 years to reclaim the tax.</p>
+<p>If the calculator shows that you are owed money by the taxman, there is more good news: the money is returned with <b>4% annual simple interest</b> starting from the day after the end of the tax year in question (January 1st), and is also <b>inflation-linked</b>! As an added bonus, the inflation linkage and interest are not considered taxable income. You have a full 6 years to reclaim the tax.</p>
 <h3>How to reclaim the money</h3>
-<p>You will need to go to a Tax Authority office, but it's unlikely you'll need to get an appointment with an official - the helpdesk should be able to do everything for you. Ask the helpdesk for a <i>Tofes 135</i> and tell them which tax year it's for (you fill out a separate form per tax year). Most likely, you will only need to fill out the personal details, and the Tax Authority will fill out the financial sections. You will need to bring with you the following documentation:
+<p>You will need to go to a Tax Authority office, but it's unlikely you'll need to actually meet with an official - the helpdesk should be able to do everything for you.</p>
+<p>Ask the helpdesk for a <i>Tofes 135</i> and tell them which tax year it's for (you fill out a separate form per tax year). Most likely, you will only need to fill out the personal details: the back office worker who processes the form will fill out the financial sections.</p> 
+<p>You will need to bring with you the following documentation (if you're married, then bring the following for both spouses):
 <ul>
     <li><i>Te'udat Zehut</i></li>
     <li><i>Te'udat Zehut</i> annex (the sheet of paper showing details of your address and children)</li>
     <li><i>Tofes 106</i> for each employer you had during the tax year (these are sent to you by the 31st of March after the
         end the tax year)
     </li>
-    <li>A photocopy of a cheque (to demonstrate ownership of the bank account to which they'll refund the money)</li>
-    <li>Tax certificates from <i>Bituah Leumi</i> if any payments received from them</li>
+    <li>A photocopy of a cheque or <i>Ishur Ba'alut Heshbon</i> (to demonstrate ownership of the bank account to which they'll refund the money)</li>
+    <li>Tax certificates from <i>Bituah Leumi</i> if you received any payments from them (e.g. maternity leave, unemployment benefits)</li>
     <li>For charitable donations, <i>Se'if 46</i> receipts</li>
     <li>If you had income from interest or capital markets: tax certificates (<i>Tofes 867</i>) from banks showing income and
         tax deducted at source
@@ -265,7 +267,7 @@ type: website
 </ul>
 </p>
 <h3>Receiving the money</h3>
-<p>The tax refund will usually be deposited into your bank account within 90 days of submitting the request. You'll also receive, by post, two letters:
+<p>The tax refund will usually be deposited into your bank account within 90 days of submitting the request. You'll also receive two letters by snail mail:
 <ol>
 	<li>A receipt of payment slip, showing how much tax you owed or were owed, and the calculated interest and inflation on that sum.</li>
 	<li>A letter of several pages showing the full tax assessment calculation done by the clerk.</li>

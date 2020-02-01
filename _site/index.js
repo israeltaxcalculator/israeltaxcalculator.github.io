@@ -35,7 +35,7 @@ const TAX_BRACKETS = {
 		{'threshold': 243120, 'rate': 0.35},
 		{'threshold': 505920, 'rate': 0.47},
 		{'threshold': 651600, 'rate': 0.50}]};
-	// single element: from income of 'threshold' and above (until next threshold), tax is charged at 'rate'.
+	// single element: from income [NIS] of 'threshold' and above (until next threshold), tax is charged at 'rate'.
 
 // tax credit constants
 const TAX_CREDIT_VALUE = {
@@ -43,7 +43,7 @@ const TAX_CREDIT_VALUE = {
 	2017:215, 
 	2018:216, 
 	2019:218,
-	2020:219}; // NIS
+	2020:219}; // NIS per month
 const MONTHS_IN_YEAR = 12;
 
 // charitable donations constants
@@ -52,7 +52,7 @@ const MIN_ELIGIBLE_DONATION = {
 	2017:180,
 	2018:180,
 	2019:190,
-	2020:190}; // NIS. Total charitable donations must exceed 180NIS to be eligible for relief
+	2020:190}; // NIS. Total charitable donations must exceed this amount to be eligible for relief
 const MAX_CHARITY_PROPORTION_OF_GROSS = 0.3; // only charitable contributions under 30% of annual income are eligible
 const CHARITY_RELIEF_RATE = 0.35;
 
