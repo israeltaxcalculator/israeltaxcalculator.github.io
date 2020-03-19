@@ -152,7 +152,9 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
 	document.getElementById('refund').innerHTML = Math.abs(refund).toFixed(2);
     document.getElementById("XowesY").innerHTML = (refund < 0) ? "You owe taxman:" : "Taxman owes you:"
     document.getElementById("refundCell").style.backgroundColor = (refund < 0) ? "#d68794" : "#8accab"
-
+	
+	document.getElementById("subtotals").scrollIntoView();
+	
     return false;
 };
 
