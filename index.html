@@ -52,6 +52,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 <div id="calculator">
 <h2>The calculator</h2>
 <p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can reclaim or should have paid.</p>
+<p><b>Privacy:</b> this site does not collect or store any of the data you input into the calculator.</p>
 <form id="annual-tax" onsubmit="return false;">
     Select tax year: <select id="year" class="pretty_button pretty_button_regular">
 	<option value="2020">2020</option>
@@ -65,7 +66,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 	<div>
         <table id='salary_pension' style="table-layout:fixed;width:100%;text-align:center">
             <tr>
-                <th>Employer name</th>
+                <th>Employer</th>
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
                 <th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
                 <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
@@ -75,7 +76,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                 <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
             </tr>
             <tr class="unit-table">
-                <td><input type="text" style="width:100%"></td>
+                <td><input type="text" style="width:100%" placeholder="(optional)"></td>
                 <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%" required>&#8362</td>
@@ -270,7 +271,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 </ol>
     For some reason, they send these separately, and they may arrive several days apart. Because of the slowness of the postal service, they usually arrive after the bank deposit.</p>
 <h3>What to do if the Tax Authority's calculation is wrong</h3>
-<p>The clerks aren't perfect and can sometimes get the calculation wrong. If this happens (and you're certian of it), simply <a
+<p>The clerks aren't perfect and can sometimes get the calculation wrong. If this happens (and you're certain of it), simply <a
         href="https://taxes.gov.il/Pages/InfoTaxesGovIl/MAPAL.aspx" target="_blank">write to them online</a> requesting that they correct the assessment.
     <script type="text/javascript" src="index.js"></script>
 </body>

@@ -154,7 +154,7 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     document.getElementById("refundCell").style.backgroundColor = (refund < 0) ? "#d68794" : "#8accab"
 	
 	document.getElementById("subtotals").scrollIntoView();
-
+	
     return false;
 };
 

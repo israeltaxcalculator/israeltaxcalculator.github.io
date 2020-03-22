@@ -11,19 +11,26 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Get back the money you’re owed by the government." />
 <meta property="og:description" content="Get back the money you’re owed by the government." />
-<link rel="canonical" href="http://localhost:4000/" />
-<meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Israel Annual Tax Calculator" />
-<meta property="og:image" content="http://localhost:4000/images/icon.png" />
+<meta property="og:image" content="/images/icon.png" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/","headline":"Simple Israel Tax Calculator (Annual)","image":"http://localhost:4000/images/icon.png","author":{"@type":"Person","name":"Reuven Shirazi"},"description":"Get back the money you’re owed by the government.","name":"Israel Annual Tax Calculator","@type":"WebSite","@context":"http://schema.org"}</script>
+{"url":"/","headline":"Simple Israel Tax Calculator (Annual)","image":"/images/icon.png","author":{"@type":"Person","name":"Reuven Shirazi"},"description":"Get back the money you’re owed by the government.","name":"Israel Annual Tax Calculator","@type":"WebSite","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
 	<meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/assets/css/style.css?v=14066c25abc5ea3976f369a5ce05e0caf3d61871">
+    <link rel="stylesheet" href="/assets/css/style.css?v=6a18ebd39f378029d401e7aa230591a7fe3157bf">
 	<link rel="icon" type="image/x-icon" href="favicon.ico?v1">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161409720-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-161409720-1');
+	</script>
   </head>
   <body>
     <section class="page-header">
@@ -90,6 +97,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 <div id="calculator">
 <h2>The calculator</h2>
 <p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can reclaim or should have paid.</p>
+<p><b>Privacy:</b> this site does not collect or store any of the data you input into the calculator.</p>
 <form id="annual-tax" onsubmit="return false;">
     Select tax year: <select id="year" class="pretty_button pretty_button_regular">
 	<option value="2020">2020</option>
@@ -103,7 +111,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 	<div>
         <table id='salary_pension' style="table-layout:fixed;width:100%;text-align:center">
             <tr>
-                <th>Employer name</th>
+                <th>Employer</th>
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
                 <th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
                 <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
@@ -113,7 +121,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                 <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
             </tr>
             <tr class="unit-table">
-                <td><input type="text" style="width:100%"></td>
+                <td><input type="text" style="width:100%" placeholder="(optional)"></td>
                 <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%" required>&#8362</td>
@@ -230,7 +238,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
     </div>
 </form>
 <br><hr>
-<h3><div id="subtotals">Subtotals</div></h3>
+<h3><div id="subtotals">Subtotals</h3>
 <table>
     <tr>
         <td>Gross income tax before reliefs:</td>
@@ -308,7 +316,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 </ol>
     For some reason, they send these separately, and they may arrive several days apart. Because of the slowness of the postal service, they usually arrive after the bank deposit.</p>
 <h3>What to do if the Tax Authority's calculation is wrong</h3>
-<p>The clerks aren't perfect and can sometimes get the calculation wrong. If this happens (and you're certian of it), simply <a
+<p>The clerks aren't perfect and can sometimes get the calculation wrong. If this happens (and you're certain of it), simply <a
         href="https://taxes.gov.il/Pages/InfoTaxesGovIl/MAPAL.aspx" target="_blank">write to them online</a> requesting that they correct the assessment.
     <script type="text/javascript" src="index.js"></script>
 </body>
