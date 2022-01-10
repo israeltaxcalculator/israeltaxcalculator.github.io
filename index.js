@@ -34,7 +34,14 @@ const TAX_BRACKETS = {
 		{'threshold': 174960, 'rate': 0.31},
 		{'threshold': 243120, 'rate': 0.35},
 		{'threshold': 505920, 'rate': 0.47},
-		{'threshold': 651600, 'rate': 0.50}]};
+		{'threshold': 651600, 'rate': 0.50}],
+	2021:[{'threshold':    0, 'rate': 0.10},
+		{'threshold':  75480, 'rate': 0.14},
+		{'threshold': 108360, 'rate': 0.20},
+		{'threshold': 173880, 'rate': 0.31},
+		{'threshold': 241680, 'rate': 0.35},
+		{'threshold': 502920, 'rate': 0.47},
+		{'threshold': 647640, 'rate': 0.50}]};
 	// single element: from income [NIS] of 'threshold' and above (until next threshold), tax is charged at 'rate'.
 
 // tax credit constants
@@ -43,7 +50,8 @@ const TAX_CREDIT_VALUE = {
 	2017:215, 
 	2018:216, 
 	2019:218,
-	2020:219}; // NIS per month
+	2020:219,
+	2021:223}; // NIS per month
 const MONTHS_IN_YEAR = 12;
 
 // charitable donations constants
@@ -52,7 +60,8 @@ const MIN_ELIGIBLE_DONATION = {
 	2017:180,
 	2018:180,
 	2019:190,
-	2020:190}; // NIS. Total charitable donations must exceed this amount to be eligible for relief
+	2020:190,
+	2021:190}; // NIS. Total charitable donations must exceed this amount to be eligible for relief
 const MAX_CHARITY_PROPORTION_OF_GROSS = 0.3; // only charitable contributions under 30% of annual income are eligible
 const CHARITY_RELIEF_RATE = 0.35;
 
@@ -62,7 +71,8 @@ const HACHNASA_MEZAKA = {
 	2017:103200,
 	2018:104400,
 	2019:105600,
-	2020:105600};// NIS
+	2020:105600,
+	2021:104400};// NIS
 const MAX_PENSION_CONTRIBUTIONS_RATE = 0.07 // 7% of insured income
 const PENSION_RELIEF_RATE = 0.35 // get income tax reduction of 35% of contributions
 
