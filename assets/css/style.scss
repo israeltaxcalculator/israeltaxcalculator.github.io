@@ -29,3 +29,72 @@ table {margin-bottom:8px;}
 .pretty_button:hover {background-color:#fdfdfd}
 
 a:hover {text-decoration: none}
+
+
+/*collapsible content style*/
+input[type='checkbox'] {
+  display: none;
+}
+.lbl-toggle {
+  display: block;
+/*
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  /*text-align: center;*/
+
+  /*padding: 1rem;*/
+
+  /*color: #A77B0E;*/
+  /*background: #FAE042;*/
+
+  cursor: pointer;
+
+  border-radius: 7px;
+  transition: all 0.25s ease-out;
+}
+
+.triangle {
+  content: ' ';
+  display: inline-block;
+
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid currentColor;
+
+  /* vertical-align: middle;*/
+  margin-right: .7rem;
+  transform: translateY(-2px);
+
+  transition: transform .2s ease-out;
+}
+
+.collapsible-content .content-inner {
+  /*background: rgba(250, 224, 66, .2);*/
+  /*border-bottom: 1px solid rgba(250, 224, 66, .45);*/
+
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+
+  transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 200vh;
+}
+
+.toggle:checked + .lbl-toggle .triangle {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
