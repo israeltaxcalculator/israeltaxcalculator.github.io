@@ -6,7 +6,7 @@ image: images/icon.png
 type: website
 ---
 <body>
-<!--
+<!-- template for collapsibles
 <div class="wrap-collabsible">
   <input id="collapsible" class="toggle" type="checkbox">
   <label for="collapsible" class="lbl-toggle"><h3><div class="triangle"> </div>More Info</h3></label>
@@ -24,8 +24,8 @@ type: website
 
 <a href="#calculator" class="pretty_button pretty_button_large">Skip to the calculator</a>
 <div class="wrap-collabsible">
-  <input id="collapsible1" class="toggle" type="checkbox">
-  <label for="collapsible1" class="lbl-toggle"><h2><div class="triangle"> </div>What's the purpose of this simple calculator?</h2></label>
+  <input id="purpose" class="toggle" type="checkbox">
+  <label for="purpose" class="lbl-toggle"><h2><div class="triangle"> </div>What's the purpose of this simple calculator?</h2></label>
   <div class="collapsible-content">
     <div class="content-inner">
       <p>This page is aimed at employees in Israel (שכירים) to help them easily calculate if they've <b>overpaid tax</b>. Between the calculator and accompanying explanations, the page will empower you to easily reclaim the overpaid tax <b>yourself</b>, with <b>no middle man</b> taking exorbitant fees!</p>
@@ -36,8 +36,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
   </div>
 </div>
 
-<input id="collapsible2" class="toggle" type="checkbox">
-  <label for="collapsible2" class="lbl-toggle"><h2><div class="triangle"> </div>How to use the calculator</h2></label>
+<input id="how-to-use-the-calculator" class="toggle" type="checkbox">
+  <label for="how-to-use-the-calculator" class="lbl-toggle"><h2><div class="triangle"> </div>How to use the calculator</h2></label>
   <div class="collapsible-content">
     <div class="content-inner">
       <p>The calculator will be most useful to you after a tax year is complete (N.B. tax year = calendar year in Israel). By the end of March, you should receive a <i>Tofes 106</i> from each employer for the previous tax year (see appendix for an explanation of what this is).</p>
@@ -48,8 +48,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 </div>
 
 <div class="wrap-collabsible">
-  <input id="collapsible3" class="toggle" type="checkbox">
-  <label for="collapsible3" class="lbl-toggle"><h2><div class="triangle"> </div>Why tax gets overpaid</h2></label>
+  <input id="why-tax-gets-overpaid" class="toggle" type="checkbox">
+  <label for="why-tax-gets-overpaid" class="lbl-toggle"><h2><div class="triangle"> </div>Why tax gets overpaid</h2></label>
   <div class="collapsible-content">
     <div class="content-inner">
       <p>Every year, the Tax Authority collects hundreds of millions of shekels in overpaid tax, and people don’t bother to apply for a refund, either because they
@@ -61,8 +61,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 </div>
 
 <div class="wrap-collabsible">
-  <input id="collapsible4" class="toggle" type="checkbox">
-  <label for="collapsible4" class="lbl-toggle"><h2><div class="triangle"> </div>What are common reasons for overpayment of tax?</h2></label>
+  <input id="common-reasons-for-overpayment" class="toggle" type="checkbox">
+  <label for="common-reasons-for-overpayment" class="lbl-toggle"><h2><div class="triangle"> </div>What are common reasons for overpayment of tax?</h2></label>
   <div class="collapsible-content">
     <div class="content-inner">
 		<ul>
@@ -82,8 +82,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 
 
 <div class="wrap-collabsible">
-  <input id="collapsible5" class="toggle" type="checkbox">
-  <label for="collapsible5" class="lbl-toggle"><h2><div class="triangle"> </div>What situations are beyond the scope of the calculator (for now)?</h2></label>
+  <input id="beyond-scope" class="toggle" type="checkbox">
+  <label for="beyond-scope" class="lbl-toggle"><h2><div class="triangle"> </div>What situations are beyond the scope of the calculator (for now)?</h2></label>
   <div class="collapsible-content">
     <div class="content-inner">
 		<ul>
@@ -291,8 +291,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 <h2>Next steps</h2>
 
 <div class="wrap-collabsible">
-  <input id="collapsible6" class="toggle" type="checkbox">
-  <label for="collapsible6" class="lbl-toggle"><h3><div class="triangle"> </div>If you owe money to the taxman</h3></label>
+  <input id="owe-money" class="toggle" type="checkbox">
+  <label for="owe-money" class="lbl-toggle"><h3><div class="triangle"> </div>If you owe money to the taxman</h3></label>
   <div class="collapsible-content">
     <div class="content-inner">
 		<p>If the calculator indicates that you owe money to the taxman, first check that you've put in all the relevant figures correctly, as it's quite rare for this to occur. If the calculation is correct, technically you'll need to pay the difference to the Tax Authority, or they might send you a bill and even charge you interest.
@@ -302,8 +302,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 </div>
 
 <div class="wrap-collabsible">
-  <input id="collapsible7" class="toggle" type="checkbox">
-  <label for="collapsible7" class="lbl-toggle"><h3><div class="triangle"> </div>If the taxman owes you money</h3></label>
+  <input id="owed-money" class="toggle" type="checkbox">
+  <label for="owed-money" class="lbl-toggle"><h3><div class="triangle"> </div>If the taxman owes you money</h3></label>
   <div class="collapsible-content">
     <div class="content-inner">
 		<p>
@@ -316,57 +316,72 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 
 
 <div class="wrap-collabsible">
-  <input id="collapsible8" class="toggle" type="checkbox">
-  <label for="collapsible8" class="lbl-toggle"><h3><div class="triangle"> </div>How to reclaim the money</h3></label>
+  <input id="how-to-reclaim" class="toggle" type="checkbox">
+  <label for="how-to-reclaim" class="lbl-toggle"><h3><div class="triangle"> </div>How to reclaim the money</h3></label>
   <div class="collapsible-content">
     <div class="content-inner">
-		<h4>For tax year 2019 and onwards</h4>
-		<p>You can file entirely online with a web form for these tax years (it's a separate application per tax year). Go to </a href="https://www.gov.il/he/service/itc135" target="_blank">this site</a> and press "להגשת הבקשה". This will take you to the Tax Authority login page. If you don't have an account with them already, you'll need to set one up.</p>
-		<p>The next steps are a bit fiddly. <ol>
-		<li>You need to press "אני רוצה לבקש המזר מס" (I want to resquest a tax refund).</li>
-		<li>You're then shown a page with some information. Click "להגשת הבקשה" at the end of it.</li>
-		<li>The next screen shows that you've entered a 6-stage process. The first stage is just verifying your contact details - check they're correct and click המשך.</li>
-		<li>We've reached stage 2 of their process. Select which year you want to claim back tax for. At this point, you have opened up a file for that year, which basically notifies the Tax Authority of your intent to ask them for a tax assessment for that year.</li>
-		<li>It will then take you through to the standard process for filing a tax return. Note that you will be filling out <i>Tofes 1301</i>, which is the full tax return form, of which <i>Tofes 135</i> (tax refund request form) is a subset. When you get to the stage of filling out the form, they will outline in yellow boxes which parts are relevant to the <i>Tofes 135</i>. That said, this is a bit buggy and there are some required fields without yellow boxes that you'll still need to fill in, or it won't let you submit the form.</li>
-		<li>You want to select the option: "הזנת דו"ח שנתי מלא ליחיד (טופס 1301) כולל מסמכים והגשה מקוונת", which means that you'll be filling out the full <i>Tofes 1301</i> and also attaching documents.</li>
-		<li>The following stages will be filling in the actual numbers themselves. Make sure to match field numbers from your <i>Tofes 106</i> with the field numbers in the <i>Tofes 1301</i>, as mentioned above. If you have multiple <i>Tfasei 106</i> for a particular year, add together all the values for a particular field. There will only be a small handful of fields you actually need to fill out.</li>
-		<li>At the end of the form, you will need to press שידור (transmit). N.B. You can also press חישוב to see what the calculation is going to give you as a tax refund or debt. This won't actually submit anything to the tax authority.</li>
-		<li>After this there are a bunch of confirmation steps: follow them through to the end, and your form is submitted.
-		</ol>
-		</p>
-		<h4>For tax years earlier than 2019</h4>
-		<p>You will need to fill out a <i>Tofes 135</i>, and there is a separate form for each year. You can download the forms </a href="https://www.gov.il/he/service/itc135" target="_blank">here</a>. At this point you have two options:
-		<ol>
-		<li>going into a Tax Authority office and handing the filled out form to the helpdesk (no need to queue or meet with a clerk) along with the documentation listed below;</li>
-		<li>using a pdf editor such as Dochub to fill out the form, attaching the documentation below into the same pdf document, and submitting it on the <a href="https://www.gov.il/apps/taxes/taxes/#/shelot-vetshuvot/he?pniyaPopUp=true&pniya=true" target="_blank">public queries page</a>. In the four heading dropdowns, select the following:
-		<ul>
-		<li><b>נושא ראשי: </b>מס הכנסה</li>
-		<li><b>נושא משני: </b>הגשת בקשות להחזר מס</li>
-		<li><b>תחום: </b>מידע בעניין אישי</li>
-		<li><b>סוג פונה: </b>שכיר</li>
-		</ul></li>
-		</ol>
-		</p>
-		<p>Most likely, you will only need to fill out the personal details: the back office worker who processes the form will fill out the financial sections.</p>
+	
+		<div class="wrap-collabsible">
+		  <input id="after2019" class="toggle" type="checkbox">
+		  <label for="after2019" class="lbl-toggle"><h4><div class="triangle"> </div>For tax year 2019 and onwards</h4></label>
+		  <div class="collapsible-content">
+			<div class="content-inner">
+				<p>You can file entirely online with a web form for these tax years (it's a separate application per tax year). Go to <a href="https://www.gov.il/he/service/itc135" target="_blank">this site</a> and press "להגשת הבקשה". This will take you to the Tax Authority login page. If you don't have an account with them already, you'll need to set one up.</p>
+				<p>The next steps are a bit fiddly. <ol>
+				<li>You need to press "אני רוצה לבקש המזר מס" (I want to request a tax refund).</li>
+				<li>You're then shown a page with some information. Click "להגשת הבקשה" at the end of it.</li>
+				<li>The next screen shows that you've entered a 6-stage process. The first stage is just verifying your contact details - check they're correct and click המשך.</li>
+				<li>We've reached stage 2 of their process. Select which year you want to claim back tax for. At this point, you have opened up a file for that year, which basically notifies the Tax Authority of your intent to ask them for a tax assessment for that year.</li>
+				<li>It will then take you through to the standard process for filing a tax return. Note that you will be filling out <i>Tofes 1301</i>, which is the full tax return form, of which <i>Tofes 135</i> (tax refund request form) is a subset. When you get to the stage of filling out the form, they will outline in yellow boxes which parts are relevant to the <i>Tofes 135</i>. That said, this is a bit buggy and there are some required fields without yellow boxes that you'll still need to fill in, or it won't let you submit the form.</li>
+				<li>You want to select the option: "הזנת דו"ח שנתי מלא ליחיד (טופס 1301) כולל מסמכים והגשה מקוונת", which means that you'll be filling out the full <i>Tofes 1301</i> and also attaching documents.</li>
+				<li>The following stages will be filling in the actual numbers themselves. Make sure to match field numbers from your <i>Tofes 106</i> with the field numbers in the <i>Tofes 1301</i>, as mentioned above. If you have multiple <i>Tfasei 106</i> for a particular year, add together all the values for a particular field. There will only be a small handful of fields you actually need to fill out.</li>
+				<li>At the end of the form, you will need to press שידור (transmit). N.B. You can also press חישוב to see what the calculation is going to give you as a tax refund or debt. This won't actually submit anything to the tax authority.</li>
+				<li>After this there are a bunch of confirmation steps: follow them through to the end, and your form is submitted.
+				</ol>
+				</p>
+			</div>
+		  </div>
+		</div>
+		
+		<div class="wrap-collabsible">
+		  <input id="before2019" class="toggle" type="checkbox">
+		  <label for="before2019" class="lbl-toggle"><h4><div class="triangle"> </div>For tax years earlier than 2019</h4></label>
+		  <div class="collapsible-content">
+			<div class="content-inner">
+				<p>You will need to fill out a <i>Tofes 135</i>, and there is a separate form for each year. You can download the forms <a href="https://www.gov.il/he/service/itc135#accordion-files" target="_blank">here</a>. At this point you have two options:
+				<ol>
+				<li>going into a Tax Authority office and handing the filled out form to the helpdesk (no need to queue or meet with a clerk) along with the documentation listed below;</li>
+				<li>using a pdf editor such as Dochub to fill out the form, attaching the documentation below into the same pdf document, and submitting it on the <a href="https://www.gov.il/apps/taxes/taxes/#/shelot-vetshuvot/he?pniyaPopUp=true&pniya=true" target="_blank">public queries page</a>. In the four heading dropdowns, select the following:
+				<ul>
+				<li><b>נושא ראשי: </b>מס הכנסה</li>
+				<li><b>נושא משני: </b>הגשת בקשות להחזר מס</li>
+				<li><b>תחום: </b>מידע בעניין אישי</li>
+				<li><b>סוג פונה: </b>שכיר</li>
+				</ul></li>
+				</ol>
+				</p>
+				<p>Most likely, you will only need to fill out the personal details: the back office worker who processes the form will fill out the financial sections.</p>
+			</div>
+		  </div>
+		</div>
+
     </div>
   </div>
 </div>
 
 <div class="wrap-collabsible">
-  <input id="collapsible9" class="toggle" type="checkbox">
-  <label for="collapsible9" class="lbl-toggle"><h3><div class="triangle"> </div>Documentation</h3></label>
+  <input id="documentation" class="toggle" type="checkbox">
+  <label for="documentation" class="lbl-toggle"><h3><div class="triangle"> </div>Documentation</h3></label>
   <div class="collapsible-content">
     <div class="content-inner">
 		<p>You will need to bring with you the following documentation (if you're married, then bring the following for both spouses):
 		<ul>
-			<li><i>Te'udat Zehut</i></li>
-			<li><i>Te'udat Zehut</i> annex (the sheet of paper showing details of your address and children)</li>
 			<li><i>Tofes 106</i> for each employer you had during the tax year (these are sent to you by the 31st of March after the
 				end the tax year)
 			</li>
 			<li>A photocopy of a cheque or <i>Ishur Ba'alut Heshbon</i> (to demonstrate ownership of the bank account to which they'll refund the money)</li>
 			<li>Tax certificates from <i>Bituah Leumi</i> if you received any payments from them (e.g. maternity leave, unemployment benefits)</li>
-			<li>For charitable donations, <i>Se'if 46</i> receipts</li>
+			<li>For charitable donations, <i>Se'if 46</i> receipts. Note: if these are not digital receipts with a stamp on them saying that they are digital, you will not be able to file the tax refund request online.</li>
 			<li>If you had income from interest or capital markets: tax certificates (<i>Tofes 867</i>) from banks showing income and
 				tax deducted at source
 			</li>
@@ -378,6 +393,11 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 				</ul>
 			</li>
 		</ul>
+		If you are filing manually (i.e. not on the online web form through your tax account), you will also need to attach these additional documents:
+		<ul>
+			<li><i>Te'udat Zehut</i></li>
+			<li><i>Te'udat Zehut</i> annex (the sheet of paper showing details of your address and children)</li>
+		</ul>
 		</p>
     </div>
   </div>
@@ -385,8 +405,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 
 
 <div class="wrap-collabsible">
-  <input id="collapsible10" class="toggle" type="checkbox">
-  <label for="collapsible10" class="lbl-toggle"><h3><div class="triangle"> </div>Receiving the money</h3></label>
+  <input id="receiving-the-money" class="toggle" type="checkbox">
+  <label for="receiving-the-money" class="lbl-toggle"><h3><div class="triangle"> </div>Receiving the money</h3></label>
   <div class="collapsible-content">
     <div class="content-inner">
 		<p>
@@ -403,8 +423,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 
 	
 <div class="wrap-collabsible">
-  <input id="collapsible11" class="toggle" type="checkbox">
-  <label for="collapsible11" class="lbl-toggle"><h3><div class="triangle"> </div>What to do if the Tax Authority's calculation is wrong</h3></label>
+  <input id="calculation-wrong" class="toggle" type="checkbox">
+  <label for="calculation-wrong" class="lbl-toggle"><h3><div class="triangle"> </div>What to do if the Tax Authority's calculation is wrong</h3></label>
   <div class="collapsible-content">
     <div class="content-inner">
 		<p>
@@ -417,8 +437,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 
 
 <div class="wrap-collabsible">
-  <input id="collapsible12" class="toggle" type="checkbox">
-  <label for="collapsible12" class="lbl-toggle"><h2><div class="triangle"> </div>Appendix: glossary of tax forms</h2></label>
+  <input id="appendix" class="toggle" type="checkbox">
+  <label for="appendix" class="lbl-toggle"><h2><div class="triangle"> </div>Appendix: glossary of tax forms</h2></label>
   <div class="collapsible-content">
     <div class="content-inner">
 		<p><b><i>Tofes 101:</i></b> a form you fill out every time you start working for a new employer and at the beginning of each tax year. It gives them information about various things that could affect how they calculate your tax, such as how many children you have, whether you are working for another company simultaneously, and whether you live in a peripheral town that gives a special income tax deduction.</p>
