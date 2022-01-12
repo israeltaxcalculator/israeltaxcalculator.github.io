@@ -6,48 +6,103 @@ image: images/icon.png
 type: website
 ---
 <body>
+<!--
+<div class="wrap-collabsible">
+  <input id="collapsible" class="toggle" type="checkbox">
+  <label for="collapsible" class="lbl-toggle"><h3><div class="triangle"> </div>More Info</h3></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+      <p>
+        Lorem ipsum
+      </p>
+    </div>
+  </div>
+</div>
+-->
+
+
+
 <a href="#calculator" class="pretty_button pretty_button_large">Skip to the calculator</a>
-<h2>What's the purpose of this simple calculator?</h2>
-<p>This page is aimed at employees in Israel (שכירים) to help them easily calculate if they've <b>overpaid tax</b>. Between the calculator and accompanying explanations, the page will empower you to easily reclaim the overpaid tax <b>yourself</b>, with <b>no middle man</b> taking exorbitant fees!</p>
-<p>You can reclaim tax for any of the last 6 tax years (i.e. 
-<script>currentYear = new Date().getFullYear()
+<div class="wrap-collabsible">
+  <input id="collapsible1" class="toggle" type="checkbox">
+  <label for="collapsible1" class="lbl-toggle"><h2><div class="triangle"> </div>What's the purpose of this simple calculator?</h2></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+      <p>This page is aimed at employees in Israel (שכירים) to help them easily calculate if they've <b>overpaid tax</b>. Between the calculator and accompanying explanations, the page will empower you to easily reclaim the overpaid tax <b>yourself</b>, with <b>no middle man</b> taking exorbitant fees!</p>
+	  <p>You can reclaim tax for any of the last 6 tax years (i.e. 
+	  <script>currentYear = new Date().getFullYear()
 document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusive).</p>
-<h2>How to use the calculator</h2>
-<p>The calculator will be most useful to you after a tax year is complete (N.B. tax year = calendar year in Israel). By the end of March, you should receive a <i>Tofes 106</i> from each employer for the previous tax year (see appendix for an explanation of what this is).</p>
-<p>The information on the form has <b>field codes</b> (e.g. 042 for income tax paid) - these correspond directly to the field codes in brackets in this calculator. You can use these to fill in most parts of the calculator. For the tax credits section, if you don't know how many you had in the year in question, use one of the links to figure this out.</p>
-<p>The calculator below is applicable to the income of an individual person. Note that married people must file the tax refund request together, reporting income of both spouses on the form. However, the Tax Authority largely separates the calculation in a joint filing to two individual calculations, so the calculator below should still be effective in most normal cases.</p>
-<h2>Why tax gets overpaid</h2>
-<p>Every year, the Tax Authority collects hundreds of millions of shekels in overpaid tax, and people don’t bother to apply for a refund, either because they
+    </div>
+  </div>
+</div>
+
+<input id="collapsible2" class="toggle" type="checkbox">
+  <label for="collapsible2" class="lbl-toggle"><h2><div class="triangle"> </div>How to use the calculator</h2></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+      <p>The calculator will be most useful to you after a tax year is complete (N.B. tax year = calendar year in Israel). By the end of March, you should receive a <i>Tofes 106</i> from each employer for the previous tax year (see appendix for an explanation of what this is).</p>
+	  <p>The information on the form has <b>field codes</b> (e.g. 042 for income tax paid) - these correspond directly to the field codes in brackets in this calculator. You can use these to fill in most parts of the calculator. For the tax credits section, if you don't know how many you had in the year in question, use one of the links to figure this out.</p>
+	  <p>The calculator below is applicable to the income of an individual person. Note that married people must file the tax refund request together, reporting income of both spouses on the form. However, the Tax Authority largely separates the calculation in a joint filing to two individual calculations, so the calculator below should still be effective in most normal cases.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap-collabsible">
+  <input id="collapsible3" class="toggle" type="checkbox">
+  <label for="collapsible3" class="lbl-toggle"><h2><div class="triangle"> </div>Why tax gets overpaid</h2></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+      <p>Every year, the Tax Authority collects hundreds of millions of shekels in overpaid tax, and people don’t bother to apply for a refund, either because they
     aren’t aware that they’ve overpaid or because it’s too much effort.</p>
-<p>The principal reason for overpayment results from the way in which tax is deducted for salaried employees. Though the amount of tax you’re supposed to pay is based on your <i>annual</i> income, employers deduct it on a <i>monthly</i> basis as if you earned / will earn the same salary in every other month of the year. This is fine if you boringly stay with the same employer for the whole tax year (from 1st of January until 31st of December). Employers’ tax calculators are even sophisticated enough to account for pay rises, bonuses etc. and still deduct the right amount
-    of annual tax. But if you are unemployed for part of the year, or switched employer, or any number of other
-    situations, the pay-as-you-earn monthly calculation often becomes incorrect.
-<p>Because of this, it’s worth doing a calculation at the end of the year, considering all your income, tax credits, pension contributions and so on, to see how much tax you ought to have paid.</p>
-<h2>What are common reasons for overpayment of tax?</h2>
-<ul>
-    <li>Working for more than one employer</li>
-    <li>Changing employer during the year</li>
-    <li>Being unemployed for part of the year (including maternity leave)</li>
-    <li>Receiving payments from <i>Bituah Leumi</i></li>
-    <li>Changes in family status during the year (e.g. birth of a child, divorce)</li>
-    <li>Employee entitled to extra tax credits but didn't inform employer (e.g. <i>Oleh Hadash</i>, recent army / university
-        graduate, family status change)
-    </li>
-    <li>Charitable donations</li>
-</ul>
-<h2>What situations are beyond the scope of the calculator (for now)?</h2>
-<ul>
-    <li>Rental income, gambling income, stock market income (different rates apply)</li>
-    <li>Optional independent contributions to pension (not via the employer) - coming soon!</li>
-    <li>Claiming back overcharged tax on employer contributions to <i>Keren Hishtalmut</i> or pension (fill out <i>Tofes 134</i> for this)</li>
-    <li>Withdrawals from <i>Pitsuyim</i> / pension before retirement</li>
-    <li><i>Ma'anak Avoda</i></li>
-    <li>Other types of income e.g. שכר סופרים, מרצים, אומנים, דירקטורים</li>
-    <li><i>Zikui</i> for shift work in industry (משמרות בתעשייה)</li>
-    <li>Tax exemptions for disability / blindness</li>
-	<li>Tax discounts for living in cetain periphery towns (סעיף 11)</li>
-    <li>And many more...</li>
-</ul>
+	  <p>The principal reason for overpayment results from the way in which tax is deducted for salaried employees. Though the amount of tax you’re supposed to pay is based on your <i>annual</i> income, employers deduct it on a <i>monthly</i> basis as if you earned / will earn the same salary in every other month of the year. This is fine if you boringly stay with the same employer for the whole tax year (from 1st of January until 31st of December). Employers’ tax calculators are even sophisticated enough to account for pay rises, bonuses etc. and still deduct the right amount of annual tax. But if you are unemployed for part of the year, or switched employer, or any number of other situations, the pay-as-you-earn monthly calculation often becomes incorrect.
+	  <p>Because of this, it’s worth doing a calculation at the end of the year, considering all your income, tax credits, pension contributions and so on, to see how much tax you ought to have paid.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap-collabsible">
+  <input id="collapsible4" class="toggle" type="checkbox">
+  <label for="collapsible4" class="lbl-toggle"><h2><div class="triangle"> </div>What are common reasons for overpayment of tax?</h2></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+		<ul>
+			<li>Working for more than one employer</li>
+			<li>Changing employer during the year</li>
+			<li>Being unemployed for part of the year (including maternity leave)</li>
+			<li>Receiving payments from <i>Bituah Leumi</i></li>
+			<li>Changes in family status during the year (e.g. birth of a child, divorce)</li>
+			<li>Employee entitled to extra tax credits but didn't inform employer (e.g. <i>Oleh Hadash</i>, recent army / university
+				graduate, family status change)
+			</li>
+			<li>Charitable donations</li>
+		</ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrap-collabsible">
+  <input id="collapsible5" class="toggle" type="checkbox">
+  <label for="collapsible5" class="lbl-toggle"><h2><div class="triangle"> </div>What situations are beyond the scope of the calculator (for now)?</h2></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+		<ul>
+			<li>Rental income, gambling income, stock market income (different rates apply)</li>
+			<li>Optional independent contributions to pension (not via the employer) - coming soon!</li>
+			<li>Claiming back overcharged tax on employer contributions to <i>Keren Hishtalmut</i> or pension (fill out <i>Tofes 134</i> for this)</li>
+			<li>Withdrawals from <i>Pitsuyim</i> / pension before retirement</li>
+			<li><i>Ma'anak Avoda</i></li>
+			<li>Other types of income e.g. שכר סופרים, מרצים, אומנים, דירקטורים</li>
+			<li><i>Zikui</i> for life insurance</li>
+			<li><i>Zikui</i> for shift work in industry (משמרות בתעשייה)</li>
+			<li>Tax exemptions for disability / blindness</li>
+			<li>Tax discounts for living in cetain periphery towns (סעיף 11)</li>
+			<li>And many more...</li>
+		</ul>
+    </div>
+  </div>
+</div>
+
 <hr>
 <div id="calculator">
 <h2>The calculator</h2>
@@ -234,77 +289,145 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 </div>
 <hr>
 <h2>Next steps</h2>
-<h3>If you owe money to the taxman</h3>
-<p>If the calculator indicates that you owe money to the taxman, first check that you've put in all the relevant figures correctly, as it's quite rare for this to occur. If the calculation is correct, technically you'll need to pay the difference to the Tax Authority, or they might send you a bill and even charge you interest.
-</p>
-<h3>If the taxman owes you money</h3>
-<p>If the calculator shows that you are owed money by the taxman, there is more good news: the money is returned with <b>4% annual simple interest</b> starting from the day after the end of the tax year in question (January 1st), and is also <b>inflation-linked</b>! As an added bonus, the inflation linkage and interest are not considered taxable income. You have a full 6 years to reclaim the tax.</p>
-<h3>How to reclaim the money</h3>
-<h4>For tax year 2019 and onwards</h4>
-<p>You can file entirely online with a web form for these tax years (it's a separate application per tax year). Go to </a href="https://www.gov.il/he/service/itc135" target="_blank">this site</a> and press "להגשת הבקשה". This will take you to the Tax Authority login page. If you don't have an account with them already, you'll need to set one up.</p>
-<p>The next steps are a bit fiddly. <ol>
-<li>You need to press "אני רוצה לבקש המזר מס" (I want to resquest a tax refund).</li>
-<li>You're then shown a page with some information. Click "להגשת הבקשה" at the end of it.</li>
-<li>The next screen shows that you've entered a 6-stage process. The first stage is just verifying your contact details - check they're correct and click המשך.</li>
-<li>We've reached stage 2 of their process. Select which year you want to claim back tax for. At this point, you have opened up a file for that year, which basically notifies the Tax Authority of your intent to ask them for a tax assessment for that year.</li>
-<li>It will then take you through to the standard process for filing a tax return. Note that you will be filling out <i>Tofes 1301</i>, which is the full tax return form, of which <i>Tofes 135</i> (tax refund request form) is a subset. When you get to the stage of filling out the form, they will outline in yellow boxes which parts are relevant to the <i>Tofes 135</i>. That said, this is a bit buggy and there are some required fields without yellow boxes that you'll still need to fill in, or it won't let you submit the form.</li>
-<li>You want to select the option: "הזנת דו"ח שנתי מלא ליחיד (טופס 1301) כולל מסמכים והגשה מקוונת", which means that you'll be filling out the full <i>Tofes 1301</i> and also attaching documents.</li>
-<li>The following stages will be filling in the actual numbers themselves. Make sure to match field numbers from your <i>Tofes 106</i> with the field numbers in the <i>Tofes 1301</i>, as mentioned above. If you have multiple <i>Tfasei 106</i> for a particular year, add together all the values for a particular field. There will only be a small handful of fields you actually need to fill out.</li>
-<li>At the end of the form, you will need to press שידור (transmit). N.B. You can also press חישוב to see what the calculation is going to give you as a tax refund or debt. This won't actually submit anything to the tax authority.</li>
-<li>After this there are a bunch of confirmation steps: follow them through to the end, and your form is submitted.
-</ol>
-</p>
-<h4>For tax years earlier than 2019</h4>
-<p>You will need to fill out a <i>Tofes 135</i>, and there is a separate form for each year. You can download the forms </a href="https://www.gov.il/he/service/itc135" target="_blank">here</a>. At this point you have two options:
-<ol>
-<li>going into a Tax Authority office and handing the filled out form to the helpdesk (no need to queue or meet with a clerk) along with the documentation listed below;</li>
-<li>using a pdf editor such as Dochub to fill out the form, attaching the documentation below into the same pdf document, and submitting it on the <a href="https://www.gov.il/apps/taxes/taxes/#/shelot-vetshuvot/he?pniyaPopUp=true&pniya=true" target="_blank">public queries page</a>. In the four heading dropdowns, select the following:
-<ul>
-<li><b>נושא ראשי: </b>מס הכנסה</li>
-<li><b>נושא משני: </b>הגשת בקשות להחזר מס</li>
-<li><b>תחום: </b>מידע בעניין אישי</li>
-<li><b>סוג פונה: </b>שכיר</li>
-</ul></li>
-</ol>
-</p>
-<p>Most likely, you will only need to fill out the personal details: the back office worker who processes the form will fill out the financial sections.</p>
-<h3>Documentation</h3>
-<p>You will need to bring with you the following documentation (if you're married, then bring the following for both spouses):
-<ul>
-    <li><i>Te'udat Zehut</i></li>
-    <li><i>Te'udat Zehut</i> annex (the sheet of paper showing details of your address and children)</li>
-    <li><i>Tofes 106</i> for each employer you had during the tax year (these are sent to you by the 31st of March after the
-        end the tax year)
-    </li>
-    <li>A photocopy of a cheque or <i>Ishur Ba'alut Heshbon</i> (to demonstrate ownership of the bank account to which they'll refund the money)</li>
-    <li>Tax certificates from <i>Bituah Leumi</i> if you received any payments from them (e.g. maternity leave, unemployment benefits)</li>
-    <li>For charitable donations, <i>Se'if 46</i> receipts</li>
-    <li>If you had income from interest or capital markets: tax certificates (<i>Tofes 867</i>) from banks showing income and
-        tax deducted at source
-    </li>
-    <li>Any further supporting documents to prove eligibility for tax credits, e.g.
-        <ul>
-            <li><i>Te'udat Oleh / Zaka'ut</i></li>
-            <li>Confirmation of army service completion</li>
-            <li>Confirmation of degree completion</li>
-        </ul>
-    </li>
-</ul>
-</p>
-<h3>Receiving the money</h3>
-<p>The tax refund will usually be deposited into your bank account within 90 days of submitting the request. In practice, these days I've found that the money comes about a couple of weeks after filing the request. You'll also receive two letters by snail mail:
-<ol>
-	<li>A receipt of payment slip, showing how much tax you owed or were owed, and the calculated interest and inflation on that sum.</li>
-	<li>A letter of several pages showing the full tax assessment calculation done by the clerk.</li>
-</ol>
-    For some reason, they send these separately, and they may arrive several days apart. Because of the slowness of the postal service, they usually arrive after the bank deposit.</p>
-<h3>What to do if the Tax Authority's calculation is wrong</h3>
-<p>The clerks aren't perfect and can sometimes get the calculation wrong. If this happens (and you're certain of it), simply <a
-        href="https://taxes.gov.il/Pages/InfoTaxesGovIl/MAPAL.aspx" target="_blank">write to them online</a> requesting that they correct the assessment.</p>
-<h2>Appendix: glossary of tax forms</h2>
-<p><b><i>Tofes 101:</i></b> a form you fill out every time you start working for a new employer and at the beginning of each tax year. It gives them information about various things that could affect how they calculate your tax, such as how many children you have, whether you are working for another company simultaneously, and whether you live in a peripheral town that gives a special income tax deduction.</p>
-<p><b><i>Tofes 106:</i></b> a report that your employer gives you by the end of March following the tax year that it covers. It is a summary of all your income and tax deducted through that employer for the year gone by, as well as some other information such as how much you contributed to pension and which months you worked there. The employer is legally obliged to give you one - if you haven't received it, contact them and request that they send you one. You get a separate one for each employer and a separate one for each tax year.</p>
-<p><b><i>Tofes 135:</i></b> this is a tax refund request form that you send to the Tax Authority. It is a subset of the larger <i>Tofes 1301</i>. When filing the refund request online, you actually fill out <i>Tofes 1301</i> but you only need to fill out the fields that are relevant to the <i>Tofes 135</i>. Each tax year you are filing for has a separate form.</p>
-<p><b><i>Tofes 1301:</i></b> a long and complicated tax return form that self-employed people have to fill out annually. People who fulfill certain other criteria are also obliged to fill it out annually (e.g. income or assets abroad above a certain amount). The form covers every possible type of income you could have, and every possible tax benefit. If you're married you file jointly (most lines have two separate fields for each spouse's input. It is submitted online by setting up a personal account on the Tax Authority's website. Alternatively, an accountant can do this.</p>
+
+<div class="wrap-collabsible">
+  <input id="collapsible6" class="toggle" type="checkbox">
+  <label for="collapsible6" class="lbl-toggle"><h3><div class="triangle"> </div>If you owe money to the taxman</h3></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+		<p>If the calculator indicates that you owe money to the taxman, first check that you've put in all the relevant figures correctly, as it's quite rare for this to occur. If the calculation is correct, technically you'll need to pay the difference to the Tax Authority, or they might send you a bill and even charge you interest.
+		</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap-collabsible">
+  <input id="collapsible7" class="toggle" type="checkbox">
+  <label for="collapsible7" class="lbl-toggle"><h3><div class="triangle"> </div>If the taxman owes you money</h3></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+		<p>
+		If the calculator shows that you are owed money by the taxman, there is more good news: the money is returned with <b>4% annual simple interest</b> starting from the day after the end of the tax year in question (January 1st), and is also <b>inflation-linked</b>! As an added bonus, the inflation linkage and interest are not considered taxable income. You have a full 6 years to reclaim the tax.
+		</p>
+	</div>
+  </div>
+</div>
+
+
+
+<div class="wrap-collabsible">
+  <input id="collapsible8" class="toggle" type="checkbox">
+  <label for="collapsible8" class="lbl-toggle"><h3><div class="triangle"> </div>How to reclaim the money</h3></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+		<h4>For tax year 2019 and onwards</h4>
+		<p>You can file entirely online with a web form for these tax years (it's a separate application per tax year). Go to </a href="https://www.gov.il/he/service/itc135" target="_blank">this site</a> and press "להגשת הבקשה". This will take you to the Tax Authority login page. If you don't have an account with them already, you'll need to set one up.</p>
+		<p>The next steps are a bit fiddly. <ol>
+		<li>You need to press "אני רוצה לבקש המזר מס" (I want to resquest a tax refund).</li>
+		<li>You're then shown a page with some information. Click "להגשת הבקשה" at the end of it.</li>
+		<li>The next screen shows that you've entered a 6-stage process. The first stage is just verifying your contact details - check they're correct and click המשך.</li>
+		<li>We've reached stage 2 of their process. Select which year you want to claim back tax for. At this point, you have opened up a file for that year, which basically notifies the Tax Authority of your intent to ask them for a tax assessment for that year.</li>
+		<li>It will then take you through to the standard process for filing a tax return. Note that you will be filling out <i>Tofes 1301</i>, which is the full tax return form, of which <i>Tofes 135</i> (tax refund request form) is a subset. When you get to the stage of filling out the form, they will outline in yellow boxes which parts are relevant to the <i>Tofes 135</i>. That said, this is a bit buggy and there are some required fields without yellow boxes that you'll still need to fill in, or it won't let you submit the form.</li>
+		<li>You want to select the option: "הזנת דו"ח שנתי מלא ליחיד (טופס 1301) כולל מסמכים והגשה מקוונת", which means that you'll be filling out the full <i>Tofes 1301</i> and also attaching documents.</li>
+		<li>The following stages will be filling in the actual numbers themselves. Make sure to match field numbers from your <i>Tofes 106</i> with the field numbers in the <i>Tofes 1301</i>, as mentioned above. If you have multiple <i>Tfasei 106</i> for a particular year, add together all the values for a particular field. There will only be a small handful of fields you actually need to fill out.</li>
+		<li>At the end of the form, you will need to press שידור (transmit). N.B. You can also press חישוב to see what the calculation is going to give you as a tax refund or debt. This won't actually submit anything to the tax authority.</li>
+		<li>After this there are a bunch of confirmation steps: follow them through to the end, and your form is submitted.
+		</ol>
+		</p>
+		<h4>For tax years earlier than 2019</h4>
+		<p>You will need to fill out a <i>Tofes 135</i>, and there is a separate form for each year. You can download the forms </a href="https://www.gov.il/he/service/itc135" target="_blank">here</a>. At this point you have two options:
+		<ol>
+		<li>going into a Tax Authority office and handing the filled out form to the helpdesk (no need to queue or meet with a clerk) along with the documentation listed below;</li>
+		<li>using a pdf editor such as Dochub to fill out the form, attaching the documentation below into the same pdf document, and submitting it on the <a href="https://www.gov.il/apps/taxes/taxes/#/shelot-vetshuvot/he?pniyaPopUp=true&pniya=true" target="_blank">public queries page</a>. In the four heading dropdowns, select the following:
+		<ul>
+		<li><b>נושא ראשי: </b>מס הכנסה</li>
+		<li><b>נושא משני: </b>הגשת בקשות להחזר מס</li>
+		<li><b>תחום: </b>מידע בעניין אישי</li>
+		<li><b>סוג פונה: </b>שכיר</li>
+		</ul></li>
+		</ol>
+		</p>
+		<p>Most likely, you will only need to fill out the personal details: the back office worker who processes the form will fill out the financial sections.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap-collabsible">
+  <input id="collapsible9" class="toggle" type="checkbox">
+  <label for="collapsible9" class="lbl-toggle"><h3><div class="triangle"> </div>Documentation</h3></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+		<p>You will need to bring with you the following documentation (if you're married, then bring the following for both spouses):
+		<ul>
+			<li><i>Te'udat Zehut</i></li>
+			<li><i>Te'udat Zehut</i> annex (the sheet of paper showing details of your address and children)</li>
+			<li><i>Tofes 106</i> for each employer you had during the tax year (these are sent to you by the 31st of March after the
+				end the tax year)
+			</li>
+			<li>A photocopy of a cheque or <i>Ishur Ba'alut Heshbon</i> (to demonstrate ownership of the bank account to which they'll refund the money)</li>
+			<li>Tax certificates from <i>Bituah Leumi</i> if you received any payments from them (e.g. maternity leave, unemployment benefits)</li>
+			<li>For charitable donations, <i>Se'if 46</i> receipts</li>
+			<li>If you had income from interest or capital markets: tax certificates (<i>Tofes 867</i>) from banks showing income and
+				tax deducted at source
+			</li>
+			<li>Any further supporting documents to prove eligibility for tax credits, e.g.
+				<ul>
+					<li><i>Te'udat Oleh / Zaka'ut</i></li>
+					<li>Confirmation of army service completion</li>
+					<li>Confirmation of degree completion</li>
+				</ul>
+			</li>
+		</ul>
+		</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrap-collabsible">
+  <input id="collapsible10" class="toggle" type="checkbox">
+  <label for="collapsible10" class="lbl-toggle"><h3><div class="triangle"> </div>Receiving the money</h3></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+		<p>
+		The tax refund will usually be deposited into your bank account within 90 days of submitting the request. In practice, these days I've found that the money comes about a couple of weeks after filing the request. You'll also receive two letters by snail mail:
+		<ol>
+			<li>A receipt of payment slip, showing how much tax you owed or were owed, and the calculated interest and inflation on that sum.</li>
+			<li>A letter of several pages showing the full tax assessment calculation done by the clerk.</li>
+		</ol>
+		For some reason, they send these separately, and they may arrive several days apart. Because of the slowness of the postal service, they usually arrive after the bank deposit.
+		</p>
+    </div>
+  </div>
+</div>
+
+	
+<div class="wrap-collabsible">
+  <input id="collapsible11" class="toggle" type="checkbox">
+  <label for="collapsible11" class="lbl-toggle"><h3><div class="triangle"> </div>What to do if the Tax Authority's calculation is wrong</h3></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+		<p>
+		The clerks aren't perfect and can sometimes get the calculation wrong. If this happens (and you're certain of it), simply <a
+        href="https://taxes.gov.il/Pages/InfoTaxesGovIl/MAPAL.aspx" target="_blank">write to them online</a> requesting that they correct the assessment.
+		</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrap-collabsible">
+  <input id="collapsible12" class="toggle" type="checkbox">
+  <label for="collapsible12" class="lbl-toggle"><h2><div class="triangle"> </div>Appendix: glossary of tax forms</h2></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+		<p><b><i>Tofes 101:</i></b> a form you fill out every time you start working for a new employer and at the beginning of each tax year. It gives them information about various things that could affect how they calculate your tax, such as how many children you have, whether you are working for another company simultaneously, and whether you live in a peripheral town that gives a special income tax deduction.</p>
+		<p><b><i>Tofes 106:</i></b> a report that your employer gives you by the end of March following the tax year that it covers. It is a summary of all your income and tax deducted through that employer for the year gone by, as well as some other information such as how much you contributed to pension and which months you worked there. The employer is legally obliged to give you one - if you haven't received it, contact them and request that they send you one. You get a separate one for each employer and a separate one for each tax year.</p>
+		<p><b><i>Tofes 135:</i></b> this is a tax refund request form that you send to the Tax Authority. It is a subset of the larger <i>Tofes 1301</i>. When filing the refund request online, you actually fill out <i>Tofes 1301</i> but you only need to fill out the fields that are relevant to the <i>Tofes 135</i>. Each tax year you are filing for has a separate form.</p>
+		<p><b><i>Tofes 1301:</i></b> a long and complicated tax return form that self-employed people have to fill out annually. People who fulfill certain other criteria are also obliged to fill it out annually (e.g. income or assets abroad above a certain amount). The form covers every possible type of income you could have, and every possible tax benefit. If you're married you file jointly (most lines have two separate fields for each spouse's input. It is submitted online by setting up a personal account on the Tax Authority's website. Alternatively, an accountant can do this.</p>
+    </div>
+  </div>
+</div>
+
     <script type="text/javascript" src="index.js"></script>
 </body>
