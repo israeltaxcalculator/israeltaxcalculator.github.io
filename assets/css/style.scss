@@ -87,7 +87,11 @@ input[type='checkbox'] {
 }
 
 .toggle:checked + .lbl-toggle + .collapsible-content {
-  max-height: 200vh;
+  max-height: 80em; /*80em;*/
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content.long {
+  max-height: 400em; /*80em;*/
 }
 
 .toggle:checked + .lbl-toggle .triangle {
