@@ -108,8 +108,10 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 <h2>The calculator</h2>
 <p><b>Disclaimer:</b> this calculator should be viewed as advisory only and not the final say on how much tax you can reclaim or should have paid.</p>
 <p><b>Privacy:</b> this site does not collect or store any of the data you input into the calculator.</p>
+<br><hr>
 <form id="annual-tax" onsubmit="return false;">
-    Select tax year: <select id="year" class="pretty_button pretty_button_regular">
+<h3>1. Select tax year</h3>
+    <select id="year" class="pretty_button pretty_button_regular">
 	<option value="2021" selected>2021</option>
 	<option value="2020">2020</option>
 	<option value="2019">2019</option>
@@ -117,8 +119,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
     <option value="2017">2017</option>
     <option value="2016">2016</option>
 </select>
-	<br><br><hr>
-    <h3>1. Salary and pension משכורת ופנסיה</h3>
+    <h3>2. Salary and pension משכורת ופנסיה</h3>
 	<div>
         <table id='salary_pension' style="table-layout:fixed;width:100%;text-align:center">
             <tr>
@@ -149,7 +150,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
     <b>Optional independent pension contributions (135 or 268):</b>
         <input id="units" step="any" type="number" /> &#8362
     </div> -->
-    <h3>2. Tax credits נקודות זיכוי</h3>
+    <h3>3. Tax credits נקודות זיכוי</h3>
     <div>
         Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
         <table id="tax_credits_table" style="text-align:center">
@@ -217,7 +218,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 	<br><a href="http://www.payway.co.il/calculator/en/nik3_form.asp" target="_blank">SYNEL (English)</a>
 	<br><a href="https://www.hilan.co.il/%D7%9E%D7%A8%D7%9B%D7%96-%D7%99%D7%93%D7%A2/%D7%90%D7%A9%D7%A4%D7%99-%D7%97%D7%99%D7%A9%D7%95%D7%91/%D7%90%D7%A9%D7%A3-%D7%9E%D7%A1-%D7%94%D7%9B%D7%A0%D7%A1%D7%94/" target="_blank">Hilan (Hebrew)</a></p><br>
     <div>
-        <h3>3. Charitable Donations תרומות למוסדות ציבוריים</h3>
+        <h3>4. Charitable Donations תרומות למוסדות ציבוריים</h3>
         <div> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under
             <span id="maxCharityProportionOfGross"></span>% of annual
             income. Only donations to a <i>Mosad Tsiburi</i> with <i>Se'if 46</i> receipts are eligible for a tax refund.
@@ -321,75 +322,79 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 	<div class="content-inner">
 		<p>You can do the entire process online with a web form through the Tax Authority's login page. It's a separate application per tax year.</p>
 
-		<h4>Stage 1: opening up a personal tax account and updating your bank details</h4>
+		<h4>Stage 1: opening up a personal tax account</h4>
 		<p>If you don't already have an online account with the Tax Authority, you'll need to set one up. 
 		<ol>
 		<li>Head over to <a href="https://secapp.taxes.gov.il/Srsherutatzmi/startpage.aspx" target="_blank">the personal tax account homepage</a> and set up an account by clicking רישום לקוח חדש.</li>
-		<li>What follows is a fairly simple process asking you to prove your identity in a few different ways: <i>Teudat Zehut</i> number and passport number, for instance.</li>
+		<li>What follows is a fairly simple process asking you to prove your identity in a few different ways: <i>Teudat Zehut</i> number and passport number, for instance. Don't be alarmed if they ask for your credit card details: this is another way of verifying your identity, and your card won't be billed.</li>
 		<li>Make sure to save your username somewhere as you will only log into your tax account very occasionally.</li>
 		</ol>
 		</p>
-		<p>Next, I recommend updating your bank details on your tax account, as this will save you from having to fill in the bank details in the tax refund form itself each year.
+		
+		<h4>Stage 2: updating your bank details</h4>
+		<p>Next, I recommend saving your bank details on your tax account, as this will save you from having to fill in the bank details in the tax refund form itself each year.
 		<ol>
-		<li>Open up your <a href="https://secapp.taxes.gov.il/Srsherutatzmi/startpage.aspx" target="_blank">אזור אישי (personal tax account homepage)</a>.</li>
+		<li>Open up your <a href="https://secapp.taxes.gov.il/Srsherutatzmi/startpage.aspx" target="_blank">אזור אישי (personal tax account homepage)</a> and log into your account if you're not already logged in.</li>
 		<li>Click on the bubble which says חשבונות הבנק שלי.</li>
+		<li>Press עדכון חשבון בנק. If you don't see this button anywhere, it might be because you have only just set up your tax account, and their databases take a while to sync. Wait a day and try again.</li>
 		<li>Fill in the bank, branch and account number, and select the checkbox that says תיק מס הכנסה.</li>
-		<li> Press עדכון חשבון בנק at the end. The Tax Authority will then go and automatically verify that this bank account and your tax account have the same <i>Te'udat Zehut</i>.</li>
+		<li> Press עדכון חשבון בנק at the end. The system will then go and automatically verify that this bank account and your tax account are connected to the same <i>Te'udat Zehut</i>.</li>
 		</ol>
 		</p>
 		
-		<h4>Stage 2: filing for a tax refund for a particular year</h4>
+		<h4>Stage 3: filing for a tax refund for a particular year</h4>
 		<p>
 		<ol>
-		<li>Go to <a href="https://secapp.taxes.gov.il/srbksOpentik" target="_blank">this page</a> and log into your Tax Authority account if you're not already logged in.</li>
-		<li>You then need to press "אני רוצה לבקש המזר מס" (I want to request a tax refund).</li>
+		<li>Go to <a href="https://secapp.taxes.gov.il/srbksOpentik" target="_blank">this page</a> and log into your personal tax account if you're not already logged in.</li>
+		<li>Press "אני רוצה לבקש המזר מס" (I want to request a tax refund).</li>
 		<li>You're then shown a page with some information. Click "להגשת הבקשה" at the end of it.</li>
 		<li>Check your contact details are correct and click המשך.</li>
 		<li>Select which year you want to claim back tax for and click המשך. You have now opened up a תיק (file) for that year, which basically notifies the Tax Authority that you'll be asking for a tax assessment for that year.</li>
 		</ol>
 		</p>
 		
-		<h4>Stage 3: the form itself</h4>
+		<h4>Stage 4: the form itself</h4>
 		<p>The site will take you through to the standard process for filing a tax return. Note that you will be filling out <i>Tofes 1301</i>, which is the full tax return form, of which <i>Tofes 135</i> (tax refund request form) is actually a subset.</p>
 		<p>You can get back to this page at any point by going to the <a href="https://secapp.taxes.gov.il/Srsherutatzmi/startpage.aspx" target="_blank">אזור אישי</a>; then clicking on the bubble which says הדיווחים שלי. Then click מס הכנסה, select the year for which you started to file a refund request, and press לשידור דוח מקוון על הכנסות יחיד.</p>
 		<ol>
 		<li>Your מספר תיק is just your <i>Te'udat Zehut</i> number. In the dropdown, select the correct year.</li>
-		<li>From among the radio boxes below, you want to select the option: "הזנת דו"ח שנתי מלא ליחיד (טופס 1301) כולל מסמכים והגשה מקוונת". This means that you'll be filling out the full <i>Tofes 1301</i> and also attaching documents. Then press אישור to proceed.</li>
+		<li>From among the radio boxes below, select the option: "הזנת דו"ח שנתי מלא ליחיד (טופס 1301) כולל מסמכים והגשה מקוונת". This means that you'll be filling out the full <i>Tofes 1301</i> and also attaching documents. Then press אישור to proceed.</li>
 		</ol>
 		<p>You are now directed to a form with three sections: <b>personal details</b>; <b>general details</b>; and <b>details of income</b>.</p>
 		
-		<h4>Stage 3a: personal details section (פרטים אישיים)</h4>
+		<h4>Stage 4a: personal details section (פרטים אישיים)</h4>
 		<ol>
-		<li>A pop up will come up informing you that you're filling out the whole <i>Tofes 1301</i>, but that you only actually need to fill out the fields that are relevant for a <i>Tofes 135</i> (tax refund request), and that they've outlined these fields in yellow boxes. That said, I've found that this is a bit buggy and there are some other fields with asterisks but without yellow boxes that are required fields and it won't let you submit the form without filling them in.</li>
-		<li>Conveniently, they have already filled in your personal details.</li>
+		<li>A pop up will come up informing you that you're filling out the whole <i>Tofes 1301</i>, but that you only actually need to fill out the fields that are relevant for a <i>Tofes 135</i> (tax refund request), which will be outlined in yellow boxes. That said, I've found that this is a bit buggy and there are some fields without yellow boxes that are required fields (they have asterisks), without which you won't be able to submit the form.</li>
+		<li>Personal details: these are automatically filled in.</li>
 		<li>Contact details: if you've already updated these in your personal tax account, you can leave the fields for email address and telephone blank.</li>
-		<li>Bank details: if you updated these in your personal tax account as per my instructions in Stage 1 above, you can leave this section blank.</li>
+		<li>Bank details: if you updated these in your personal tax account as per my instructions in Stage 2 above, you can leave this section blank.</li>
 		<li>Once you're done with this stage, press שמירה at the bottom and then הבא.</li>
 		</ol>
 		
-		<h4>Stage 3b: general details section (פרטים כלליים)</h4>
+		<h4>Stage 4b: general details section (פרטים כלליים)</h4>
 		<p>In this section they're basically trying to understand why you're filing a tax return, and whom you're filing it for.
 		<ol>
-		<li>The first two fields have no yellow box but have asterisks, so must be filled out. They relate to whether you have income from abroad and whether you had capital gains income. Fill in appropriately.</li>
+		<li>The first two fields have no yellow box but have asterisks, so must be filled out. They relate to whether you have income from abroad and whether you had capital gains income. Fill in appropriately. (If you're within the 10-year Oleh exemption period, you can just mark "No" for both of these.)</li>
 		<li>The next field asks whether you are filing individually or for both you and your spouse. If you are married, you have to file jointly.</li>
-		<li>Also check the box that says you are filling out the form for a tax refund request and not due to obligation (אני מגיש דוח לשנת מס זו למרות שאיני חייב - בקשה להחזר מס).</li>
+		<li>Also check the box that says you are filling out the form despite not being required to, for a tax refund request (אני מגיש דוח לשנת מס זו למרות שאיני חייב - בקשה להחזר מס).</li>
 		<li>On the field that asks if you have a מקור הכנסה משותף לבני הזוג, select "No".</li>
 		<li>If you and/or your spouse have some kind of <i>Oleh Hadash</i> / <i>Toshav Hozer</i> status, fill in the relevant field and add the date of your arrival.</li>
 		<li>Another two mandatory fields without a yellow box: whether you are a controlling owner in some overseas organisation / company. Select "No", unless you are, in which case use an accountant.</li>
-		<li>Three optional fields to fill in surround whether you have crypto income, internet income and renewable energy income. Fill in appropriately.</li>
+		<li>Three optional fields to fill in surround whether you have crypto income, internet income and renewable energy income. Fill in appropriately (in almost all cases the answer is "No").</li>
 		<li>The last two fields also have no yellow box but have asterisks, so must be filled out. Select "No" for both of them.</li>
 		<li>Once you're done with this stage, press שמירה at the bottom and then הבא.</li>
 		</ol>
 		</p>
 		
-		<h4>Stage 3c: details of income (פירוט הכנסות)</h4>
+		<h4>Stage 4c: details of income (פירוט הכנסות)</h4>
 		<p>This is the stage where you fill in the actual numbers themselves. Make sure to match field numbers from your <i>Tofes 106</i> with the field numbers in the <i>Tofes 1301</i>, as mentioned above. If you have multiple <i>Tfasei 106</i> for a particular year, add together all the values for a particular field. There will only be a small handful of fields you actually need to fill out.
 		<ol>
 		<li>Particularly important fields to fill out are as in the calculator above: 158 (taxable income); 042 (income tax deducted at source); 045 (employee pension deposits); 244 (insured income). If you have a spouse, make sure to fill out the fields for them too.</li>
-		<li>Charitable donations go in field 037. Voluntary independent contributions to pension (you know if you've done this) go in field 135 or 268. Life insurance payments go in field 036. If you had any taxable income from <i>Bituah Leumi</i> (maternity pay, unemployment benefits, army reserve payment) then that goes in field 194.</li>
-		<li>Don't forget to fill out the section for calculating your <i>Nekudot Zikui</i>. In this section, there is a widget for adding children, for telling them that you're an <i>Oleh</i> and when you made <i>Aliyah</i>, and you can also put in if you're eligible for <i>Nekudot Zikui</i> due to recently completed army service or academic degree.</li>
-		<li>If you had any other forms of income in that year, such as rental income, dividends, interest, capital gains, and these were taxable, then you need to declare these in the relevant fields. In the case of dividends and capital gains that are covered by the 10-year <i>Oleh</i> exemption, you don't need to declare these.</li>
-		<li>At the end of the form, I recommend pressing חישוב to do a soft calculation which will show you how much you're expected to get back. If you do this, the fields you should look at are מס מגיע (how much tax you should have paid) and ניכויים במקור (how much tax you actually paid in tax). If the latter is larger than the smaller, you will get money back.</li>
+		<li>Charitable donations go in field 037. Voluntary independent contributions to pension (you know if you've done this) go in field 135 or 268. Life insurance payments go in field 036. Taxable stipends from <i>Bituah Leumi</i> (maternity pay, unemployment benefits, army reserve payment) go in field 194.</li>
+		<li>Don't forget to fill out the section for calculating your <i>Nekudot Zikui</i>. In this section, there is a widget for adding children, for inputting your <i>Aliyah</i> date if relevant, and it's also where you indicate any other eligibility for <i>Nekudot Zikui</i> due to recently completed army service or academic degree.</li>
+		<li>If you had any other forms of taxable income in that year, such as rental income, interest, dividends and capital gains, then you need to declare these in the relevant fields. In the case of dividends and capital gains that are covered by the 10-year <i>Oleh</i> exemption, you don't need to declare these.</li>
+		<li>At the end of the form, I recommend pressing חישוב to do a soft calculation which will show you how much you're expected to get back. If you get an error "תיק לא בכרטיס אב" then this means they haven't yet processed your request to open a file for that year. To fix this, you'll just need to wait a bit for their databases to sync.</li>
+		<li>After pressing חישוב, the next screen will show a calculation. The most important fields are מס מגיע (how much tax you should have paid) and ניכויים במקור (how much tax you actually paid in tax). If the latter is larger than the smaller, you will get money back.</li>
 		<li>At the end of the form, you will need to press on שידור (transmit). When you press this button, it will complain that you didn't attach any documents. At the top of the page, there is a link for העלאת מסמכים. Click on that and press כן, then אישור, then upload all the relevant documents and press אישור again. Check they have all uploaded successfully and then press סיום and אישור. After this you should be able to press שידור.</li>
 		<li>The next screen should inform you that השידור בוצע בהצלחה (the transmission was successful). If you thought this means you have finished, you would be wrong! The page shows a bunch of information, and contains two links. The first link is הפקת הדו"ח - this allows you to save a copy of the form you transmitted. The second link is הגשת הדו"ח - you need to press this to actually submit the form for once and for all.</li>
 		<li>Press מאשר and המשך. Now you are done, and they offer you to save a copy of a confirmation that you submitted the form.</li>
