@@ -32,7 +32,7 @@ a:hover {text-decoration: none}
 
 
 /*collapsible content style*/
-input[type='checkbox'] {
+input.toggle[type='checkbox'] {
   display: none;
 }
 .lbl-toggle {
