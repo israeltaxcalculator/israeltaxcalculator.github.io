@@ -51,7 +51,7 @@ const TAX_CREDIT_VALUE = {
 	2018:216, 
 	2019:218,
 	2020:219,
-	2021:223}; // NIS per month
+	2021:218}; // NIS per month
 const MONTHS_IN_YEAR = 12;
 
 // charitable donations constants
