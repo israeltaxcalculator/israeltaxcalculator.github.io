@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
 	<meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/assets/css/style.css?v=6db02fd8ac19e825777d4b253fd3fceb25b5c121">
+    <link rel="stylesheet" href="/assets/css/style.css?v=77cc4029c42ac21504db91ca0cfbae4ca0f2333e">
 	<link rel="icon" type="image/x-icon" href="favicon.ico?v1">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161409720-1"></script>
@@ -164,12 +164,14 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 <form id="annual-tax" onsubmit="return false;">
 <h3>1. Select tax year</h3>
     <select id="year" class="pretty_button pretty_button_regular">
+  <option value="2025">2025</option>
+  <option value="2024">2024</option>
   <option value="2023" selected>2023</option>
   <option value="2022">2022</option>
   <option value="2021">2021</option>
-	<option value="2020">2020</option>
-	<option value="2019">2019</option>
-    <option value="2018">2018</option>
+  <option value="2020">2020</option>
+  <option value="2019">2019</option>
+  <option value="2018">2018</option>
 </select>
     <h3>2. Salary and pension משכורת ופנסיה</h3>
 	<div>
@@ -179,18 +181,18 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
                 <th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
                 <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
-                <th>
+                <!-- <th>
 				Insured Income
 				<br>הכנסה מבוטחת<br>(244)</th>
-                <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
+                <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
             </tr>
             <tr class="unit-table">
                 <td><input type="text" style="width:100%" placeholder="(optional)"></td>
                 <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
+                <!-- <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
             </tr>
         </table>
     </div>

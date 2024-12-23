@@ -42,6 +42,20 @@ const TAX_BRACKETS = {
 		{'threshold': 260520, 'rate': 0.35},
 		{'threshold': 542160, 'rate': 0.47},
 		{'threshold': 698280, 'rate': 0.50}],
+	2024:[{'threshold':    0, 'rate': 0.10},
+		{'threshold':  84120, 'rate': 0.14},
+		{'threshold': 120720, 'rate': 0.20},
+		{'threshold': 193800, 'rate': 0.31},
+		{'threshold': 269280, 'rate': 0.35},
+		{'threshold': 560280, 'rate': 0.47},
+		{'threshold': 721560, 'rate': 0.50}],
+	2025:[{'threshold':    0, 'rate': 0.10},
+		{'threshold':  84120, 'rate': 0.14},
+		{'threshold': 120720, 'rate': 0.20},
+		{'threshold': 193800, 'rate': 0.31},
+		{'threshold': 269280, 'rate': 0.35},
+		{'threshold': 560280, 'rate': 0.47},
+		{'threshold': 721560, 'rate': 0.50}],
 		}; // in each element: from income [NIS] of 'threshold' and above (until next threshold), tax is charged at 'rate'.
 
 // tax credit constants
@@ -52,6 +66,8 @@ const TAX_CREDIT_VALUE = {
 	2021:218,
 	2022:223,
 	2023:235,
+	2024:242,
+	2025:242,
 	}; // NIS per month
 const MONTHS_IN_YEAR = 12;
 
@@ -63,6 +79,8 @@ const MIN_ELIGIBLE_DONATION = {
 	2021:190,
 	2022:190,
 	2023:200,
+	2024:207,
+	2025:207,
 	}; // NIS. Total charitable donations must exceed this amount to be eligible for relief
 const MAX_CHARITY_PROPORTION_OF_GROSS = 0.3; // only charitable contributions under 30% of annual income are eligible
 const CHARITY_RELIEF_RATE = 0.35;
@@ -75,6 +93,8 @@ const HACHNASA_MEZAKA = {
 	2021:104400,
 	2022:106800,
 	2023:112800,
+	2024:116400,
+	2025:116400,
 	};// NIS
 const MAX_PENSION_CONTRIBUTIONS_RATE = 0.07 // 7% of insured income
 const PENSION_RELIEF_RATE = 0.35 // get income tax reduction of 35% of contributions
@@ -142,7 +162,6 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     const gross = sumElements(document.getElementsByClassName('gross'));
     const taxPaid = sumElements(document.getElementsByClassName('taxPaid'));
     const employeePension = sumElements(document.getElementsByClassName('employeePension'));
-    const insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
     const taxCredits = sumElements(document.getElementsByClassName('taxCreditsMonthly')) + 
 								MONTHS_IN_YEAR*(parseFloat(document.getElementById('taxCreditsSingle').value) || 0);
     const donations = sumElements(document.getElementsByClassName('donation'));
@@ -150,7 +169,7 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     // derived variables
     const taxCreditsRelief = taxCredits * TAX_CREDIT_VALUE[year];
     const charitableDonationsRelief = calculateCharitableDonationsRelief(donations, gross);
-    const pensionRelief = calculatePensionRelief(employeePension, insuredIncome);
+    const pensionRelief = calculatePensionRelief(employeePension, gross); // use gross instead of actual insured income (field 244), to make calculator simpler
 
     document.getElementById('taxCreditsRelief').innerHTML = taxCreditsRelief.toFixed(2);
     document.getElementById('charitableDonationsRelief').innerHTML = charitableDonationsRelief.toFixed(2);

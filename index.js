@@ -162,7 +162,6 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     const gross = sumElements(document.getElementsByClassName('gross'));
     const taxPaid = sumElements(document.getElementsByClassName('taxPaid'));
     const employeePension = sumElements(document.getElementsByClassName('employeePension'));
-    const insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
     const taxCredits = sumElements(document.getElementsByClassName('taxCreditsMonthly')) + 
 								MONTHS_IN_YEAR*(parseFloat(document.getElementById('taxCreditsSingle').value) || 0);
     const donations = sumElements(document.getElementsByClassName('donation'));
@@ -170,7 +169,7 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     // derived variables
     const taxCreditsRelief = taxCredits * TAX_CREDIT_VALUE[year];
     const charitableDonationsRelief = calculateCharitableDonationsRelief(donations, gross);
-    const pensionRelief = calculatePensionRelief(employeePension, insuredIncome);
+    const pensionRelief = calculatePensionRelief(employeePension, gross); // use gross instead of actual insured income (field 244), to make calculator simpler
 
     document.getElementById('taxCreditsRelief').innerHTML = taxCreditsRelief.toFixed(2);
     document.getElementById('charitableDonationsRelief').innerHTML = charitableDonationsRelief.toFixed(2);
