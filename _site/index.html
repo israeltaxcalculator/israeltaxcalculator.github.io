@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
 	<meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/assets/css/style.css?v=77cc4029c42ac21504db91ca0cfbae4ca0f2333e">
+    <link rel="stylesheet" href="/assets/css/style.css?v=ec44cd2f78d83894992ed1c7847bf681c89ed5f5">
 	<link rel="icon" type="image/x-icon" href="favicon.ico?v1">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161409720-1"></script>
@@ -164,22 +164,22 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 <form id="annual-tax" onsubmit="return false;">
 <h3>1. Select tax year</h3>
     <select id="year" class="pretty_button pretty_button_regular">
-  <option value="2025">2025</option>
-  <option value="2024">2024</option>
-  <option value="2023" selected>2023</option>
-  <option value="2022">2022</option>
-  <option value="2021">2021</option>
-  <option value="2020">2020</option>
-  <option value="2019">2019</option>
-  <option value="2018">2018</option>
-</select>
+      <option value="2025">2025</option>
+      <option value="2024">2024</option>
+      <option value="2023" selected>2023</option>
+      <option value="2022">2022</option>
+      <option value="2021">2021</option>
+      <option value="2020">2020</option>
+      <option value="2019">2019</option>
+      <option value="2018">2018</option>
+    </select>
     <h3>2. Salary and pension משכורת ופנסיה</h3>
-	<div>
+	  <div>
         <table id='salary_pension' style="table-layout:fixed;width:100%;text-align:center">
             <tr>
                 <th>Employer</th>
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
-                <th>Income Tax Paid<br>מס הכנסה<br>(042)</th>
+                <th>Income tax paid<br>מס הכנסה<br>(042)</th>
                 <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
                 <!-- <th>
 				Insured Income
@@ -191,8 +191,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                 <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <!-- <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
+                <!-- <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>-->
+                <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
             </tr>
         </table>
     </div>
@@ -204,74 +204,104 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
     <b>Optional independent pension contributions (135 or 268):</b>
         <input id="units" step="any" type="number" /> &#8362
     </div> -->
-    <h3>3. Tax credits נקודות זיכוי</h3>
+    <h3>3. Benefits received from National Insurance תקבולים מהמוסד לביטוח לאומי</h3>
     <div>
-        Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()">
+          <table id='btl_benefits' style="table-layout:fixed;width:70%;text-align:center">
+              <tr>
+                <th>Benefit type</th>
+                <th>Taxable income<br>תקבולים<br>(194)</th>
+                <th>Income tax paid<br>מס הכנסה<br>(042)</th>
+              </tr>
+              <tr class="unit-table">
+                <td>Unemployment אבטלה</td>
+                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
+              </tr>
+              <tr class="unit-table">
+                <td>Maternity דמי לידה</td>
+                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
+              </tr>
+              <tr class="unit-table">
+                <td>Reserve duty מילואים</td>
+                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
+              </tr>
+              <tr class="unit-table">
+                <td>Other</td>
+                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
+              </tr>
+          </table>
+    </div>
+    <h3>4. Tax credits נקודות זיכוי</h3>
+    <div>
+        <!-- Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()"> -->
         <table id="tax_credits_table" style="text-align:center">
             <tr>
-                <th></th>
-                <th>Number of tax credits<br>מספר נקודות זיכוי</th>
-                <!-- Add option to set one number for all months -->
-                <!-- Maybe convert to dropdown menu -->
+              <th colspan="2">Reason</th>
+              <th>Number of tax credits<br>מספר נקודות זיכוי</th>
             </tr>
-            <tr id="annual">
-                <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                <td><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.01" value="2.25" style="width:4em"></td>
+            <tr>
+              <td>Resident תושב</td>
+              <td><input type="checkbox" id="resident" checked></td>
+              <td><span id="residentTaxCredits"></span></td>
             </tr>
-            <tr class="monthly" style=display:none>
-                <td>Jan</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            <tr>
+              <td>Woman אישה</td>
+              <td><input type="checkbox" id="woman"></td>
+              <td><span id="genderTaxCredits"></span></td>
             </tr>
-            <tr class="monthly" style=display:none>
-                <td>Feb</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            <tr>
+              <td>Date of aliyah תאריך עלייה</td>
+              <td>
+                <select id="aliyaYear" class="pretty_button pretty_button_regular">
+                  <option value="" selected>year</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                </select>
+                <select id="aliyaMonth" class="pretty_button pretty_button_regular">
+                  <option value="" selected>month</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  </select>
+              </td>
+              <td><span id="aliyaTaxCredits"></span></td>
             </tr>
-            <tr class="monthly" style=display:none>
-                <td>Mar</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            <tr>
+                <td>Other tax credits</td>
+                <td><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.01" style="text-align:center; width:4em"></td>
+                <td><span id="otherTaxCredits"></span></td>
             </tr>
-            <tr class="monthly" style=display:none>
-                <td>Apr</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>May</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Jun</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Jul</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Aug</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Sep</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Oct</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Nov</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
-            </tr>
-            <tr class="monthly" style=display:none>
-                <td>Dec</td>
-                <td><input type="number" class="taxCreditsMonthly" min="0" max="20" step="0.25" style="width:4em"></td>
+            <tr>
+              <td colspan="2">Total</td>
+              <td><span id="totalTaxCredits"></span></td>
             </tr>
         </table>
     </div>
     <p>Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents. You can calculate how many tax credits you are eligible for in a given tax year at one of these links (make sure to select the correct tax year):
 	<br><a href="https://www.hilan.co.il/%D7%9E%D7%A8%D7%9B%D7%96-%D7%99%D7%93%D7%A2/%D7%90%D7%A9%D7%A4%D7%99-%D7%97%D7%99%D7%A9%D7%95%D7%91/%D7%90%D7%A9%D7%A3-%D7%9E%D7%A1-%D7%94%D7%9B%D7%A0%D7%A1%D7%94/" target="_blank">Hilan (Hebrew)</a></p><br>
     <div>
-        <h3>4. Charitable Donations תרומות למוסדות ציבוריים</h3>
+        <h3>5. Charitable Donations תרומות למוסדות ציבוריים</h3>
         <div> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under
             <span id="maxCharityProportionOfGross"></span>% of annual
             income. Only donations to a <i>Mosad Tsiburi</i> with <i>Se'if 46</i> receipts are eligible for a tax refund.
