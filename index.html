@@ -130,17 +130,17 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                 <th>Taxable income<br>הכנסה ממשכורת<br>(158)</th>
                 <th>Income tax paid<br>מס הכנסה<br>(042)</th>
                 <th>Employee pension deposits<br>קצבה לעמית שכיר<br>(045)</th>
-                <th>
+                <!-- <th>
 				Insured Income
 				<br>הכנסה מבוטחת<br>(244)</th>
-                <!--   <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
+                <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
             </tr>
             <tr class="unit-table">
                 <td><input type="text" style="width:100%" placeholder="(optional)"></td>
                 <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <!-- <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>-->
                 <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
             </tr>
         </table>
@@ -153,9 +153,9 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
     <b>Optional independent pension contributions (135 or 268):</b>
         <input id="units" step="any" type="number" /> &#8362
     </div> -->
-    <h3>3. Benefit payments from National Insurance תקבולים מהמוסד לביטוח לאומי</h3>
+    <h3>3. Benefits received from National Insurance תקבולים מהמוסד לביטוח לאומי</h3>
     <div>
-          <table id='btl_benefits' style="table-layout:fixed;width:100%;text-align:center">
+          <table id='btl_benefits' style="table-layout:fixed;width:70%;text-align:center">
               <tr>
                 <th>Benefit type</th>
                 <th>Taxable income<br>תקבולים<br>(194)</th>
@@ -188,22 +188,24 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
         <!-- Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()"> -->
         <table id="tax_credits_table" style="text-align:center">
             <tr>
-              <th></th>
-              <th></th>
+              <th colspan="2">Reason</th>
               <th>Number of tax credits<br>מספר נקודות זיכוי</th>
             </tr>
             <tr>
               <td>Resident תושב</td>
-              <td><input type="checkbox" onchange="residentChange()" id="resident"></td>
-              <td></td>
+              <td><input type="checkbox" id="resident" checked></td>
+              <td><span id="residentTaxCredits"></span></td>
             </tr>
             <tr>
-              <td>New Immigrant עולה חדש</td>
+              <td>Woman אישה</td>
+              <td><input type="checkbox" id="woman"></td>
+              <td><span id="genderTaxCredits"></span></td>
+            </tr>
+            <tr>
+              <td>Date of aliyah תאריך עלייה</td>
               <td>
-                Aliya date:<br>
-                Year: 
                 <select id="aliyaYear" class="pretty_button pretty_button_regular">
-                  <option value="" selected></option>
+                  <option value="" selected>year</option>
                   <option value="2025">2025</option>
                   <option value="2024">2024</option>
                   <option value="2023">2023</option>
@@ -214,10 +216,10 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                   <option value="2018">2018</option>
                   <option value="2017">2017</option>
                   <option value="2016">2016</option>
+                  <option value="2015">2015</option>
                 </select>
-                Month: 
                 <select id="aliyaMonth" class="pretty_button pretty_button_regular">
-                  <option value="" selected></option>
+                  <option value="" selected>month</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -230,13 +232,18 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                   <option value="10">10</option>
                   <option value="11">11</option>
                   <option value="12">12</option>
+                  </select>
               </td>
-              <td></td>
+              <td><span id="aliyaTaxCredits"></span></td>
             </tr>
             <tr>
-                <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-                <td><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.01" value="2.25" style="width:4em"></td>
-                <td></td>
+                <td>Other tax credits</td>
+                <td><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.01" style="text-align:center; width:4em"></td>
+                <td><span id="otherTaxCredits"></span></td>
+            </tr>
+            <tr>
+              <td colspan="2">Total</td>
+              <td><span id="totalTaxCredits"></span></td>
             </tr>
         </table>
     </div>

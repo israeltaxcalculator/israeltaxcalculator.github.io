@@ -99,6 +99,9 @@ const HACHNASA_MEZAKA = {
 const MAX_PENSION_CONTRIBUTIONS_RATE = 0.07 // 7% of insured income
 const PENSION_RELIEF_RATE = 0.35 // get income tax reduction of 35% of contributions
 
+const TAX_CREDITS_RESIDENT = 2.25;
+const TAX_CREDITS_WOMAN = 0.5;
+
 const sumElements = collection => [...collection].reduce((sum, item) => sum + (parseFloat(item.value) || 0), 0);
 
 const calculateTaxCreditsFromEvent = (eventYear, eventMonth, taxYear, creditsPerMonth) => {
@@ -117,7 +120,7 @@ const calculateTaxCreditsFromEvent = (eventYear, eventMonth, taxYear, creditsPer
 			credits += creditsThisBracket;
 		}
 	}
-	return credits;
+	return credits / MONTHS_IN_YEAR;
 }
 
 const calculateAliyaTaxCredits = (yearOfAliya, monthOfAliya, taxYear) => {
@@ -208,25 +211,75 @@ document.getElementById("year").addEventListener("change", function(e) {year = p
 
 function updateAliyaTaxCredits() {
   // Calculate the tax credits based on the aliyaYear, aliyaMonth, and the current year
-  var aliyaTaxCredits = calculateAliyaTaxCredits(aliyaYear, aliyaMonth, year);
+  aliyaTaxCredits = calculateAliyaTaxCredits(aliyaYear, aliyaMonth, year);
   // Update the HTML element with the name 'aliyaTaxCredits' with the calculated value
-  document.getElementById("aliyaTaxCredits").innerHTML = aliyaTaxCredits;
+  document.getElementById("aliyaTaxCredits").innerHTML = aliyaTaxCredits == null ? null : aliyaTaxCredits.toFixed(2);
+  updateTotalTaxCredits();
+}
+
+function updateResidentTaxCredits() {
+	// Update the HTML element with the name 'residentTaxCredits' with the calculated value
+	document.getElementById("residentTaxCredits").innerHTML = residentTaxCredits;
+	updateTotalTaxCredits();
+}
+
+function updateGenderTaxCredits() {
+	// Update the HTML element with the name 'residentTaxCredits' with the calculated value
+	document.getElementById("genderTaxCredits").innerHTML = genderTaxCredits == null ? null : genderTaxCredits.toFixed(2);
+	updateTotalTaxCredits();
+}
+function updateOtherTaxCredits() {
+	// Update the HTML element with the name 'residentTaxCredits' with the calculated value
+	document.getElementById("otherTaxCredits").innerHTML = otherTaxCredits == 0 ? null : otherTaxCredits.toFixed(2);
+	updateTotalTaxCredits();
+}
+function updateTotalTaxCredits() {
+	// Update the HTML element with the name 'totalTaxCredits' with the calculated value
+	totalTaxCredits = residentTaxCredits + genderTaxCredits + aliyaTaxCredits + otherTaxCredits;
+	document.getElementById("totalTaxCredits").innerHTML = totalTaxCredits.toFixed(2);
 }
 
 
-var aliyaYear = parseInt(document.getElementById("aliyaYear").value)
-var aliyaMonth = parseInt(document.getElementById("aliyaMonth").value)
+document.getElementById("year").addEventListener("change", function(e) {
+	year = parseInt(this.value);
+	updateAliyaTaxCredits();
+}, false)
 document.getElementById("aliyaYear").addEventListener("change", function(e) {
-  aliyaYear = parseInt(this.value);
-  updateAliyaTaxCredits();
+  	aliyaYear = this.value == '' ? null : parseInt(this.value);
+	updateAliyaTaxCredits();
 }, false)
 document.getElementById("aliyaMonth").addEventListener("change", function(e) {
-  aliyaYear = parseInt(this.value);
-  updateAliyaTaxCredits();
+	aliyaMonth = this.value == '' ? null : parseInt(this.value);
+	updateAliyaTaxCredits();
 }, false)
+document.getElementById("resident").addEventListener("change", function(e) {
+	residentTaxCredits = this.checked ? TAX_CREDITS_RESIDENT : null;
+	updateResidentTaxCredits();
+  }, false)
+document.getElementById("woman").addEventListener("change", function(e) {
+	genderTaxCredits = this.checked ? TAX_CREDITS_WOMAN : null;
+	updateGenderTaxCredits();
+  }, false)
+document.getElementById("taxCreditsSingle").addEventListener("keyup", function(e) {
+	otherTaxCredits = parseFloat(this.value) || 0;
+	updateOtherTaxCredits();
+  }, false)
+  document.getElementById("taxCreditsSingle").addEventListener("mouseup", function(e) {
+	otherTaxCredits = parseFloat(this.value) || 0;
+	updateOtherTaxCredits();
+  }, false)
+
+var aliyaYear = null;
+var aliyaMonth = null;
+var aliyaTaxCredits = null;
+var residentTaxCredits = TAX_CREDITS_RESIDENT;
+var genderTaxCredits = null;
+var otherTaxCredits = 0;
+var totalTaxCredits = TAX_CREDITS_RESIDENT;
 
 // Initial update when the page loads
-updateAliyaTaxCredits();
+updateResidentTaxCredits();
+updateTotalTaxCredits();
 
 document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION[year];
 document.getElementById("maxCharityProportionOfGross").innerHTML = 100*MAX_CHARITY_PROPORTION_OF_GROSS;
@@ -238,17 +291,13 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     const gross = sumElements(document.getElementsByClassName('gross'));
     const taxPaid = sumElements(document.getElementsByClassName('taxPaid'));
     const employeePension = sumElements(document.getElementsByClassName('employeePension'));
-    const insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
-
-
-    const taxCredits = sumElements(document.getElementsByClassName('taxCreditsMonthly')) + 
-								MONTHS_IN_YEAR*(parseFloat(document.getElementById('taxCreditsSingle').value) || 0);
+    //const insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
     const donations = sumElements(document.getElementsByClassName('donation'));
 
     // derived variables
-    const taxCreditsRelief = taxCredits * TAX_CREDIT_VALUE[year];
+    const taxCreditsRelief = MONTHS_IN_YEAR * totalTaxCredits * TAX_CREDIT_VALUE[year];
     const charitableDonationsRelief = calculateCharitableDonationsRelief(donations, gross);
-    const pensionRelief = calculatePensionRelief(employeePension, insuredIncome);
+    const pensionRelief = calculatePensionRelief(employeePension, gross); // use gross instead of actual insured income (field 244), to make calculator simpler
 
     document.getElementById('taxCreditsRelief').innerHTML = taxCreditsRelief.toFixed(2);
     document.getElementById('charitableDonationsRelief').innerHTML = charitableDonationsRelief.toFixed(2);
