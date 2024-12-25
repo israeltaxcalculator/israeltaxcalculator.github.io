@@ -102,6 +102,72 @@ const PENSION_RELIEF_RATE = 0.35 // get income tax reduction of 35% of contribut
 const TAX_CREDITS_RESIDENT = 2.25;
 const TAX_CREDITS_WOMAN = 0.5;
 
+const taxCreditsChildrenPre2022 = {
+  0:  {'mother': 1.5, 'father': 1.5},  // Birth year
+  1:  {'mother': 2.5, 'father': 2.5},  // Turning 1
+  2:  {'mother': 2.5, 'father': 2.5},  // Turning 2
+  3:  {'mother': 2.5, 'father': 1.5},  // Turning 3
+  4:  {'mother': 2.5, 'father': 0},    // Turning 4
+  5:  {'mother': 2.5, 'father': 0},    // Turning 5
+  6:  {'mother': 1,   'father': 0},    // Turning 6
+  7:  {'mother': 1,   'father': 0},    // Turning 7
+  8:  {'mother': 1,   'father': 0},    // Turning 8
+  9:  {'mother': 1,   'father': 0},    // Turning 9
+  10: {'mother': 1,   'father': 0},    // Turning 10
+  11: {'mother': 1,   'father': 0},    // Turning 11
+  12: {'mother': 1,   'father': 0},    // Turning 12
+  13: {'mother': 1,   'father': 0},    // Turning 13
+  14: {'mother': 1,   'father': 0},    // Turning 14
+  15: {'mother': 1,   'father': 0},    // Turning 15
+  16: {'mother': 1,   'father': 0},    // Turning 16
+  17: {'mother': 1,   'father': 0},    // Turning 17
+  18: {'mother': 0.5, 'father': 0}     // Turning 18
+};
+
+const taxCreditsChildren2022to2023 = {
+  0:  {'mother': 1.5, 'father': 1.5},  // Birth year
+  1:  {'mother': 2.5, 'father': 2.5},  // Turning 1
+  2:  {'mother': 2.5, 'father': 2.5},  // Turning 2
+  3:  {'mother': 2.5, 'father': 2.5},  // Turning 3
+  4:  {'mother': 2.5, 'father': 2.5},  // Turning 4
+  5:  {'mother': 2.5, 'father': 2.5},  // Turning 5
+  6:  {'mother': 2,   'father': 1},    // Turning 6
+  7:  {'mother': 2,   'father': 1},    // Turning 7
+  8:  {'mother': 2,   'father': 1},    // Turning 8
+  9:  {'mother': 2,   'father': 1},    // Turning 9
+  10: {'mother': 2,   'father': 1},    // Turning 10
+  11: {'mother': 2,   'father': 1},    // Turning 11
+  12: {'mother': 2,   'father': 1},    // Turning 12
+  13: {'mother': 1,   'father': 0},    // Turning 13
+  14: {'mother': 1,   'father': 0},    // Turning 14
+  15: {'mother': 1,   'father': 0},    // Turning 15
+  16: {'mother': 1,   'father': 0},    // Turning 16
+  17: {'mother': 1,   'father': 0},    // Turning 17
+  18: {'mother': 0.5, 'father': 0}     // Turning 18
+};
+
+const taxCreditsChildren2024onwards = {
+  0:  {'mother': 2.5, 'father': 2.5},  // Birth year
+  1:  {'mother': 4.5, 'father': 4.5},  // Turning 1
+  2:  {'mother': 4.5, 'father': 4.5},  // Turning 2
+  3:  {'mother': 3.5, 'father': 3.5},  // Turning 3
+  4:  {'mother': 2.5, 'father': 2.5},  // Turning 4
+  5:  {'mother': 2.5, 'father': 2.5},  // Turning 5
+  6:  {'mother': 2,   'father': 1},    // Turning 6
+  7:  {'mother': 2,   'father': 1},    // Turning 7
+  8:  {'mother': 2,   'father': 1},    // Turning 8
+  9:  {'mother': 2,   'father': 1},    // Turning 9
+  10: {'mother': 2,   'father': 1},    // Turning 10
+  11: {'mother': 2,   'father': 1},    // Turning 11
+  12: {'mother': 2,   'father': 1},    // Turning 12
+  13: {'mother': 2,   'father': 1},    // Turning 13
+  14: {'mother': 2,   'father': 1},    // Turning 14
+  15: {'mother': 2,   'father': 1},    // Turning 15
+  16: {'mother': 2,   'father': 1},    // Turning 16
+  17: {'mother': 2,   'father': 1},    // Turning 17
+  18: {'mother': 0.5, 'father': 0}     // Turning 18
+};
+
 const sumElements = collection => [...collection].reduce((sum, item) => sum + (parseFloat(item.value) || 0), 0);
 
 const calculateTaxCreditsFromEvent = (eventYear, eventMonth, taxYear, creditsPerMonth) => {
