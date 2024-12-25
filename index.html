@@ -237,8 +237,14 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
               <td><span id="aliyaTaxCredits"></span></td>
             </tr>
             <tr>
-              <td>Children ילדים</td>
-              <td>
+              <td colspan="2">
+                <table id="childrenSummary">
+                  <tr>
+                    <th>Children</th>
+                    <th>Who receives child benefits?*</th>
+                  </tr>
+                  <tr>
+                    <td>
                 <select class="yearOfBirth" class="pretty_button pretty_button_regular">
                   <option value="" selected>year of birth</option>
                   <option value="2025">2025</option>
@@ -268,6 +274,18 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                   <option value="2001">2001</option>
                 </select>
               </td>
+              <td>
+                <select class="childBeneficiary" class="pretty_button pretty_button_regular">
+                  <option value="mother" selected>Me</option>
+                  <option value="father">My spouse / partner</option>
+                </select>
+              </td>
+          </table>
+              
+              <input id="add_child" type="button" value="+" class="pretty_button pretty_button_regular">
+              <input id="rmv_child" type="button" value="-" class="pretty_button pretty_button_regular">
+              </td>
+            </tr>
               <td><span id="childTaxCredits"></span></td>
             </tr>
             <tr>
@@ -281,8 +299,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
             </tr>
         </table>
     </div>
-    <p>Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents. You can calculate how many tax credits you are eligible for in a given tax year at one of these links (make sure to select the correct tax year):
-	<br><a href="https://www.hilan.co.il/%D7%9E%D7%A8%D7%9B%D7%96-%D7%99%D7%93%D7%A2/%D7%90%D7%A9%D7%A4%D7%99-%D7%97%D7%99%D7%A9%D7%95%D7%91/%D7%90%D7%A9%D7%A3-%D7%9E%D7%A1-%D7%94%D7%9B%D7%A0%D7%A1%D7%94/" target="_blank">Hilan (Hebrew)</a></p><br>
+    <p>*The mother receives the child benefits by default, but this may be different in the case of <a href="https://www.btl.gov.il/benefits/children/Pages/%d7%9c%d7%9e%d7%99%20%d7%9e%d7%a9%d7%95%d7%9c%d7%9e%d7%aa%20%d7%94%d7%a7%d7%a6%d7%91%d7%94.aspx" target="_blank">divorced parents</a>, <a href="https://www.btl.gov.il/benefits/children/Pages/%d7%9c%d7%9e%d7%99%20%d7%9e%d7%a9%d7%95%d7%9c%d7%9e%d7%aa%20%d7%94%d7%a7%d7%a6%d7%91%d7%94.aspx" target="_blank">separated parents</a>, and <a href="https://www.kolzchut.org.il/he/%D7%A7%D7%A6%D7%91%D7%AA_%D7%99%D7%9C%D7%93%D7%99%D7%9D_%D7%9C%D7%94%D7%95%D7%A8%D7%99%D7%9D_%D7%9E%D7%90%D7%95%D7%AA%D7%95_%D7%9E%D7%99%D7%9F" target="_blank">same-sex couples.</a></p>
+	<br></p><br>
     <div>
         <h3>5. Charitable Donations תרומות למוסדות ציבוריים</h3>
         <div> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under
