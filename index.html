@@ -188,22 +188,79 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
         <!-- Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()"> -->
         <table id="tax_credits_table" style="text-align:center">
             <tr>
-              <th colspan="2">Reason</th>
-              <th>Number of tax credits<br>מספר נקודות זיכוי</th>
+              <th colspan="3">Reason</th>
+              <th>Tax credits<br>נקודות זיכוי</th>
             </tr>
             <tr>
               <td>Resident תושב</td>
-              <td><input type="checkbox" id="resident" checked></td>
+              <td colspan="2"><input type="checkbox" id="resident" checked></td>
               <td><span id="residentTaxCredits"></span></td>
             </tr>
             <tr>
               <td>Woman אישה</td>
-              <td><input type="checkbox" id="woman"></td>
+              <td colspan="2"><input type="checkbox" id="woman"></td>
               <td><span id="genderTaxCredits"></span></td>
             </tr>
             <tr>
-              <td>Date of aliyah תאריך עלייה</td>
+              <td id="childrenTitleCol" rowspan="3">Children ילדים</td>
+              <td>Birth</td>
+              <td>Child benefits go to <div class="tooltip tooltip-top-wide">ℹ️
+                <span class="tooltiptext tooltiptext-top-wide">By default the mother receives the child benefits, but this may be different in the case of 
+      <a href="https://www.btl.gov.il/benefits/children/Pages/%d7%9c%d7%9e%d7%99%20%d7%9e%d7%a9%d7%95%d7%9c%d7%9e%d7%aa%20%d7%94%d7%a7%d7%a6%d7%91%d7%94.aspx" target="_blank">divorced parents</a>, 
+      <a href="https://www.btl.gov.il/benefits/children/Pages/%d7%9c%d7%9e%d7%99%20%d7%9e%d7%a9%d7%95%d7%9c%d7%9e%d7%aa%20%d7%94%d7%a7%d7%a6%d7%91%d7%94.aspx" target="_blank">separated parents</a>, 
+      and <a href="https://www.kolzchut.org.il/he/%D7%A7%D7%A6%D7%91%D7%AA_%D7%99%D7%9C%D7%93%D7%99%D7%9D_%D7%9C%D7%94%D7%95%D7%A8%D7%99%D7%9D_%D7%9E%D7%90%D7%95%D7%AA%D7%95_%D7%9E%D7%99%D7%9F" target="_blank">same-sex couples.</a></span>
+              </div></td>
+              <td></td>
+            </tr>
+            <tr class="singleChildRow">
               <td>
+                <select id="yearOfBirthChild1" class="yearOfBirth pretty_button pretty_button_regular">
+                  <option value="" selected>year</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                  <option value="2014">2014</option>
+                  <option value="2013">2013</option>
+                  <option value="2012">2012</option>
+                  <option value="2011">2011</option>
+                  <option value="2010">2010</option>
+                  <option value="2009">2009</option>
+                  <option value="2008">2008</option>
+                  <option value="2007">2007</option>
+                  <option value="2006">2006</option>
+                  <option value="2005">2005</option>
+                  <option value="2004">2004</option>
+                  <option value="2003">2003</option>
+                  <option value="2002">2002</option>
+                  <option value="2001">2001</option>
+                </select>
+              </td>
+              <td style="text-align: left;">
+                <input type="radio" id="motherChild1" name="benefitsRecipientChild1" value="mother" class="mother">
+                <label for="motherChild1">Me</label><br>
+                <input type="radio" id="fatherChild1" name="benefitsRecipientChild1" value="father", class="father">
+                <label for="fatherChild1">Other parent</label><br>
+              </td>
+              <td><span class="childTaxCredits"></span></td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align:left;">
+                <input id="add_child" type="button" value="+" class="pretty_button pretty_button_regular">
+                <input id="rmv_child" type="button" value="-" class="pretty_button pretty_button_regular">
+              </td>
+              <td></td>
+            </tr>
+                        <tr>
+              <td>Aliyah עלייה</td>
+              <td colspan="2">
                 <select id="aliyaYear" class="pretty_button pretty_button_regular">
                   <option value="" selected>year</option>
                   <option value="2025">2025</option>
@@ -233,22 +290,141 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                   <option value="11">11</option>
                   <option value="12">12</option>
                   </select>
+                  <div class="tooltip tooltip-top-regular">ℹ️
+                  <span class="tooltiptext tooltiptext-top-regular">The date on your <i>Te'udat Oleh</i>.</span>
+                  </div>
               </td>
               <td><span id="aliyaTaxCredits"></span></td>
             </tr>
             <tr>
-                <td>Other tax credits</td>
-                <td><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.01" style="text-align:center; width:4em"></td>
+              <td rowspan="2">Army / national service<br>שירות צבאי / לאומי</td>
+              <td>Discharge<div class="tooltip tooltip-top-regular">ℹ️
+                <span class="tooltiptext tooltiptext-top-regular">This is specifically the תאריך שחרור from שירות סדיר.</span>
+                </div></td>
+              <td>Service length</td>
+              <td rowspan="2"><span id="armyTaxCredits"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <select id="armyReleaseYear" class="pretty_button pretty_button_regular">
+                  <option value="" selected>year</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                </select><br>
+                <select id="armyReleaseMonth" class="pretty_button pretty_button_regular">
+                  <option value="" selected>month</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  </select>
+              </td>
+              <td>
+                <select id="armyService" class="pretty_button pretty_button_regular">
+                  <option value="under12months" selected>1-11 months</option>
+                  <option value="12to21months">12-21 months</option>
+                  <option value="22months">22 months</option>
+                  <option value="23months">23 months</option>
+                  <option value="24months">24+ months</option>
+                </select><br>
+                  &nbsp;&nbsp;<input type="checkbox" id="sherutLeumi"> <label for="sherutLeumi"><i>Sherut Leumi</i></label>
+              </td>
+              <!-- <td><span id="armyTaxCredits"></span></td> -->
+            </tr>
+            <tr>
+                <td rowspan="3">Academic degree<br>תואר אקדמי<br>
+                  <div class="tooltip tooltip-right">ℹ️
+                    <span class="tooltiptext tooltiptext-right">Only for Israeli degrees, from a <a href="https://che.org.il/institutions/" target="_blank">recognised institution.</a></span>
+                    </div></td>
+                <td>Graduation</td>
+                <td>Degree</td>
+                <td></td>
+            </tr>
+            <tr>
+              <td>
+                <select id="graduationYearDegree1" class="pretty_button pretty_button_regular">
+                <option value="" selected>year</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+              </td>
+              <td>
+                <select id="degree1" class="pretty_button pretty_button_regular">
+                  <option value="bachelors" selected>Bachelor's</option>
+                  <option value="masters">Master's</option>
+                  <option value="phd">PhD (direct)</option>
+                  <option value="medicine">Medicine</option>
+                  <option value="dentistry">Dentistry</option>
+                  <option value="vocational">Vocational</option>
+                  <option value="teaching">Teaching</option>
+                </select>
+              </td>
+              <td><span id="degree1TaxCredits"></span></td>
+            </tr>
+            <tr>
+              <td>
+                <select id="graduationYearDegree2" class="pretty_button pretty_button_regular">
+                <option value="" selected>year</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+              </td>
+              <td>
+                <select id="degree2" class="pretty_button pretty_button_regular">
+                  <option value="bachelors">Bachelor's</option>
+                  <option value="masters" selected>Master's</option>
+                  <option value="phd">PhD (direct)</option>
+                  <option value="medicine">Medicine</option>
+                  <option value="dentistry">Dentistry</option>
+                  <option value="vocational">Vocational</option>
+                  <option value="teaching">Teaching</option>
+                </select>
+              </td>
+              <td><span id="degree2TaxCredits"></span></td>
+            </tr>
+            <tr>
+                <td>Other tax credits <div class="tooltip tooltip-right">ℹ️
+                  <span class="tooltiptext tooltiptext-right">The main cases have all been covered, but there are several less common 
+                    <a href="https://www.kolzchut.org.il/he/%D7%A0%D7%A7%D7%95%D7%93%D7%95%D7%AA_%D7%96%D7%99%D7%9B%D7%95%D7%99_%D7%9E%D7%9E%D7%A1_%D7%94%D7%9B%D7%A0%D7%A1%D7%94" target="_blank">reasons</a> 
+                    you can get tax credits. Only fill in this field if you know of one that applies to you.</span></td>
+                <td colspan="2"><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.5" style="text-align:center; width:4em"></td>
                 <td><span id="otherTaxCredits"></span></td>
             </tr>
             <tr>
-              <td colspan="2">Total</td>
+              <td colspan="3">Total</td>
               <td><span id="totalTaxCredits"></span></td>
             </tr>
         </table>
     </div>
-    <p>Default is 2.25 for male Israeli residents, and 2.75 for female Israeli residents. You can calculate how many tax credits you are eligible for in a given tax year at one of these links (make sure to select the correct tax year):
-	<br><a href="https://www.hilan.co.il/%D7%9E%D7%A8%D7%9B%D7%96-%D7%99%D7%93%D7%A2/%D7%90%D7%A9%D7%A4%D7%99-%D7%97%D7%99%D7%A9%D7%95%D7%91/%D7%90%D7%A9%D7%A3-%D7%9E%D7%A1-%D7%94%D7%9B%D7%A0%D7%A1%D7%94/" target="_blank">Hilan (Hebrew)</a></p><br>
+	<br>
     <div>
         <h3>5. Charitable Donations תרומות למוסדות ציבוריים</h3>
         <div> Note: total charitable donations must be over <span id="minEligibleDonation"></span>&#8362; and under

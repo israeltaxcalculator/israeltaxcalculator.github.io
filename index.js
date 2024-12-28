@@ -102,7 +102,7 @@ const PENSION_RELIEF_RATE = 0.35 // get income tax reduction of 35% of contribut
 const TAX_CREDITS_RESIDENT = 2.25;
 const TAX_CREDITS_WOMAN = 0.5;
 
-const taxCreditsChildrenPre2022 = {
+const TAX_CREDITS_CHILDREN_PRE_2022 = {
   0:  {'mother': 1.5, 'father': 1.5},  // Birth year
   1:  {'mother': 2.5, 'father': 2.5},  // Turning 1
   2:  {'mother': 2.5, 'father': 2.5},  // Turning 2
@@ -124,7 +124,7 @@ const taxCreditsChildrenPre2022 = {
   18: {'mother': 0.5, 'father': 0}     // Turning 18
 };
 
-const taxCreditsChildren2022to2023 = {
+const TAX_CREDITS_CHILDREN_2022_2023 = {
   0:  {'mother': 1.5, 'father': 1.5},  // Birth year
   1:  {'mother': 2.5, 'father': 2.5},  // Turning 1
   2:  {'mother': 2.5, 'father': 2.5},  // Turning 2
@@ -146,7 +146,7 @@ const taxCreditsChildren2022to2023 = {
   18: {'mother': 0.5, 'father': 0}     // Turning 18
 };
 
-const taxCreditsChildren2024onwards = {
+const TAX_CREDITS_CHILDREN_2024_ONWARDS = {
   0:  {'mother': 2.5, 'father': 2.5},  // Birth year
   1:  {'mother': 4.5, 'father': 4.5},  // Turning 1
   2:  {'mother': 4.5, 'father': 4.5},  // Turning 2
@@ -189,6 +189,32 @@ const calculateTaxCreditsFromEvent = (eventYear, eventMonth, taxYear, creditsPer
 	return credits / MONTHS_IN_YEAR;
 }
 
+const calculateChildTaxCredits = (childBirthYear, taxYear, isChildBenefitReceiver) => {
+  if (childBirthYear == null || taxYear == null || isChildBenefitReceiver == null) {
+    return null;
+  }
+  birthday = taxYear - childBirthYear;
+  if (birthday < 0 || birthday > 18) {
+    return 0;
+  }
+  if (taxYear < 2022) {
+    taxCreditsChildren = TAX_CREDITS_CHILDREN_PRE_2022[birthday];
+  }
+  else if (taxYear < 2024) {
+    taxCreditsChildren = TAX_CREDITS_CHILDREN_2022_2023[birthday];
+  }
+  else {
+    taxCreditsChildren = TAX_CREDITS_CHILDREN_2024_ONWARDS[birthday];
+  }
+  if (isChildBenefitReceiver) {
+    return taxCreditsChildren['mother'];
+  }
+  else {
+    return taxCreditsChildren['father'];
+  }
+}
+
+
 const calculateAliyaTaxCredits = (yearOfAliya, monthOfAliya, taxYear) => {
   if (yearOfAliya == null || monthOfAliya == null || taxYear == null) {
     return null;
@@ -222,6 +248,70 @@ const calculateAliyaTaxCredits = (yearOfAliya, monthOfAliya, taxYear) => {
 	} else {
     return calculateTaxCreditsFromEvent(yearOfAliya, monthOfAliya, taxYear, creditsPerMonthFrom2022);
 	}
+}
+
+const calculateArmyTaxCredits = (armyService, yearOfRelease, monthOfRelease, taxYear, isFemale, isNationalService) => {
+  if (yearOfRelease == null || monthOfRelease == null || taxYear == null) {
+    return null;
+  }
+  if (armyService == 'under12months') {
+    return 0;
+  }
+  var nofCredits = 1;
+  if ((armyService == '24months') || 
+      (armyService == '23months' && !isNationalService) || 
+      (armyService == '22months' && !isNationalService && isFemale)) {
+    nofCredits = 2
+  }
+  creditsPerMonth = [
+    {'monthsSinceEvent':  0, 'credits': 0}, // tax credits start month after the month of release from regular service
+    {'monthsSinceEvent':  1, 'credits': nofCredits}, 
+    {'monthsSinceEvent': 37, 'credits': 0}, 
+  ]
+  return calculateTaxCreditsFromEvent(yearOfRelease, monthOfRelease, taxYear, creditsPerMonth);
+}
+
+const calculateDegreeTaxCredits = (graduationYear, degree, taxYear) => {
+  if (graduationYear == null) {
+    return null;
+  }
+  [
+    "bachelors", // 1pt in year after graduation year, or following year. 2023 onwards: 1pt each of 3 years after graduation year
+    "masters", // 0.5pt in year after graduation year, or following year. 2023 onwards: 0.5pt each of 2 years after graduation year
+    "phd", // 0.5pt in year after graduation year, or following year. 2023 onwards: 0.5pt each of 2 years after graduation year
+    "medicine", // 1pt in year after graduation year, or following year; then 0.5pt the next year. 2023 onwards: 1pt each of 3 years after graduation year, then 0.5pt the next two years.
+    "dentistry", // as medicine
+    "vocational", // 1pt in year after graduation year, or following year. 2019 onwards: 1pt each of 3 years after graduation year
+    "teaching" // 1pt in year after graduation year, or following year
+    // cannot receive both teaching/vocational _and_ bachelors/masters/phd credits
+  ]
+  taxCreditsDegreeOld = {
+    0: {'bachelors': 0, 'masters': 0, 'phd': 0, 'medicine': 0, 'dentistry': 0, 'vocational': 0, 'teaching': 0},
+    1: {'bachelors': 1, 'masters': 0.5, 'phd': 0.5, 'medicine': 1, 'dentistry': 1, 'vocational': 1, 'teaching': 1},
+    2: {'bachelors': 0, 'masters': 0, 'phd': 0, 'medicine': 0.5, 'dentistry': 0.5, 'vocational': 0, 'teaching': 0},
+  }
+  taxCreditsDegreeNew = {
+    0: {'bachelors': 0, 'masters': 0, 'phd': 0, 'medicine': 0, 'dentistry': 0, 'vocational': 0, 'teaching': 0},
+    1: {'bachelors': 1, 'masters': 0.5, 'phd': 0.5, 'medicine': 1, 'dentistry': 1, 'vocational': 1, 'teaching': 1},
+    2: {'bachelors': 1, 'masters': 0.5, 'phd': 0.5, 'medicine': 1, 'dentistry': 1, 'vocational': 1, 'teaching': 0},
+    3: {'bachelors': 1, 'masters': 0, 'phd': 0, 'medicine': 1, 'dentistry': 1, 'vocational': 1, 'teaching': 0},
+    4: {'bachelors': 0, 'masters': 0, 'phd': 0, 'medicine': 0.5, 'dentistry': 0.5, 'vocational': 0, 'teaching': 0},
+    5: {'bachelors': 0, 'masters': 0, 'phd': 0, 'medicine': 0.5, 'dentistry': 0.5, 'vocational': 0, 'teaching': 0},
+  }
+  // Old calculation
+  yearsSinceGraduation = taxYear - graduationYear
+  if (graduationYear < 2023 || 
+      graduationYear < 2019 && degree == 'vocational' ||
+      degree == 'teaching') {
+        if (yearsSinceGraduation in taxCreditsDegreeOld) {
+          return taxCreditsDegreeOld[yearsSinceGraduation][degree];
+        } else {return 0;}
+      }
+  else { // New calculation
+    if (yearsSinceGraduation in taxCreditsDegreeNew) {
+      return taxCreditsDegreeNew[yearsSinceGraduation][degree];
+    } else {return 0;}
+  }
 }
 
 const calculateTaxBrackets = gross => {
@@ -271,81 +361,236 @@ const removeRow = tableId => {
     }
 };
 
+const addChildRow = (maxRows = 12) => {
+  let table = document.getElementById("tax_credits_table");
+  let childrenRows = document.getElementsByClassName("singleChildRow");
+  if (childrenRows.length < maxRows) {
+      rowToAdd = childrenRows[childrenRows.length - 1];
+      const newRow = table.insertRow(rowToAdd.rowIndex + 1);
+      newRow.className = "singleChildRow";
+      newRow.innerHTML = rowToAdd.innerHTML;
+      document.getElementById("childrenTitleCol").rowSpan += 1;
+
+      // Update the `id` attribute of the year of birth
+      const yearOfBirth = newRow.getElementsByClassName('yearOfBirth')[0];
+      yearOfBirth.id = `yearOfBirthChild${childrenRows.length}`; // Unique ID for the year of birth input
+      // add the event listener for the new row
+      yearOfBirth.addEventListener("change", function(e) {
+        updateTaxCredits();
+      }, false)
+
+      // Update the `name` attributes of radio buttons in the new row
+      const radioButtons = newRow.querySelectorAll('input[type="radio"]');
+      radioButtons.forEach((radio) => {
+          radio.name = `benefitsRecipientChild${childrenRows.length}`; // Unique name
+          radio.id = `${radio.value}Child${childrenRows.length}`; // Unique ID for the radio button
+
+          // Add event listener to the radio buttons
+          radio.addEventListener("change", function(e) {
+            updateTaxCredits();
+          }, false)
+      });
+      // Set the default child benefits recipient to be the same as previous row
+      // note: childrenRows has now dynamically increased in length. Take the second-to-last row: (childrenRows.length - 2)
+      const radioButtonsLastRow = childrenRows[childrenRows.length - 2].querySelectorAll('input[type="radio"]');
+
+      radioButtons[0].checked = radioButtonsLastRow[0].checked;
+      radioButtons[1].checked = radioButtonsLastRow[1].checked;
+
+
+      // Update the corresponding labels to match the new IDs
+      const labels = newRow.querySelectorAll('label');
+      labels.forEach((label, index) => {
+          const radio = radioButtons[index];
+          label.htmlFor = radio.id;
+      });
+
+      // Delete the output tax credits for the new child (not yet calculated, since the child's birth year is not yet entered)
+      newRow.getElementsByClassName('childTaxCredits')[0].innerHTML = null;
+
+      
+      document.getElementById('yearOfBirthChild1').addEventListener("change", function(e) {
+        updateTaxCredits();
+      }, false)
+      document.getElementById('motherChild1').addEventListener("change", function(e) {
+        updateTaxCredits();
+      }, false)
+      // setDefaultChildBenefitsRecipient(document.getElementById("woman").checked)
+  }
+};
+
+const removeChildRow = tableId => {
+  let table = document.getElementById("tax_credits_table");
+  let childrenRows = document.getElementsByClassName("singleChildRow");
+  if (childrenRows.length > 1) {
+    rowToDelete = childrenRows[childrenRows.length - 1];
+      table.deleteRow(rowToDelete.rowIndex);
+      document.getElementById("childrenTitleCol").rowSpan -= 1;
+      updateTaxCredits();
+  }
+};
 
 var year = parseInt(document.getElementById("year").value)
 document.getElementById("year").addEventListener("change", function(e) {year = parseInt(this.value)}, false)
 
-function updateAliyaTaxCredits() {
-  // Calculate the tax credits based on the aliyaYear, aliyaMonth, and the current year
-  aliyaTaxCredits = calculateAliyaTaxCredits(aliyaYear, aliyaMonth, year);
-  // Update the HTML element with the name 'aliyaTaxCredits' with the calculated value
+function setDefaultChildBenefitsRecipient(isMother) {
+  // Since, in most cases, the mother is the child benefit receiver, we will check the relevant radio button (mother / father)
+  // for each child, to save the user time.
+  // Only do this in cases where birth year not yet entered (which implies they intentionally filled in the line about the child)
+  var motherElements = document.getElementsByClassName('mother')
+  var fatherElements = document.getElementsByClassName('father')
+  var childBirthYearElements = document.getElementsByClassName('yearOfBirth')
+  for (let i = 0; i < motherElements.length; i++) {
+    if (childBirthYearElements[i].value == '') {
+      motherElements[i].checked = isMother;
+      fatherElements[i].checked = !isMother;
+    }
+  }
+}
+
+function updateTaxCredits() {
+  // Calculate the aliya tax credits based on the aliyaYear, aliyaMonth, and the current year
+  var aliyaTaxCredits = calculateAliyaTaxCredits(aliyaYear, aliyaMonth, year);
+
+  // Calculate the army service tax credits
+  var armyTaxCredits = calculateArmyTaxCredits(armyService, armyReleaseYear, armyReleaseMonth, year, genderTaxCredits > 0, isNationalService)
+
+  // calculate the degree tax credits
+  var degreeTaxCredits1 = calculateDegreeTaxCredits(graduationYearDegree1, degree1, year);
+  var degreeTaxCredits2 = calculateDegreeTaxCredits(graduationYearDegree2, degree2, year);
+  
+  // Calculate the child tax credits
+  // gather all the elements that are needed to calculate the child tax credits (each is an array of length: number of children)
+  var childBirthYearElements = document.getElementsByClassName('yearOfBirth')
+  var motherElements = document.getElementsByClassName('mother')
+  var fatherElements = document.getElementsByClassName('father')
+  var childTaxCreditsElements = document.getElementsByClassName("childTaxCredits")
+  // loop through the arrays and calculate the child tax credits for each child
+  var totalChildTaxCredits = 0;
+  for (let i = 0; i < childTaxCreditsElements.length; i++) {
+    var childBirthYear = childBirthYearElements[i].value == '' ? null : parseInt(childBirthYearElements[i].value);
+    if (motherElements[i].checked) {
+      isChildBenefitReceiver = true;
+    } else if (fatherElements[i].checked) {
+      isChildBenefitReceiver = false;
+    } else {
+      isChildBenefitReceiver = null;
+    }
+    var childTaxCredits = calculateChildTaxCredits(childBirthYear, year, isChildBenefitReceiver);
+    totalChildTaxCredits += childTaxCredits;
+    // Update the HTML element in the tax credits table so that user can see the number of credits calculated for each child
+    childTaxCreditsElements[i].innerHTML = childTaxCredits == null ? null : childTaxCredits.toFixed(2);
+  };
+
+  totalTaxCredits = residentTaxCredits + genderTaxCredits + aliyaTaxCredits + armyTaxCredits + totalChildTaxCredits + 
+                    degreeTaxCredits1 + degreeTaxCredits2 + otherTaxCredits;
+
+  // Update the HTML elements in the tax credits table so that user can see the number of credits calculated per type and the total
   document.getElementById("aliyaTaxCredits").innerHTML = aliyaTaxCredits == null ? null : aliyaTaxCredits.toFixed(2);
-  updateTotalTaxCredits();
-}
-
-function updateResidentTaxCredits() {
-	// Update the HTML element with the name 'residentTaxCredits' with the calculated value
+  document.getElementById("armyTaxCredits").innerHTML = armyTaxCredits == null ? null : armyTaxCredits.toFixed(2);
 	document.getElementById("residentTaxCredits").innerHTML = residentTaxCredits;
-	updateTotalTaxCredits();
-}
-
-function updateGenderTaxCredits() {
-	// Update the HTML element with the name 'residentTaxCredits' with the calculated value
 	document.getElementById("genderTaxCredits").innerHTML = genderTaxCredits == null ? null : genderTaxCredits.toFixed(2);
-	updateTotalTaxCredits();
+  document.getElementById("degree1TaxCredits").innerHTML = degreeTaxCredits1 == null ? null : degreeTaxCredits1.toFixed(2);
+  document.getElementById("degree2TaxCredits").innerHTML = degreeTaxCredits2 == null ? null : degreeTaxCredits2.toFixed(2);
+  document.getElementById("otherTaxCredits").innerHTML = otherTaxCredits == 0 ? null : otherTaxCredits.toFixed(2);
+  document.getElementById("totalTaxCredits").innerHTML = totalTaxCredits.toFixed(2);
 }
-function updateOtherTaxCredits() {
-	// Update the HTML element with the name 'residentTaxCredits' with the calculated value
-	document.getElementById("otherTaxCredits").innerHTML = otherTaxCredits == 0 ? null : otherTaxCredits.toFixed(2);
-	updateTotalTaxCredits();
-}
-function updateTotalTaxCredits() {
-	// Update the HTML element with the name 'totalTaxCredits' with the calculated value
-	totalTaxCredits = residentTaxCredits + genderTaxCredits + aliyaTaxCredits + otherTaxCredits;
-	document.getElementById("totalTaxCredits").innerHTML = totalTaxCredits.toFixed(2);
-}
-
 
 document.getElementById("year").addEventListener("change", function(e) {
 	year = parseInt(this.value);
-	updateAliyaTaxCredits();
+	updateTaxCredits();
 }, false)
 document.getElementById("aliyaYear").addEventListener("change", function(e) {
-  	aliyaYear = this.value == '' ? null : parseInt(this.value);
-	updateAliyaTaxCredits();
+  	aliyaYear = parseInt(this.value) || null;
+    updateTaxCredits();
 }, false)
 document.getElementById("aliyaMonth").addEventListener("change", function(e) {
-	aliyaMonth = this.value == '' ? null : parseInt(this.value);
-	updateAliyaTaxCredits();
+	aliyaMonth = parseInt(this.value) || null;
+	updateTaxCredits();
+}, false)
+document.getElementById("armyReleaseYear").addEventListener("change", function(e) {
+  armyReleaseYear = parseInt(this.value) || null;
+  updateTaxCredits();
+}, false)
+document.getElementById("armyReleaseMonth").addEventListener("change", function(e) {
+  armyReleaseMonth = parseInt(this.value) || null;
+  updateTaxCredits();
+}, false)
+document.getElementById("armyService").addEventListener("change", function(e) {
+  armyService = this.value;
+  updateTaxCredits();
+}, false)
+document.getElementById("sherutLeumi").addEventListener("change", function(e) {
+  isNationalService = this.checked;
+  updateTaxCredits();
 }, false)
 document.getElementById("resident").addEventListener("change", function(e) {
 	residentTaxCredits = this.checked ? TAX_CREDITS_RESIDENT : null;
-	updateResidentTaxCredits();
-  }, false)
+	updateTaxCredits();
+}, false)
 document.getElementById("woman").addEventListener("change", function(e) {
 	genderTaxCredits = this.checked ? TAX_CREDITS_WOMAN : null;
-	updateGenderTaxCredits();
-  }, false)
+  setDefaultChildBenefitsRecipient(this.checked)
+	updateTaxCredits();
+}, false)
 document.getElementById("taxCreditsSingle").addEventListener("keyup", function(e) {
 	otherTaxCredits = parseFloat(this.value) || 0;
-	updateOtherTaxCredits();
-  }, false)
-  document.getElementById("taxCreditsSingle").addEventListener("mouseup", function(e) {
+	updateTaxCredits();
+}, false)
+document.getElementById("taxCreditsSingle").addEventListener("mouseup", function(e) {
 	otherTaxCredits = parseFloat(this.value) || 0;
-	updateOtherTaxCredits();
-  }, false)
+	updateTaxCredits();
+}, false)
+document.getElementById('yearOfBirthChild1').addEventListener("change", function(e) {
+  updateTaxCredits();
+}, false)
+document.getElementById('motherChild1').addEventListener("change", function(e) {
+  updateTaxCredits();
+}, false)
+document.getElementById('fatherChild1').addEventListener("change", function(e) {
+  updateTaxCredits();
+}, false)
+document.getElementById('graduationYearDegree1').addEventListener("change", function(e) {
+  graduationYearDegree1 = parseInt(this.value) || null;
+  updateTaxCredits();
+}, false)
+document.getElementById('graduationYearDegree2').addEventListener("change", function(e) {
+  graduationYearDegree2 = parseInt(this.value) || null;
+  updateTaxCredits();
+}, false)
+document.getElementById('degree1').addEventListener("change", function(e) {
+  degree1 = this.value;
+  updateTaxCredits();
+}, false)
+document.getElementById('degree2').addEventListener("change", function(e) {
+  degree2 = this.value;
+  updateTaxCredits();
+}, false)
 
-var aliyaYear = null;
-var aliyaMonth = null;
-var aliyaTaxCredits = null;
+
+// general
 var residentTaxCredits = TAX_CREDITS_RESIDENT;
 var genderTaxCredits = null;
 var otherTaxCredits = 0;
 var totalTaxCredits = TAX_CREDITS_RESIDENT;
+// aliya
+var aliyaYear = null;
+var aliyaMonth = null;
+// army
+var armyReleaseYear = null;
+var armyReleaseMonth = null;
+var armyService = document.getElementById('armyService').value;
+var isNationalService = false;
+// degree
+var graduationYearDegree1 = null;
+var graduationYearDegree2 = null;
+var degree1 = document.getElementById('degree1').value;
+var degree2 = document.getElementById('degree2').value;
+
 
 // Initial update when the page loads
-updateResidentTaxCredits();
-updateTotalTaxCredits();
+setDefaultChildBenefitsRecipient(false)
+updateTaxCredits();
 
 document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION[year];
 document.getElementById("maxCharityProportionOfGross").innerHTML = 100*MAX_CHARITY_PROPORTION_OF_GROSS;
@@ -389,3 +634,5 @@ document.getElementById('add_employer').onclick = () => addRow("salary_pension")
 document.getElementById('rmv_employer').onclick = () => removeRow("salary_pension");
 document.getElementById('add_institution').onclick = () => addRow("donations");
 document.getElementById('rmv_institution').onclick = () => removeRow('donations');
+document.getElementById('add_child').onclick = () => addChildRow();
+document.getElementById('rmv_child').onclick = () => removeChildRow();
