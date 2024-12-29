@@ -461,7 +461,7 @@ function saveFieldsToUrl() {
   const urlParams = new URLSearchParams();
   
   // Collect all input fields and iterate over them
-  document.querySelectorAll('input').forEach((input) => {
+  document.querySelectorAll('input, select').forEach((input) => {
     // Add input's value to URL parameters using its id as the key
     if (input.id == '') {
       return; // skip elements without an id
@@ -479,10 +479,10 @@ function saveFieldsToUrl() {
     else if ((input.type == 'text' || input.type == 'number') && input.value !== '') {
       urlParams.set(input.id, input.value);
     }
-  });
-  // collect all "select" input fields and iterate over them
-  document.querySelectorAll('select').forEach((select) => {
-    urlParams.set(select.id, select.value);
+    // exclude dropdowns that have default value
+    else if (input.tagName == 'SELECT' && input.value !== input.querySelector('option[selected]').value) {
+      urlParams.set(input.id, input.value);
+    }
   });
 
   urlParams.set('childrenRows', document.getElementsByClassName("singleChildRow").length);
@@ -514,37 +514,26 @@ function regenerateFieldsFromUrl() {
 
   // Do the same process as when generating the URL, but in reverse
   // Collect all input fields and iterate over them
-  document.querySelectorAll('input').forEach((input) => {
+  document.querySelectorAll('input, select').forEach((input) => {
     // Add input's value to URL parameters using its id as the key
-    if (input.id == '') {
-      return; // skip elements without an id
+    if (input.id == '' || !urlParams.has(input.id)) {
+      return; // skip elements without an id or that are not mentioned in the URL query string
     }
     if (input.type === 'radio') {
-      if (urlParams.has(input.id)) {
-        input.checked = true;
-        input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
-      }
+      input.checked = true;
+      input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
+      
     } else if (input.type === 'checkbox') {
       // exclude the folding sections inputs and the advanced tax credits checkbox, already triggered
       if (input.className !== 'toggle' && input.id !== 'advanced_tax_credits_options') {
-        if (urlParams.has(input.id)) {
           input.checked = urlParams.get(input.id) == 'true';
           input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
-        }
       }
     }
-    else if (input.type == 'text' || input.type == 'number') {
-      if (urlParams.has(input.id)) {
-        input.value = urlParams.get(input.id);
-        input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
-        input.dispatchEvent(new Event('keyup')); // Trigger the 'keyup' event manually
-      }
-    }
-  });
-  document.querySelectorAll('select').forEach((select) => {
-    if (urlParams.has(select.id)) {
-      select.value = urlParams.get(select.id);
-      select.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
+    else if (input.type == 'text' || input.type == 'number' || input.tagName == 'SELECT') {
+      input.value = urlParams.get(input.id);
+      input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
+      input.dispatchEvent(new Event('keyup')); // Trigger the 'keyup' event manually
     }
   });
 }
