@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
 	<meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/assets/css/style.css?v=5091f9bca118ddd0a570d1f642c64a1f8365c4d0">
+    <link rel="stylesheet" href="/assets/css/style.css?v=4d353dcecd65371630add47eb6bc640742422c87">
 	<link rel="icon" type="image/x-icon" href="favicon.ico?v1">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161409720-1"></script>
@@ -236,6 +236,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
     </div>
     <h3>4. Tax credits נקודות זיכוי</h3>
     <div>
+        <input id="advanced_tax_credits_options" type='checkbox' onchange="showHideAdvancedTaxCreditOptions()">
+        <label for="advanced_tax_credits_options">Advanced options</label>
         <!-- Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()"> -->
         <table id="tax_credits_table" style="text-align:center">
             <tr>
@@ -347,7 +349,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
               </td>
               <td><span id="aliyaTaxCredits"></span></td>
             </tr>
-            <tr>
+            <tr class="advancedTaxCredits">
               <td rowspan="2">Army / national service<br>שירות צבאי / לאומי</td>
               <td>Discharge<div class="tooltip tooltip-top-regular">ℹ️
                 <span class="tooltiptext tooltiptext-top-regular">This is specifically the תאריך שחרור from שירות סדיר.</span>
@@ -355,9 +357,9 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
               <td>Service length</td>
               <td rowspan="2"><span id="armyTaxCredits"></span></td>
             </tr>
-            <tr>
+            <tr class="advancedTaxCredits">
               <td>
-                <select id="armyReleaseYear" class="pretty_button pretty_button_regular">
+                <select id="armyReleaseYear" class="pretty_button pretty_button_regular advancedTaxCreditsInput">
                   <option value="" selected>year</option>
                   <option value="2025">2025</option>
                   <option value="2024">2024</option>
@@ -370,7 +372,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                   <option value="2017">2017</option>
                   <option value="2016">2016</option>
                 </select><br>
-                <select id="armyReleaseMonth" class="pretty_button pretty_button_regular">
+                <select id="armyReleaseMonth" class="pretty_button pretty_button_regular advancedTaxCreditsInput">
                   <option value="" selected>month</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -398,7 +400,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
               </td>
               <!-- <td><span id="armyTaxCredits"></span></td> -->
             </tr>
-            <tr>
+            <tr class="advancedTaxCredits">
                 <td rowspan="3">Academic degree<br>תואר אקדמי<br>
                   <div class="tooltip tooltip-right">ℹ️
                     <span class="tooltiptext tooltiptext-right">Only for Israeli degrees, from a <a href="https://che.org.il/institutions/" target="_blank">recognised institution.</a></span>
@@ -407,9 +409,9 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                 <td>Degree</td>
                 <td></td>
             </tr>
-            <tr>
+            <tr class="advancedTaxCredits">
               <td>
-                <select id="graduationYearDegree1" class="pretty_button pretty_button_regular">
+                <select id="graduationYearDegree1" class="pretty_button pretty_button_regular advancedTaxCreditsInput">
                 <option value="" selected>year</option>
                 <option value="2025">2025</option>
                 <option value="2024">2024</option>
@@ -434,9 +436,9 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
               </td>
               <td><span id="degree1TaxCredits"></span></td>
             </tr>
-            <tr>
+            <tr class="advancedTaxCredits">
               <td>
-                <select id="graduationYearDegree2" class="pretty_button pretty_button_regular">
+                <select id="graduationYearDegree2" class="pretty_button pretty_button_regular advancedTaxCreditsInput">
                 <option value="" selected>year</option>
                 <option value="2025">2025</option>
                 <option value="2024">2024</option>
@@ -461,12 +463,12 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
               </td>
               <td><span id="degree2TaxCredits"></span></td>
             </tr>
-            <tr>
+            <tr class="advancedTaxCredits">
                 <td>Other tax credits <div class="tooltip tooltip-right">ℹ️
                   <span class="tooltiptext tooltiptext-right">The main cases have all been covered, but there are several less common 
                     <a href="https://www.kolzchut.org.il/he/%D7%A0%D7%A7%D7%95%D7%93%D7%95%D7%AA_%D7%96%D7%99%D7%9B%D7%95%D7%99_%D7%9E%D7%9E%D7%A1_%D7%94%D7%9B%D7%A0%D7%A1%D7%94" target="_blank">reasons</a> 
                     you can get tax credits. Only fill in this field if you know of one that applies to you.</span></td>
-                <td colspan="2"><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.5" style="text-align:center; width:4em"></td>
+                <td colspan="2"><input type="number" id="taxCreditsSingle" min="0" max="20" step="0.01" style="text-align:center; width:4em" class="advancedTaxCreditsInput"></td>
                 <td><span id="otherTaxCredits"></span></td>
             </tr>
             <tr>

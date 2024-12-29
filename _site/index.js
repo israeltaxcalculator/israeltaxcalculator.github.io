@@ -347,6 +347,27 @@ const monthlyAnnualToggle = () => {
     }
 };
 
+const showHideAdvancedTaxCreditOptions = () => {
+  const table = document.getElementById('tax_credits_table');
+  const showAdvancedOptions = document.getElementById('advanced_tax_credits_options').checked
+
+  for (let elem of table.getElementsByClassName('advancedTaxCredits')) {
+        elem.style.display = showAdvancedOptions ? '' : 'none';
+    }
+  
+  // reset all the input fields so tax calculation shows only the value from the simple fields after a hide/show
+  for (let elem of table.getElementsByClassName('advancedTaxCreditsInput')) {
+        elem.value = '';
+  }
+  // update the relevant variables so that they won't contribute to the tax calculation
+  armyReleaseYear = null;
+  armyReleaseMonth = null;
+  graduationYearDegree1 = null;
+  graduationYearDegree2 = null;
+  otherTaxCredits = 0;
+  updateTaxCredits();
+};
+
 const addRow = (tableId, maxRows = 10) => {
     const table = document.getElementById(tableId);
     if (table.rows.length <= maxRows) {
@@ -589,7 +610,8 @@ var degree2 = document.getElementById('degree2').value;
 
 
 // Initial update when the page loads
-setDefaultChildBenefitsRecipient(false)
+showHideAdvancedTaxCreditOptions();
+setDefaultChildBenefitsRecipient(false);
 updateTaxCredits();
 
 document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION[year];
