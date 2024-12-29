@@ -707,13 +707,20 @@ var degree2 = document.getElementById('degree2').value;
 
 // Initial update when the page loads
 updateTaxCredits();
+const urlParams = new URLSearchParams(window.location.search)
+allRequiredFieldsHaveValues = Array.from(document.querySelectorAll('input[required]')).every(input => input.value.trim() !== '')
+
+// reloading the page with URL parameters: trigger the tax refund calculation, scroll to result, and show the "how is this calculated" table
+if ((new URLSearchParams(window.location.search)).size > 0 && allRequiredFieldsHaveValues) {
+  updateTaxRefund();
+  document.getElementById("estimated_tax_refund").scrollIntoView();
+  document.getElementById("how-is-this-calculated").checked = true;
+}
 
 document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION[year];
 document.getElementById("maxCharityProportionOfGross").innerHTML = 100*MAX_CHARITY_PROPORTION_OF_GROSS;
 
-document.querySelector('#annual-tax').onsubmit = (event) => {
-    event.preventDefault();
-
+function updateTaxRefund() {
     // load numbers from the form and add up similar elements
     const salaryIncome = sumElements(document.getElementsByClassName('salaryIncome'));
     const niBenefitsIncome = sumElements(document.getElementsByClassName('niBenefitsIncome'));
@@ -753,12 +760,14 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
 	  document.getElementById('refund').innerHTML = Math.abs(refund).toFixed(2);
     document.getElementById("XowesY").innerHTML = (refund < 0) ? "You owe taxman:" : "Taxman owes you:"
     document.getElementById("refundCell").style.backgroundColor = (refund < 0) ? "#d68794" : "#8accab"
-	
-	  document.getElementById("estimated_tax_refund").scrollIntoView();
-	
-    return false;
 };
 
+document.querySelector('#annual-tax').onsubmit = (event) => {
+  event.preventDefault();
+  updateTaxRefund();
+  document.getElementById("estimated_tax_refund").scrollIntoView();
+  return false;
+};
 
 document.getElementById('add_employer').onclick = () => addRow("salary_pension");
 document.getElementById('rmv_employer').onclick = () => removeRow("salary_pension");
