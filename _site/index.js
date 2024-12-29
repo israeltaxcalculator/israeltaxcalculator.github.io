@@ -621,7 +621,9 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     event.preventDefault();
 
     // load numbers from the form and add up similar elements
-    const gross = sumElements(document.getElementsByClassName('gross'));
+    const salaryIncome = sumElements(document.getElementsByClassName('salaryIncome'));
+    const niBenefitsIncome = sumElements(document.getElementsByClassName('niBenefitsIncome'));
+    const gross = salaryIncome + niBenefitsIncome;
     const taxPaid = sumElements(document.getElementsByClassName('taxPaid'));
     const employeePension = sumElements(document.getElementsByClassName('employeePension'));
     //const insuredIncome = sumElements(document.getElementsByClassName('insuredIncome'));
@@ -632,21 +634,33 @@ document.querySelector('#annual-tax').onsubmit = (event) => {
     const charitableDonationsRelief = calculateCharitableDonationsRelief(donations, gross);
     const pensionRelief = calculatePensionRelief(employeePension, gross); // use gross instead of actual insured income (field 244), to make calculator simpler
 
-    document.getElementById('taxCreditsRelief').innerHTML = taxCreditsRelief.toFixed(2);
-    document.getElementById('charitableDonationsRelief').innerHTML = charitableDonationsRelief.toFixed(2);
-    document.getElementById('pensionRelief').innerHTML = pensionRelief.toFixed(2);
-    document.getElementById('finalTaxPaid').innerHTML = taxPaid.toFixed(2);
-
     const taxOwed = calculateTaxBrackets(gross);
-    document.getElementById('taxBrackets').innerHTML = taxOwed.toFixed(2);
     const finalTaxDue = Math.max(taxOwed - taxCreditsRelief - charitableDonationsRelief - pensionRelief, 0);
-    document.getElementById('finalTaxDue').innerHTML = finalTaxDue.toFixed(2);
     const refund = taxPaid - finalTaxDue;
-	document.getElementById('refund').innerHTML = Math.abs(refund).toFixed(2);
+
+    // fil in the income components in the "how is this calculated" table
+    document.getElementById('totalCharitableDonations').innerHTML = donations.toFixed(2);
+    document.getElementById('totalEmployeePensionDeposits').innerHTML = employeePension.toFixed(2);
+    document.getElementById('totalSalaryIncome').innerHTML = salaryIncome.toFixed(2);
+    document.getElementById('totalNiBenefitsIncome').innerHTML = niBenefitsIncome.toFixed(2);
+
+    // fill in the tax calculation components in the "how is this calculated" table
+    document.getElementById('taxBrackets').innerHTML = taxOwed.toFixed(2);
+    document.getElementById('taxCreditsRelief').innerHTML = (-taxCreditsRelief).toFixed(2);
+    document.getElementById('charitableDonationsRelief').innerHTML = (-charitableDonationsRelief).toFixed(2);
+    document.getElementById('pensionRelief').innerHTML = (-pensionRelief).toFixed(2);
+    document.getElementById('finalTaxDue2').innerHTML = finalTaxDue.toFixed(2);
+    document.getElementById('finalTaxPaidNeg').innerHTML = (-taxPaid).toFixed(2);
+    document.getElementById('finalTaxPaid').innerHTML = taxPaid.toFixed(2);
+    document.getElementById('balanceDue').innerHTML = (-refund).toFixed(2);
+
+    // fill in the components in the "Estimated Tax Refund" table
+    document.getElementById('finalTaxDue').innerHTML = finalTaxDue.toFixed(2);
+	  document.getElementById('refund').innerHTML = Math.abs(refund).toFixed(2);
     document.getElementById("XowesY").innerHTML = (refund < 0) ? "You owe taxman:" : "Taxman owes you:"
     document.getElementById("refundCell").style.backgroundColor = (refund < 0) ? "#d68794" : "#8accab"
 	
-	document.getElementById("subtotals").scrollIntoView();
+	  document.getElementById("estimated_tax_refund").scrollIntoView();
 	
     return false;
 };

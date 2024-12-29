@@ -114,6 +114,7 @@ input.toggle[type='checkbox'] {
   position: relative;
   display: inline-block;
   font-size: 0.85rem;
+  overflow: visible;
   // border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
 }
 
@@ -122,10 +123,10 @@ input.toggle[type='checkbox'] {
   visibility: hidden;
   background-color: #e9ebec;
   color: #606c71;
-  padding: 5px 0;
+  padding: 5px;
   border-radius: 6px;
   font-size: 0.85rem;
- 
+  overflow: visible;
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1000;

@@ -364,10 +364,10 @@ input.toggle[type='checkbox'] { display: none; }
 .toggle:checked + .lbl-toggle { border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
 
 /* Tooltip container */
-.tooltip { position: relative; display: inline-block; font-size: 0.85rem; }
+.tooltip { position: relative; display: inline-block; font-size: 0.85rem; overflow: visible; }
 
 /* Tooltip text */
-.tooltip .tooltiptext { visibility: hidden; background-color: #e9ebec; color: #606c71; padding: 5px 0; border-radius: 6px; font-size: 0.85rem; /* Position the tooltip text - see examples below! */ position: absolute; z-index: 1000; }
+.tooltip .tooltiptext { visibility: hidden; background-color: #e9ebec; color: #606c71; padding: 5px; border-radius: 6px; font-size: 0.85rem; overflow: visible; /* Position the tooltip text - see examples below! */ position: absolute; z-index: 1000; }
 
 .tooltip-top-wide .tooltiptext-top-wide { bottom: 100%; left: 50%; text-align: center; margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */ width: 500px; margin-left: -250px; /* Use half of the width (120/2 = 60), to center the tooltip */ }
 

@@ -137,7 +137,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
             </tr>
             <tr class="unit-table">
                 <td><input type="text" style="width:100%" placeholder="(optional)"></td>
-                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td class="shekel"><input type="number" class="salaryIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <!-- <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>-->
@@ -155,30 +155,38 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
     </div> -->
     <h3>3. Benefits received from National Insurance תקבולים מהמוסד לביטוח לאומי</h3>
     <div>
-          <table id='btl_benefits' style="table-layout:fixed;width:100%;text-align:center">
+          <table id='btl_benefits' style="table-layout:fixed;width:100%;text-align:center;overflow: visible;">
               <tr>
                 <th>Benefit type</th>
                 <th>Taxable income<br>תקבולים<br>(194)</th>
                 <th>Income tax paid<br>מס הכנסה<br>(042)</th>
               </tr>
               <tr class="unit-table">
-                <td>Unemployment אבטלה</td>
-                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td>Unemployment אבטלה <div class="tooltip tooltip-right">ℹ️
+                  <span class="tooltiptext tooltiptext-right">Fill in the numbers from the the אישור שנתי למס הכנסה. You can find this in the <a href="https://ps.btl.gov.il/#/Avtala/IshurimList/HV/" target="_blank">אבטלה - אישורים section</a> on the <i>Bituah Leumi</i> personal area. Submit this file as documentation.</span>
+                  </div></td>
+                <td class="shekel"><input type="number" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
               </tr>
               <tr class="unit-table">
-                <td>Maternity דמי לידה</td>
-                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td>Maternity דמי לידה <div class="tooltip tooltip-right">ℹ️
+                  <span class="tooltiptext tooltiptext-right">Fill in the numbers from the אישור שנתי למס הכנסה. You can find this in the <a href="https://ps.btl.gov.il/#/DmeiLeda/IshurimList/GE/" target="_blank">אישורים - דמי לידה section</a> on the <i>Bituah Leumi</i> personal area. Submit this file as documentation.</span>
+                  </div></td>
+                <td class="shekel"><input type="number" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
               </tr>
               <tr class="unit-table">
-                <td>Reserve duty מילואים</td>
-                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td>Reserve duty מילואים <div class="tooltip tooltip-right">ℹ️
+                  <span class="tooltiptext tooltiptext-right">Fill in the numbers from the the אישור שנתי למס הכנסה. You can find this in the <a href="https://ps.btl.gov.il/#/Miluim/IshurimList/NK/" target="_blank">מילואים - אישורים section</a> on the <i>Bituah Leumi</i> personal area. Submit this file as documentation.</span>
+                  </div></td>
+                <td class="shekel"><input type="number" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
               </tr>
               <tr class="unit-table">
-                <td>Other</td>
-                <td class="shekel"><input type="number" class="gross" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td>Other <div class="tooltip tooltip-right">ℹ️
+                  <span class="tooltiptext tooltiptext-right">Input only <i>taxable</i> National Insurance benefits (these are relatively uncommon cases): שמירת היריון; מענק הסתגלות; דמי פגיעה בעבודה.<br>Use the אישור שנתי למס הכנסה for the specific benefit you receive, found in the <a href="https://ps.btl.gov.il/#/My/IshurimList/all/" target="_blank">general אישורים section</a> on the <i>Bituah Leumi</i> personal area. Submit this file as documentation.</span>
+                  </div></td>
+                <td class="shekel"><input type="number" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
                 <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
               </tr>
           </table>
@@ -188,7 +196,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
         <input id="advanced_tax_credits_options" type='checkbox' onchange="showHideAdvancedTaxCreditOptions()">
         <label for="advanced_tax_credits_options">Advanced options</label>
         <!-- Input different values by month <input id="input_by_month" type='checkbox' onchange="monthlyAnnualToggle()"> -->
-        <table id="tax_credits_table" style="text-align:center">
+        <table id="tax_credits_table" style="text-align:center; overflow: visible;">
             <tr>
               <th colspan="3">Reason</th>
               <th>Tax credits<br>נקודות זיכוי</th>
@@ -460,26 +468,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
     </div>
 </form>
 <br><hr>
-<h3><div id="subtotals">Subtotals</h3>
-<table>
-    <tr>
-        <td>Gross income tax before reliefs:</td>
-        <td class="shekel"><span id="taxBrackets">0.00</span> &#8362;</td>
-    </tr>
-    <tr>
-        <td>Total tax credit relief:</td>
-        <td class="shekel"><span id="taxCreditsRelief">0.00</span> &#8362;</td>
-    </tr>
-    <tr>
-        <td>Charitable donations relief:</td>
-        <td class="shekel"><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
-    </tr>
-    <tr>
-        <td>Pension relief:</td>
-        <td class="shekel"><span id="pensionRelief">0.00</span> &#8362;</td>
-    </tr>
-</table>
-<h2>Estimated tax refund</h2>
+<h2 id="estimated_tax_refund">Estimated tax refund</h2>
 <table id="refund_table" style="table-layout:fixed">
     <tr>
         <td>You should have paid:</td>
@@ -497,6 +486,61 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
         <td>at end of tax year.</td>
     </tr>
 </table>
+<br>
+<div class="wrap-collabsible">
+  <input id="how-is-this-calculated" class="toggle" type="checkbox">
+  <label for="how-is-this-calculated" class="lbl-toggle"><h3><div class="triangle"> </div>How is this calculated?</h3></label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+      <table style="overflow: visible;">
+        <tr>
+          <th></th>
+          <th>Total</th>
+          <th>Tax due</th>
+        </tr>
+        <tr>
+            <td>Income from salary (158):</td>
+            <td class="shekel"><span id="totalSalaryIncome">0.00</span> &#8362;</td>
+            <td rowspan="2" class="shekel"><span id="taxBrackets">0.00</span> &#8362;</td>
+        </tr>
+        <tr>
+            <td>Income from NI benefits (194):</td>
+            <td class="shekel"><span id="totalNiBenefitsIncome">0.00</span> &#8362;</td>
+        </tr>
+        <tr>
+            <td>Pension deposits (045):</td>
+            <td class="shekel"><span id="totalEmployeePensionDeposits">0.00</span> &#8362;</td>
+            <td class="shekel"><span id="pensionRelief">0.00</span> &#8362;</td>
+        </tr>
+        <tr>
+          <td>Charitable donations (037):</td>
+          <td class="shekel"><span id="totalCharitableDonations">0.00</span> &#8362;</td>
+          <td class="shekel"><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
+      </tr>
+        <tr>
+            <td colspan="2">Tax credits:</td>
+            <td class="shekel"><span id="taxCreditsRelief">0.00</span> &#8362;</td>
+        </tr>
+        <tr>
+            <td colspan="2"><b>Actual tax due</b> <div class="tooltip tooltip-right">ℹ️
+              <span class="tooltiptext tooltiptext-right">The amount owed after deducting all the credits and reliefs; however, this can never be less than zero.</span>
+              </div></td>
+            <td class="shekel"><b><span id="finalTaxDue2">0.00</span> &#8362;</b></td>
+        </tr>
+        <tr>
+          <td colspan="2">Tax deducted at source (042):</td>
+          <td class="shekel"><span id="finalTaxPaidNeg">0.00</span> &#8362;</td>
+        </tr>
+        <tr>
+          <td colspan="2"><b>Tax balance after deductions at source:</b> <div class="tooltip tooltip-top-wide">ℹ️
+            <span class="tooltiptext tooltiptext-top-wide">If this is negative, the Tax Authority owes you a refund. If it is positive, you underpaid and owe them money.</span>
+            </div></td>
+          <td class="shekel"><b><span id="balanceDue">0.00</span> &#8362;</b></td>
+        </tr>
+    </table>
+    </div>
+  </div>
+</div>
 </div>
 <hr>
 <h2>Next steps</h2>
