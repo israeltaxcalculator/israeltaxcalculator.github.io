@@ -463,18 +463,15 @@ function saveFieldsToUrl() {
   // Collect all input fields and iterate over them
   document.querySelectorAll('input, select').forEach((input) => {
     // Add input's value to URL parameters using its id as the key
-    if (input.id == '') {
-      return; // skip elements without an id
+    if (input.id == '' || input.className == 'toggle') {
+      return; // skip elements without an id, or that are just folding section toggles
     }
     if (input.type === 'radio') {
       if (input.checked) {
         urlParams.set(input.id, 'true');
       }
     } else if (input.type === 'checkbox') {
-      // exclude the folding sections inputs
-      if (input.className !== 'toggle') {
         urlParams.set(input.id, input.checked.toString());
-      }
     }
     else if ((input.type == 'text' || input.type == 'number') && input.value !== '') {
       urlParams.set(input.id, input.value);
@@ -519,21 +516,15 @@ function regenerateFieldsFromUrl() {
     if (input.id == '' || !urlParams.has(input.id)) {
       return; // skip elements without an id or that are not mentioned in the URL query string
     }
-    if (input.type === 'radio') {
-      input.checked = true;
-      input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
+    if (input.className == 'toggle' || input.id == 'advanced_tax_credits_options') {
+      return; // skip the folding sections inputs and the advanced tax credits checkbox (already handled above)
+    }
+    if (input.type === 'radio' || input.type === 'checkbox') {
+      input.checked = urlParams.get(input.id) == 'true';
       
-    } else if (input.type === 'checkbox') {
-      // exclude the folding sections inputs and the advanced tax credits checkbox, already triggered
-      if (input.className !== 'toggle' && input.id !== 'advanced_tax_credits_options') {
-          input.checked = urlParams.get(input.id) == 'true';
-          input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
-      }
     }
     else if (input.type == 'text' || input.type == 'number' || input.tagName == 'SELECT') {
       input.value = urlParams.get(input.id);
-      input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
-      input.dispatchEvent(new Event('keyup')); // Trigger the 'keyup' event manually
     }
   });
 }
@@ -604,6 +595,7 @@ function updateTaxCredits() {
 
 document.getElementById("year").addEventListener("change", function(e) {
 	year = parseInt(this.value);
+  document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION[year];
 	updateTaxCredits();
 }, false)
 document.getElementById("aliyaYear").addEventListener("change", function(e) {
@@ -687,32 +679,33 @@ document.getElementById('saveToUrl').addEventListener("click", function () {
   saveFieldsToUrl();
 });
 
+// Initial update when the page loads
+setDefaultChildBenefitsRecipient(false);
+regenerateFieldsFromUrl();
+
 var year = parseInt(document.getElementById("year").value)
 
 // general
-var residentTaxCredits = TAX_CREDITS_RESIDENT;
-var genderTaxCredits = null;
-var otherTaxCredits = 0;
-var totalTaxCredits = TAX_CREDITS_RESIDENT;
+var residentTaxCredits = document.getElementById('resident').checked ? TAX_CREDITS_RESIDENT : null;
+var genderTaxCredits = document.getElementById('woman').checked ? TAX_CREDITS_WOMAN : null;
+var otherTaxCredits = parseFloat(document.getElementById("taxCreditsSingle").value) || 0;
+var totalTaxCredits = null;
 // aliya
-var aliyaYear = null;
-var aliyaMonth = null;
+var aliyaYear = parseInt(document.getElementById("aliyaYear").value) || null;
+var aliyaMonth = parseInt(document.getElementById("aliyaMonth").value) || null;
 // army
-var armyReleaseYear = null;
-var armyReleaseMonth = null;
+var armyReleaseYear = parseInt(document.getElementById("armyReleaseYear").value) || null;
+var armyReleaseMonth = parseInt(document.getElementById("armyReleaseMonth").value) || null;
 var armyService = document.getElementById('armyService').value;
-var isNationalService = false;
+var isNationalService = document.getElementById("sherutLeumi").checked;
 // degree
-var graduationYearDegree1 = null;
-var graduationYearDegree2 = null;
+var graduationYearDegree1 = parseInt(document.getElementById('graduationYearDegree1').value) || null;
+var graduationYearDegree2 = parseInt(document.getElementById('graduationYearDegree2').value) || null;
 var degree1 = document.getElementById('degree1').value;
 var degree2 = document.getElementById('degree2').value;
 
 
 // Initial update when the page loads
-showHideAdvancedTaxCreditOptions();
-setDefaultChildBenefitsRecipient(false);
-regenerateFieldsFromUrl();
 updateTaxCredits();
 
 document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION[year];
