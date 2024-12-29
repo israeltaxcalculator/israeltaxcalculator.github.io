@@ -750,13 +750,11 @@ function updateTaxRefund() {
     document.getElementById('taxCreditsRelief').innerHTML = (-taxCreditsRelief).toFixed(2);
     document.getElementById('charitableDonationsRelief').innerHTML = (-charitableDonationsRelief).toFixed(2);
     document.getElementById('pensionRelief').innerHTML = (-pensionRelief).toFixed(2);
-    document.getElementById('finalTaxDue2').innerHTML = finalTaxDue.toFixed(2);
-    document.getElementById('finalTaxPaidNeg').innerHTML = (-taxPaid).toFixed(2);
-    document.getElementById('finalTaxPaid').innerHTML = taxPaid.toFixed(2);
+    document.getElementById('finalTaxDue').innerHTML = finalTaxDue.toFixed(2);
+    document.getElementById('finalTaxPaid').innerHTML = (-taxPaid).toFixed(2);
     document.getElementById('balanceDue').innerHTML = (-refund).toFixed(2);
 
     // fill in the components in the "Estimated Tax Refund" table
-    document.getElementById('finalTaxDue').innerHTML = finalTaxDue.toFixed(2);
 	  document.getElementById('refund').innerHTML = Math.abs(refund).toFixed(2);
     document.getElementById("XowesY").innerHTML = (refund < 0) ? "You owe taxman:" : "Taxman owes you:"
     document.getElementById("refundCell").style.backgroundColor = (refund < 0) ? "#d68794" : "#8accab"
