@@ -167,3 +167,19 @@ input.toggle[type='checkbox'] {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+// fading text for "copy to clipboard"
+#copyToClipboardText {
+  opacity: 0;
+  transition: 1s;
+}
+
+#copyToClipboardText.fade-in {
+  opacity: 1;
+  transition: 1s;
+}
+
+
+#copyToClipboardText.hide {
+  display: none;
+}

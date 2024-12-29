@@ -136,10 +136,10 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                 <th>Employer pension deposits + <i>Pitsuyim</i><br>הפקדות המעביד<br>(248)</th> -->
             </tr>
             <tr class="unit-table">
-                <td><input type="text" style="width:100%" placeholder="(optional)"></td>
-                <td class="shekel"><input type="number" class="salaryIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
-                <td class="shekel"><input type="number" class="employeePension" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td><input type="text" id="employer-1" style="width:100%" placeholder="(optional)"></td>
+                <td class="shekel"><input type="number" id="salaryIncome-1" class="salaryIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td class="shekel"><input type="number" id="taxPaid-1" class="taxPaid" min="0" step="0.01" style="width:80%" required>&#8362</td>
+                <td class="shekel"><input type="number" id="employeePension-1" class="employeePension" min="0" step="0.01" style="width:80%" required>&#8362</td>
                 <!-- <td class="shekel"><input type="number" class="insuredIncome" min="0" step="0.01" style="width:80%" required>&#8362</td>-->
                 <!-- <td><input type="number" class="employerPension" min="0" step="0.01"/>&#8362</td> -->
             </tr>
@@ -165,29 +165,29 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                 <td>Unemployment אבטלה <div class="tooltip tooltip-right">ℹ️
                   <span class="tooltiptext tooltiptext-right">Fill in the numbers from the the אישור שנתי למס הכנסה. You can find this in the <a href="https://ps.btl.gov.il/#/Avtala/IshurimList/HV/" target="_blank">אבטלה - אישורים section</a> on the <i>Bituah Leumi</i> personal area. Submit this file as documentation.</span>
                   </div></td>
-                <td class="shekel"><input type="number" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
-                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" id="unemploymentPay" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" id="unemploymentTax" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
               </tr>
               <tr class="unit-table">
                 <td>Maternity דמי לידה <div class="tooltip tooltip-right">ℹ️
                   <span class="tooltiptext tooltiptext-right">Fill in the numbers from the אישור שנתי למס הכנסה. You can find this in the <a href="https://ps.btl.gov.il/#/DmeiLeda/IshurimList/GE/" target="_blank">אישורים - דמי לידה section</a> on the <i>Bituah Leumi</i> personal area. Submit this file as documentation.</span>
                   </div></td>
-                <td class="shekel"><input type="number" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
-                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" id="maternityPay" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" id="maternityTax" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
               </tr>
               <tr class="unit-table">
                 <td>Reserve duty מילואים <div class="tooltip tooltip-right">ℹ️
                   <span class="tooltiptext tooltiptext-right">Fill in the numbers from the the אישור שנתי למס הכנסה. You can find this in the <a href="https://ps.btl.gov.il/#/Miluim/IshurimList/NK/" target="_blank">מילואים - אישורים section</a> on the <i>Bituah Leumi</i> personal area. Submit this file as documentation.</span>
                   </div></td>
-                <td class="shekel"><input type="number" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
-                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" id="reservePay" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" id="reserveTax" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
               </tr>
               <tr class="unit-table">
                 <td>Other <div class="tooltip tooltip-right">ℹ️
                   <span class="tooltiptext tooltiptext-right">Input only <i>taxable</i> National Insurance benefits (these are relatively uncommon cases): שמירת היריון; מענק הסתגלות; דמי פגיעה בעבודה.<br>Use the אישור שנתי למס הכנסה for the specific benefit you receive, found in the <a href="https://ps.btl.gov.il/#/My/IshurimList/all/" target="_blank">general אישורים section</a> on the <i>Bituah Leumi</i> personal area. Submit this file as documentation.</span>
                   </div></td>
-                <td class="shekel"><input type="number" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
-                <td class="shekel"><input type="number" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" id="otherNiPay" class="niBenefitsIncome" min="0" step="0.01" style="width:80%">&#8362</td>
+                <td class="shekel"><input type="number" id="otherNiTax" class="taxPaid" min="0" step="0.01" style="width:80%">&#8362</td>
               </tr>
           </table>
     </div>
@@ -450,8 +450,8 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                 <th>Amount<br>סכום התרומה<br>(037)*</th>
             </tr>
             <tr>
-                <td><input type="text" style="width:90%"/></td>
-                <td class="shekel"><input type="number" class="donation" style="width:80%"/> &#8362</td>
+                <td><input type="text" id="institution-1" style="width:90%"/></td>
+                <td class="shekel"><input type="number" id="donation-1" class="donation" style="width:80%"/> &#8362</td>
             </tr>
         </table>
         <div>
@@ -486,6 +486,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
         <td>at end of tax year.</td>
     </tr>
 </table>
+<input id="saveToUrl" type="button" value="Save inputs to URL" class="pretty_button pretty_button_regular"><p id="copyToClipboardText" class="hide" style="display: inline-block; margin-left: 10px;">✅ URL copied to clipboard</p>
 <br>
 <div class="wrap-collabsible">
   <input id="how-is-this-calculated" class="toggle" type="checkbox">

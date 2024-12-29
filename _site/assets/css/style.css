@@ -379,3 +379,9 @@ input.toggle[type='checkbox'] { display: none; }
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext { visibility: visible; }
+
+#copyToClipboardText { opacity: 0; transition: 1s; }
+
+#copyToClipboardText.fade-in { opacity: 1; transition: 1s; }
+
+#copyToClipboardText.hide { display: none; }

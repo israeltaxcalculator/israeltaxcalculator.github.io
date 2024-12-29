@@ -371,7 +371,13 @@ const showHideAdvancedTaxCreditOptions = () => {
 const addRow = (tableId, maxRows = 10) => {
     const table = document.getElementById(tableId);
     if (table.rows.length <= maxRows) {
-        table.insertRow(-1).innerHTML = table.rows[1].innerHTML
+      const rowToAdd = table.rows[table.rows.length - 1];
+      const newRow = table.insertRow(-1)
+      newRow.innerHTML = table.rows[table.rows.length - 2].innerHTML
+      newRow.querySelectorAll('input').forEach((input) => {
+          current_input_id_parts = input.id.split('-')
+          input.id = current_input_id_parts[0] + '-' + (parseInt(current_input_id_parts[1]) + 1).toString()
+      })
     }
 };
 
@@ -440,7 +446,7 @@ const addChildRow = (maxRows = 12) => {
   }
 };
 
-const removeChildRow = tableId => {
+const removeChildRow = () => {
   let table = document.getElementById("tax_credits_table");
   let childrenRows = document.getElementsByClassName("singleChildRow");
   if (childrenRows.length > 1) {
@@ -451,8 +457,96 @@ const removeChildRow = tableId => {
   }
 };
 
-var year = parseInt(document.getElementById("year").value)
-document.getElementById("year").addEventListener("change", function(e) {year = parseInt(this.value)}, false)
+function saveFieldsToUrl() {
+  const urlParams = new URLSearchParams();
+  
+  // Collect all input fields and iterate over them
+  document.querySelectorAll('input').forEach((input) => {
+    // Add input's value to URL parameters using its id as the key
+    if (input.id == '') {
+      return; // skip elements without an id
+    }
+    if (input.type === 'radio') {
+      if (input.checked) {
+        urlParams.set(input.id, 'true');
+      }
+    } else if (input.type === 'checkbox') {
+      // exclude the folding sections inputs
+      if (input.className !== 'toggle') {
+        urlParams.set(input.id, input.checked.toString());
+      }
+    }
+    else if (input.type == 'text' || input.type == 'number') {
+      urlParams.set(input.id, input.value);
+    }
+  });
+  // collect all "select" input fields and iterate over them
+  document.querySelectorAll('select').forEach((select) => {
+    urlParams.set(select.id, select.value);
+  });
+
+  urlParams.set('childrenRows', document.getElementsByClassName("singleChildRow").length);
+  urlParams.set('salaryRows', document.getElementsByClassName("salaryIncome").length);
+  urlParams.set('donationRows', document.getElementsByClassName("donation").length);
+  // Return the URL string
+  const url = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`
+  navigator.clipboard.writeText(url);
+  return url;
+}
+
+function regenerateFieldsFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search)
+  if (urlParams.get('advanced_tax_credits_options') == 'true') {
+    document.getElementById('advanced_tax_credits_options').checked = true
+    showHideAdvancedTaxCreditOptions()
+  }
+  for (let i = 1; i < urlParams.get('childrenRows'); i++) {
+    addChildRow();
+  }
+  for (let i = 1; i < urlParams.get('salaryRows'); i++) {
+    addRow('salary_pension');
+  }
+  for (let i = 1; i < urlParams.get('donationRows'); i++) {
+    addRow('donations');
+  }
+
+  // Do the same process as when generating the URL, but in reverse
+  // Collect all input fields and iterate over them
+  document.querySelectorAll('input').forEach((input) => {
+    // Add input's value to URL parameters using its id as the key
+    if (input.id == '') {
+      return; // skip elements without an id
+    }
+    if (input.type === 'radio') {
+      if (urlParams.has(input.id)) {
+        input.checked = true;
+        input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
+      }
+    } else if (input.type === 'checkbox') {
+      // exclude the folding sections inputs and the advanced tax credits checkbox, already triggered
+      if (input.className !== 'toggle' && input.id !== 'advanced_tax_credits_options') {
+        if (urlParams.has(input.id)) {
+          input.checked = urlParams.get(input.id) == 'true';
+          input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
+        }
+      }
+    }
+    else if (input.type == 'text' || input.type == 'number') {
+      if (urlParams.has(input.id)) {
+        input.value = urlParams.get(input.id);
+        input.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
+        input.dispatchEvent(new Event('keyup')); // Trigger the 'keyup' event manually
+      }
+    }
+  });
+  document.querySelectorAll('select').forEach((select) => {
+    if (urlParams.has(select.id)) {
+      select.value = urlParams.get(select.id);
+      select.dispatchEvent(new Event('change')); // Trigger the 'change' event manually
+    }
+  });
+}
+
 
 function setDefaultChildBenefitsRecipient(isMother) {
   // Since, in most cases, the mother is the child benefit receiver, we will check the relevant radio button (mother / father)
@@ -587,7 +681,22 @@ document.getElementById('degree2').addEventListener("change", function(e) {
   degree2 = this.value;
   updateTaxCredits();
 }, false)
+document.getElementById('saveToUrl').addEventListener("click", function () {
+  let text = document.getElementById("copyToClipboardText");
+  text.classList.remove("hide");
+  setTimeout(function () {
+    text.classList.add("fade-in");
+    setTimeout(function () {
+      text.classList.remove("fade-in");
+      setTimeout(function () {
+        text.classList.add("hide");
+      }, 1000);
+    }, 2000);
+  });
+  saveFieldsToUrl();
+});
 
+var year = parseInt(document.getElementById("year").value)
 
 // general
 var residentTaxCredits = TAX_CREDITS_RESIDENT;
@@ -612,6 +721,7 @@ var degree2 = document.getElementById('degree2').value;
 // Initial update when the page loads
 showHideAdvancedTaxCreditOptions();
 setDefaultChildBenefitsRecipient(false);
+regenerateFieldsFromUrl();
 updateTaxCredits();
 
 document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION[year];
