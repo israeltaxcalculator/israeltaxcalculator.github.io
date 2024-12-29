@@ -476,7 +476,7 @@ function saveFieldsToUrl() {
         urlParams.set(input.id, input.checked.toString());
       }
     }
-    else if (input.type == 'text' || input.type == 'number') {
+    else if ((input.type == 'text' || input.type == 'number') && input.value !== '') {
       urlParams.set(input.id, input.value);
     }
   });
@@ -491,11 +491,13 @@ function saveFieldsToUrl() {
   // Return the URL string
   const url = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`
   navigator.clipboard.writeText(url);
-  return url;
 }
 
 function regenerateFieldsFromUrl() {
   const urlParams = new URLSearchParams(window.location.search)
+  if (urlParams.size == 0) {
+    return;
+  }
   if (urlParams.get('advanced_tax_credits_options') == 'true') {
     document.getElementById('advanced_tax_credits_options').checked = true
     showHideAdvancedTaxCreditOptions()
