@@ -332,6 +332,8 @@ html { scroll-behavior: smooth; }
 
 .shekel { white-space: nowrap; }
 
+#subtotals .shekel { text-align: right; }
+
 table { margin-bottom: 8px; overflow: visible; position: relative; }
 
 .pretty_button_large { font-size: 120%; padding: 8px 16px; }

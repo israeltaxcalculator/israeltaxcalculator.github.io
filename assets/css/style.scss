@@ -12,6 +12,11 @@ html {
 
 .shekel {white-space: nowrap;}
 
+#subtotals .shekel {
+  text-align: right;
+}
+
+
 table {margin-bottom:8px;
   overflow: visible;
   position: relative;
