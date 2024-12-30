@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
 	<meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/assets/css/style.css?v=31c4b6fd2963a1ab4ee213eb66358d76bba2cb3b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=45429747af10377c273f757259e48ae1baeea620">
 	<link rel="icon" type="image/x-icon" href="favicon.ico?v1">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161409720-1"></script>
@@ -521,9 +521,20 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 <br><hr>
 <h2 id="estimated_tax_refund">Estimated tax refund</h2>
 <table id="refund_table" style="table-layout:fixed">
+    <tr class="show-if-today-after-tax-year">
+        <td id="overpaid">Overpaid tax:</td>
+        <td  class="shekel" style="background-color:transparent"><span id="refund">0.00</span> &#8362;</td>
+    </tr>
+    <tr class="show-if-today-after-tax-year">
+        <td id="interestInflation">Interest:</td>
+        <td  class="shekel" style="background-color:transparent"><span id="interestAmount">0.00</span> &#8362;</td>
+    </tr>
     <tr>
         <td id="XowesY">Taxman owes you:</td>
-        <td  class="shekel" style="background-color:transparent" id="refundCell"><span id="refund">0.00</span> &#8362;</td>
+        <td  class="shekel" style="background-color:transparent" id="refundCell"><span id="refundWithInterest">0.00</span> &#8362;</td>
+        <td class="show-if-today-after-tax-year">(plus inflation)<div class="tooltip tooltip-top-regular">ℹ️
+          <span class="tooltiptext tooltiptext-top-regular"><a id="inflationUrl" href="" target="_blank">An estimate of how much the refund will be after inflation (see field "to value")</a>.</span>
+          </div></td>
     </tr>
 </table>
 <input id="saveToUrl" type="button" value="🔗Save inputs to URL" class="pretty_button pretty_button_regular"><p id="copyToClipboardText" class="hide" style="display: inline-block; margin-left: 10px;">✅ URL copied to clipboard</p>

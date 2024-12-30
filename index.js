@@ -602,6 +602,7 @@ function updateTaxCredits() {
   document.getElementById("totalTaxCredits").innerHTML = totalTaxCredits.toFixed(2);
 }
 
+
 document.getElementById("year").addEventListener("change", function(e) {
 	year = parseInt(this.value);
   document.getElementById("minEligibleDonation").innerHTML = MIN_ELIGIBLE_DONATION[year];
@@ -767,7 +768,31 @@ function updateTaxRefund() {
 	  document.getElementById('refund').innerHTML = Math.abs(refund).toFixed(2);
     document.getElementById("XowesY").innerHTML = (refund < 0) ? "You owe taxman:" : "Taxman owes you:"
     document.getElementById("refundCell").style.backgroundColor = (refund < 0) ? "#d68794" : "#8accab"
-};
+
+    var interest = 0;
+    const today = new Date();
+    const startDate = new Date(year+1, 0, 1);
+    // Get the interest rate and inflation rate for the current year
+    if (today > startDate) {
+      // only calculate interest and inflation if we are past the tax year
+      const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
+      const DAYS_IN_YEAR = 365;
+      const INTEREST_RATE = 0.04; // 4% annual SIMPLE interest
+      const daysPassed = Math.floor((today - startDate) / MILLISECONDS_IN_DAY)
+      interest = refund * INTEREST_RATE * daysPassed / DAYS_IN_YEAR // simple interest, not compound interest. Verified by reverse engineering past refund amounts
+      for (let elem of document.getElementsByClassName('show-if-today-after-tax-year')) {
+        elem.style.display = '';
+      }
+      document.getElementById('inflationUrl').href = `https://api.cbs.gov.il/index/data/calculator/120010?value=${(refund+interest).toFixed(2)}&date=${startDate.toISOString().slice(0, 10)}&toDate=${today.toISOString().slice(0, 10)}&format=xml&download=false`;
+    }
+    else {
+      for (let elem of document.getElementsByClassName('show-if-today-after-tax-year')) {
+        elem.style.display = 'none';
+      }
+    }
+    document.getElementById('interestAmount').innerHTML = interest.toFixed(2);
+    document.getElementById('refundWithInterest').innerHTML = (refund + interest).toFixed(2); 
+  };
 
 document.querySelector('#annual-tax').onsubmit = (event) => {
   event.preventDefault();
