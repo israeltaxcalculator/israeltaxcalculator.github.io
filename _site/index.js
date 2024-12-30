@@ -470,7 +470,8 @@ function saveFieldsToUrl() {
       if (input.checked) {
         urlParams.set(input.id, 'true');
       }
-    } else if (input.type === 'checkbox') {
+    } // add checkbox values if they are not the default value 
+    else if (input.type === 'checkbox' && input.checked !== input.defaultChecked) {
         urlParams.set(input.id, input.checked.toString());
     }
     else if ((input.type == 'text' || input.type == 'number') && input.value !== '') {
@@ -481,10 +482,18 @@ function saveFieldsToUrl() {
       urlParams.set(input.id, input.value);
     }
   });
-
-  urlParams.set('childrenRows', document.getElementsByClassName("singleChildRow").length);
-  urlParams.set('salaryRows', document.getElementsByClassName("salaryIncome").length);
-  urlParams.set('donationRows', document.getElementsByClassName("donation").length);
+  childrenRows = document.getElementsByClassName("singleChildRow").length;
+  salaryRows = document.getElementsByClassName("salaryIncome").length;
+  donationRows = document.getElementsByClassName("donation").length;
+  if (childrenRows > 1) {
+    urlParams.set('childrenRows', childrenRows);
+  }
+  if (salaryRows > 1) {
+    urlParams.set('salaryRows', salaryRows);
+  }
+  if (donationRows > 1) {
+    urlParams.set('donationRows', donationRows);
+  }
   // Return the URL string
   const url = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`
   navigator.clipboard.writeText(url);
