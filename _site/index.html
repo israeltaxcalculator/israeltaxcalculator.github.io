@@ -266,10 +266,10 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
               <td id="childrenTitleCol" rowspan="3">Children ילדים</td>
               <td>Birth</td>
               <td>Child benefits go to <div class="tooltip tooltip-top-wide">ℹ️
-                <span class="tooltiptext tooltiptext-top-wide">By default the mother receives the child benefits, but this may be different in the case of 
-      <a href="https://www.btl.gov.il/benefits/children/Pages/%d7%9c%d7%9e%d7%99%20%d7%9e%d7%a9%d7%95%d7%9c%d7%9e%d7%aa%20%d7%94%d7%a7%d7%a6%d7%91%d7%94.aspx" target="_blank">divorced parents</a>, 
-      <a href="https://www.btl.gov.il/benefits/children/Pages/%d7%9c%d7%9e%d7%99%20%d7%9e%d7%a9%d7%95%d7%9c%d7%9e%d7%aa%20%d7%94%d7%a7%d7%a6%d7%91%d7%94.aspx" target="_blank">separated parents</a>, 
-      and <a href="https://www.kolzchut.org.il/he/%D7%A7%D7%A6%D7%91%D7%AA_%D7%99%D7%9C%D7%93%D7%99%D7%9D_%D7%9C%D7%94%D7%95%D7%A8%D7%99%D7%9D_%D7%9E%D7%90%D7%95%D7%AA%D7%95_%D7%9E%D7%99%D7%9F" target="_blank">same-sex couples.</a></span>
+                <span class="tooltiptext tooltiptext-top-wide">By default the mother receives the child benefits. For
+      <a href="https://www.btl.gov.il/English%20Homepage/Benefits/Children/Pages/Towhomistheallowancepaid.aspx" target="_blank">divorced or separated parents</a>,
+      this may be different. For <a href="https://www.nbn.org.il/life-in-israel/government-services/lgbtq-and-same-sex-couples-in-israel/" target="_blank">same-sex couples</a>,
+      if there is a biological parent, they receive the benefits; otherwise, the couple can select the recipient (one-time choice).</span>
               </div></td>
               <td></td>
             </tr>
@@ -495,10 +495,12 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
                 (Hebrew)</a>
         </div>
         <br>
-        <table id="donations" style="text-align:center; table-layout: fixed; max-width: 100%">
+        <table id="donations" style="text-align:center; table-layout: fixed; max-width: 100%; overflow: visible;">
             <tr>
                 <th>Institution<br>שם המוסד</th>
-                <th>Amount<br>סכום התרומה<br>(037)*</th>
+                <th>Amount<br>סכום התרומה<br>(037)<div class="tooltip tooltip-top-regular">ℹ️
+                  <span class="tooltiptext tooltiptext-top-regular">Donations don't need to appear on your <i>Tofes 106</i> to be eligible, but this is the code they'll have if they do.</span>
+                  </div></th>
             </tr>
             <tr>
                 <td><input type="text" id="institution-1" style="width:90%"/></td>
@@ -509,8 +511,6 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
             <input id="add_institution" type="button" value="Add new institution" class="pretty_button pretty_button_regular">
             <input id="rmv_institution" type="button" value="Remove last institution" class="pretty_button pretty_button_regular">
         </div>
-        <br>
-		*Donations don't need to appear on your <i>Tofes 106</i> to be eligible, but this is the code they'll have if they do.
 		<br><br>
     </div>
 
