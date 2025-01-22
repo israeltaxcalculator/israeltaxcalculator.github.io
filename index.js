@@ -751,6 +751,8 @@ function updateTaxRefund() {
     const taxOwed = calculateTaxBrackets(gross);
     const finalTaxDue = Math.max(taxOwed - taxCreditsRelief - charitableDonationsRelief - pensionRelief, 0);
     const refund = taxPaid - finalTaxDue;
+    // get a positive value for this, for use within inflation & interest calculation
+    const absRefund = Math.abs(refund);
 
     // give the "interest and inflation" cell and the "Taxman owes you" cell an ellipsis until the inflation API call returns a value
     document.getElementById('interestInflationAmount').innerHTML = "..."
@@ -773,14 +775,14 @@ function updateTaxRefund() {
     document.getElementById('balanceDue').innerHTML = Math.round(-refund).toLocaleString('en-US');
 
     // fill in the components in the "Estimated Tax Refund" table
-    document.getElementById('refund').innerHTML = Math.round(Math.abs(refund)).toLocaleString('en-US'); 
+    document.getElementById('refund').innerHTML = Math.round(absRefund).toLocaleString('en-US'); 
     document.getElementById("overpaid").innerHTML = (refund < 0) ? "Underpaid tax:" : "Overpaid tax:"
     document.getElementById("XowesY").innerHTML = (refund < 0) ? "You owe taxman:" : "Taxman owes you:"
     document.getElementById("refundCell").style.backgroundColor = (refund < 0) ? "#d68794" : "#8accab"
 
     const today = new Date();
     const startDate = new Date(year + 1, 0, 1); // Start of the next tax year
-    var refundWithInterestInflation = refund;
+    var absRefundWithInterestInflation = absRefund;
 
     // Get the interest rate and inflation rate for the current year
     if (today > startDate) {
@@ -790,10 +792,10 @@ function updateTaxRefund() {
       const INTEREST_RATE = 0.04; // 4% annual SIMPLE interest
     
       const daysPassed = Math.floor((today - startDate) / MILLISECONDS_IN_DAY);
-      const interest = (refund * INTEREST_RATE * daysPassed) / DAYS_IN_YEAR; // simple interest, not compound interest. Verified by reverse engineering past refund amounts
+      const interest = (absRefund * INTEREST_RATE * daysPassed) / DAYS_IN_YEAR; // simple interest, not compound interest. Verified by reverse engineering past refund amounts
 
       // Get the interest rate and inflation rate for the current year
-      const inflationApiUrl = `https://israeltaxcalculator.pythonanywhere.com/?value=${(refund + interest).toFixed(2)}&start_date=${startDate.toISOString().slice(0, 10)}&end_date=${today.toISOString().slice(0, 10)}`;
+      const inflationApiUrl = `https://israeltaxcalculator.pythonanywhere.com/?value=${(absRefund + interest).toFixed(2)}&start_date=${startDate.toISOString().slice(0, 10)}&end_date=${today.toISOString().slice(0, 10)}`;
       
       // Use proxy to bypass CORS restrictions (CBS API filters requests from other origins)
       fetch(inflationApiUrl).then(response => {
@@ -803,17 +805,17 @@ function updateTaxRefund() {
           return response.json();
         })
         .then(data => {
-          refundWithInterestInflation = data.answer.to_value;
-          document.getElementById('interestInflationAmount').innerHTML = Math.round(Math.abs(refundWithInterestInflation - refund)).toLocaleString('en-US');
-          document.getElementById('refundWithInterestInflation').innerHTML = Math.round(Math.abs(refundWithInterestInflation)).toLocaleString('en-US');
+          absRefundWithInterestInflation = data.answer.to_value;
+          document.getElementById('interestInflationAmount').innerHTML = Math.round(absRefundWithInterestInflation - absRefund).toLocaleString('en-US');
+          document.getElementById('refundWithInterestInflation').innerHTML = Math.round(absRefundWithInterestInflation).toLocaleString('en-US');
           document.getElementById("interestInflation").innerHTML = "Interest and inflation:"
         })
         .catch(error => {
           console.log("Unable to calculate inflation. Error details:", error.message);
           // couldn't fetch inflation data, so just show the interest
-          refundWithInterestInflation = refund + interest;
-          document.getElementById('interestInflationAmount').innerHTML = Math.round(Math.abs(refundWithInterestInflation - refund)).toLocaleString('en-US');
-          document.getElementById('refundWithInterestInflation').innerHTML = Math.round(Math.abs(refundWithInterestInflation)).toLocaleString('en-US');
+          absRefundWithInterestInflation = absRefund + interest;
+          document.getElementById('interestInflationAmount').innerHTML = Math.round(absRefundWithInterestInflation - absRefund).toLocaleString('en-US');
+          document.getElementById('refundWithInterestInflation').innerHTML = Math.round(absRefundWithInterestInflation).toLocaleString('en-US');
           document.getElementById("interestInflation").innerHTML = "Interest:"
           document.getElementById("inflationUrlCell").style.display = "";
           document.getElementById('inflationUrl').href = inflationApiUrl;
@@ -824,7 +826,7 @@ function updateTaxRefund() {
         elem.style.display = 'none';
       }
       document.getElementById('interestInflationAmount').innerHTML = "0";
-      document.getElementById('refundWithInterestInflation').innerHTML = Math.round(Math.abs(refund)).toLocaleString('en-US');
+      document.getElementById('refundWithInterestInflation').innerHTML = Math.round(absRefund).toLocaleString('en-US');
     }
   };
 
