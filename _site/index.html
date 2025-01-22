@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
 	<meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/assets/css/style.css?v=45429747af10377c273f757259e48ae1baeea620">
+    <link rel="stylesheet" href="/assets/css/style.css?v=9531996421edee3f448fe49edf9adb1f8a3365c8">
 	<link rel="icon" type="image/x-icon" href="favicon.ico?v1">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161409720-1"></script>
@@ -165,13 +165,13 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 <h3>1. Select tax year</h3>
     <select id="year" class="pretty_button pretty_button_regular">
       <option value="2025">2025</option>
-      <option value="2024">2024</option>
-      <option value="2023" selected>2023</option>
+      <option value="2024" selected>2024</option>
+      <option value="2023">2023</option>
       <option value="2022">2022</option>
       <option value="2021">2021</option>
       <option value="2020">2020</option>
       <option value="2019">2019</option>
-      <option value="2018">2018</option>
+      <option value="2018" hidden>2018</option>
     </select>
     <h3>2. Salary and pension משכורת ופנסיה</h3>
 	  <div>
@@ -523,16 +523,16 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 <table id="refund_table" style="table-layout:fixed">
     <tr class="show-if-today-after-tax-year">
         <td id="overpaid">Overpaid tax:</td>
-        <td  class="shekel" style="background-color:transparent"><span id="refund">0.00</span> &#8362;</td>
+        <td  class="shekel" style="background-color:transparent"><span id="refund">0</span> &#8362;</td>
     </tr>
     <tr class="show-if-today-after-tax-year">
-        <td id="interestInflation">Interest:</td>
-        <td  class="shekel" style="background-color:transparent"><span id="interestAmount">0.00</span> &#8362;</td>
+        <td id="interestInflation">Interest and inflation:</td>
+        <td  class="shekel" style="background-color:transparent"><span id="interestInflationAmount">0</span> &#8362;</td>
     </tr>
     <tr>
         <td id="XowesY">Taxman owes you:</td>
-        <td  class="shekel" style="background-color:transparent" id="refundCell"><span id="refundWithInterest">0.00</span> &#8362;</td>
-        <td class="show-if-today-after-tax-year">(plus inflation)<div class="tooltip tooltip-top-regular">ℹ️
+        <td  class="shekel" style="background-color:transparent" id="refundCell"><span id="refundWithInterestInflation">0</span> &#8362;</td>
+        <td id="inflationUrlCell" class="show-if-today-after-tax-year" style="display: none;">(plus inflation)<div class="tooltip tooltip-top-regular">ℹ️
           <span class="tooltiptext tooltiptext-top-regular"><a id="inflationUrl" href="" target="_blank">An estimate of how much the refund will be after inflation (see field "to value")</a>.</span>
           </div></td>
     </tr>
@@ -553,7 +553,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
         <tr>
             <td>Income from salary (158):</td>
             <td class="shekel"><span id="totalSalaryIncome">0.00</span> &#8362;</td>
-            <td rowspan="2" class="shekel"><span id="taxBrackets">0.00</span> &#8362;</td>
+            <td rowspan="2" class="shekel"><span id="taxBrackets">0</span> &#8362;</td>
         </tr>
         <tr>
             <td>Income from NI benefits (194):</td>
@@ -562,32 +562,32 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
         <tr>
             <td>Pension deposits (045):</td>
             <td class="shekel"><span id="totalEmployeePensionDeposits">0.00</span> &#8362;</td>
-            <td class="shekel"><span id="pensionRelief">0.00</span> &#8362;</td>
+            <td class="shekel"><span id="pensionRelief">0</span> &#8362;</td>
         </tr>
         <tr>
           <td>Charitable donations (037):</td>
           <td class="shekel"><span id="totalCharitableDonations">0.00</span> &#8362;</td>
-          <td class="shekel"><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
+          <td class="shekel"><span id="charitableDonationsRelief">0</span> &#8362;</td>
       </tr>
         <tr>
             <td colspan="2">Tax credits:</td>
-            <td class="shekel"><span id="taxCreditsRelief">0.00</span> &#8362;</td>
+            <td class="shekel"><span id="taxCreditsRelief">0</span> &#8362;</td>
         </tr>
         <tr>
             <td colspan="2"><b>Actual tax due</b> <div class="tooltip tooltip-right">ℹ️
               <span class="tooltiptext tooltiptext-right">The amount you should have paid in tax after deducting all the credits and reliefs; however, this can never be less than zero.</span>
               </div></td>
-            <td class="shekel"><b><span id="finalTaxDue">0.00</span> &#8362;</b></td>
+            <td class="shekel"><b><span id="finalTaxDue">0</span> &#8362;</b></td>
         </tr>
         <tr>
           <td colspan="2">Tax deducted at source (042):</td>
-          <td class="shekel"><span id="finalTaxPaid">0.00</span> &#8362;</td>
+          <td class="shekel"><span id="finalTaxPaid">0</span> &#8362;</td>
         </tr>
         <tr>
           <td colspan="2"><b>Tax balance after deductions at source:</b> <div class="tooltip tooltip-top-wide">ℹ️
             <span class="tooltiptext tooltiptext-top-wide">If this is negative, the Tax Authority owes you a refund. If it is positive, you underpaid and owe them money.</span>
             </div></td>
-          <td class="shekel"><b><span id="balanceDue">0.00</span> &#8362;</b></td>
+          <td class="shekel"><b><span id="balanceDue">0</span> &#8362;</b></td>
         </tr>
     </table>
     </div>

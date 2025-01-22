@@ -472,16 +472,16 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
 <table id="refund_table" style="table-layout:fixed">
     <tr class="show-if-today-after-tax-year">
         <td id="overpaid">Overpaid tax:</td>
-        <td  class="shekel" style="background-color:transparent"><span id="refund">0.00</span> &#8362;</td>
+        <td  class="shekel" style="background-color:transparent"><span id="refund">0</span> &#8362;</td>
     </tr>
     <tr class="show-if-today-after-tax-year">
-        <td id="interestInflation">Interest:</td>
-        <td  class="shekel" style="background-color:transparent"><span id="interestAmount">0.00</span> &#8362;</td>
+        <td id="interestInflation">Interest and inflation:</td>
+        <td  class="shekel" style="background-color:transparent"><span id="interestInflationAmount">0</span> &#8362;</td>
     </tr>
     <tr>
         <td id="XowesY">Taxman owes you:</td>
-        <td  class="shekel" style="background-color:transparent" id="refundCell"><span id="refundWithInterest">0.00</span> &#8362;</td>
-        <td class="show-if-today-after-tax-year">(plus inflation)<div class="tooltip tooltip-top-regular">ℹ️
+        <td  class="shekel" style="background-color:transparent" id="refundCell"><span id="refundWithInterestInflation">0</span> &#8362;</td>
+        <td id="inflationUrlCell" class="show-if-today-after-tax-year" style="display: none;">(plus inflation)<div class="tooltip tooltip-top-regular">ℹ️
           <span class="tooltiptext tooltiptext-top-regular"><a id="inflationUrl" href="" target="_blank">An estimate of how much the refund will be after inflation (see field "to value")</a>.</span>
           </div></td>
     </tr>
@@ -502,7 +502,7 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
         <tr>
             <td>Income from salary (158):</td>
             <td class="shekel"><span id="totalSalaryIncome">0.00</span> &#8362;</td>
-            <td rowspan="2" class="shekel"><span id="taxBrackets">0.00</span> &#8362;</td>
+            <td rowspan="2" class="shekel"><span id="taxBrackets">0</span> &#8362;</td>
         </tr>
         <tr>
             <td>Income from NI benefits (194):</td>
@@ -511,32 +511,32 @@ document.write((currentYear - 6) + ' to ' + (currentYear - 1))</script> inclusiv
         <tr>
             <td>Pension deposits (045):</td>
             <td class="shekel"><span id="totalEmployeePensionDeposits">0.00</span> &#8362;</td>
-            <td class="shekel"><span id="pensionRelief">0.00</span> &#8362;</td>
+            <td class="shekel"><span id="pensionRelief">0</span> &#8362;</td>
         </tr>
         <tr>
           <td>Charitable donations (037):</td>
           <td class="shekel"><span id="totalCharitableDonations">0.00</span> &#8362;</td>
-          <td class="shekel"><span id="charitableDonationsRelief">0.00</span> &#8362;</td>
+          <td class="shekel"><span id="charitableDonationsRelief">0</span> &#8362;</td>
       </tr>
         <tr>
             <td colspan="2">Tax credits:</td>
-            <td class="shekel"><span id="taxCreditsRelief">0.00</span> &#8362;</td>
+            <td class="shekel"><span id="taxCreditsRelief">0</span> &#8362;</td>
         </tr>
         <tr>
             <td colspan="2"><b>Actual tax due</b> <div class="tooltip tooltip-right">ℹ️
               <span class="tooltiptext tooltiptext-right">The amount you should have paid in tax after deducting all the credits and reliefs; however, this can never be less than zero.</span>
               </div></td>
-            <td class="shekel"><b><span id="finalTaxDue">0.00</span> &#8362;</b></td>
+            <td class="shekel"><b><span id="finalTaxDue">0</span> &#8362;</b></td>
         </tr>
         <tr>
           <td colspan="2">Tax deducted at source (042):</td>
-          <td class="shekel"><span id="finalTaxPaid">0.00</span> &#8362;</td>
+          <td class="shekel"><span id="finalTaxPaid">0</span> &#8362;</td>
         </tr>
         <tr>
           <td colspan="2"><b>Tax balance after deductions at source:</b> <div class="tooltip tooltip-top-wide">ℹ️
             <span class="tooltiptext tooltiptext-top-wide">If this is negative, the Tax Authority owes you a refund. If it is positive, you underpaid and owe them money.</span>
             </div></td>
-          <td class="shekel"><b><span id="balanceDue">0.00</span> &#8362;</b></td>
+          <td class="shekel"><b><span id="balanceDue">0</span> &#8362;</b></td>
         </tr>
     </table>
     </div>
