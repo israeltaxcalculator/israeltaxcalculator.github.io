@@ -786,6 +786,11 @@ function updateTaxRefund() {
 
     // Get the interest rate and inflation rate for the current year
     if (today > startDate) {
+      // show the interest/inflation and original refund amount cells
+      for (let elem of document.getElementsByClassName('show-if-today-after-tax-year')) {
+        elem.style.display = '';
+      }
+	    
       // only calculate interest and inflation if we are past the tax year
       const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
       const DAYS_IN_YEAR = 365;
@@ -822,6 +827,7 @@ function updateTaxRefund() {
         });
     }
     else {
+      // hide the interest/inflation and original refund amount cells - there is no inflation or interest so not relevant
       for (let elem of document.getElementsByClassName('show-if-today-after-tax-year')) {
         elem.style.display = 'none';
       }
