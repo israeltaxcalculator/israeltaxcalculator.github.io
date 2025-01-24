@@ -781,7 +781,7 @@ function updateTaxRefund() {
     document.getElementById("refundCell").style.backgroundColor = (refund < 0) ? "#d68794" : "#8accab"
 
     const today = new Date();
-    const startDate = new Date(year + 1, 0, 1); // Start of the next tax year
+    const startDate = new Date(Date.UTC(year + 1, 0, 1)); // Start of the next tax year
     var absRefundWithInterestInflation = absRefund;
 
     // Get the interest rate and inflation rate for the current year
